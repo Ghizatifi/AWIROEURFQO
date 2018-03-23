@@ -1,6 +1,6 @@
 
             <div class="navbar-default sidebar" role="navigation" style="background-color: #d5d0d0;">
-                <div class="sidebar-nav navbar-collapse">
+                <div class="">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
@@ -14,7 +14,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-bar-chart"></i> Tableau de bord</a>
+                            <a href="index.html" ><i class="fa fa-bar-chart" ></i> Tableau de bord</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-graduation-cap"></i> Gestion des eleves<span class="fa arrow"></span></a>
