@@ -20,6 +20,11 @@ Route::get('/dashbord',function(){
 	return view('layout.master');
 });
 
+Route::get('/eleveRegister',function(){
+	return view('eleves.eleveRegister');
+});
+
+
 Route::get('/','LoginController@getLogin');
 Route::post('/login','LoginController@postLogin');
 Route::get('/logout','LoginController@getLogout');
