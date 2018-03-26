@@ -3577,7 +3577,7 @@ div[data-role="editor-toolbar"] {
     padding-right: 15px;
 
     margin-top: 20px;
-
+  
 }
 
 
@@ -3589,7 +3589,7 @@ div[data-role="editor-toolbar"] {
     display: inline-block;
 
     font-size: 20px;
-
+    
 }
 
 
@@ -5685,6 +5685,7 @@ ul.ft-link li a i {
 .fontawesome-icon-list .page-header {
 
     border-bottom: 1px solid #C9CDD7;
+    
 
 }
 
@@ -8153,6 +8154,7 @@ table.sliders tr td {
     border-radius: 15px !important;
 
     -webkit-border-radius: 15px !important;
+    background-color: red;
 
 }
 

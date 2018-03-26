@@ -1,5 +1,5 @@
 <aside>
-      <div id="sidebar" class="nav-collapse ">
+      <div id="sidebar" class="nav-collapse " >
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
@@ -10,35 +10,37 @@
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Courses</span>
+                          <i class="fa fa-users"></i>
+                          <span>Les enseignants</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="">Mange Courses</a></li>
-            </ul>
+                        </a>
+                        <ul class="sub">
+                        <li><a class="" href="">Ajouter un professeur</a></li>
+                        <li><a class="" href="">Liste des professeurs</a></li>
+                        </ul>
+                      
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="fa fa-graduation-cap"></i>
-                          <span>Student</span>
+                          <span>Les Eleves</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">Cerate Student</a></li>
-              <li><a class="" href="">Search Student</a></li>
+              <li><a class="" href="">Ajouter un eleve</a></li>
+              <li><a class="" href="">Chercher un eleve</a></li>
             </ul>
           </li>
            <li class="sub-menu">
             <a href="javascript:;" class="">
                  <i class="fa fa-money"></i>
 
-                          <span>Fee</span>
+                          <span>Frais</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">Student Payment </a></li>
-              <li><a class="" href="">Fee Report</a></li>
+              <li><a class="" href="">Paiement eleve </a></li>
+              <li><a class="" href="">Rapport de frais</a></li>
 
             </ul>
           </li>
@@ -48,7 +50,7 @@
             <a href="javascript:;" class="">
                  <i class="icon_documents_alt"></i>
 
-                          <span>Reports</span>
+                          <span>Les rapports</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">

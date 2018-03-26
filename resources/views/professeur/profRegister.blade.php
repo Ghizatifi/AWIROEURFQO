@@ -68,8 +68,8 @@ fieldset legend{
 		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Enregistrer un eleve</h3>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href=""> Acceuil </a></li>
-			<li><i class="icon_document_alt"></i> eleve</li>
-			<li><i class="fa fa-file-text-o" ></i> enregistrer un eleve </li>
+			<li><i class="fa fa-user"></i> professeur</li>
+			<li><i class="fa fa-plus" ></i> ajouter un professeur </li>
 
 		</ol>
 	</div>
@@ -97,7 +97,7 @@ fieldset legend{
 
 		<div class="panel panel-default" >
 			<div class="panel-heading">
-				<b><i class="fa fa-male"></i> Infromation de l'eleve </b>
+				<b><i class="fa fa-male"></i> Informations personnelle </b>
 			</div>
 
 			<div class="panel-body" style="padding-bottom: 4px">
@@ -136,16 +136,22 @@ fieldset legend{
 											<legend>sexe</legend>
 											<table style="width: 100%;margin-top: -14px;" >
 												<tr style="border-bottom: 1px solid #ccc">
+												<td>
+														<label>
+															<input type="radio" name="sex" id="sex" value="1" required>
+															Mlle
+														</label>
+													</td>
 													<td>
 														<label>
 															<input type="radio" name="sex" id="sex" value="0" required>
-															Fille
+															Mme
 														</label>
 													</td>
 													<td>
 														<label>
 															<input type="radio" name="sex" id="sex" value="1" required>
-															Garçon
+															Mr
 														</label>
 													</td>
 												</tr>
@@ -211,7 +217,6 @@ fieldset legend{
 									<tbody>
 										<tr>
 											<td class="photo">
-											
 												<input type="file" name="photo" id="photo"  accept="image/gif, image/jpg, image/jpeg, image/png">
 											</td>
 										</tr>
@@ -240,7 +245,7 @@ fieldset legend{
 				</div>
 				<div class="panel-body" style=" padding-bottom: 10px; padding-top: 0px">
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="form-group" >
 								<label for="village" >Ville</label>
 								<input type="text" name="village" id="village" class="form-control">
@@ -249,81 +254,54 @@ fieldset legend{
 
 			
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="form-group" >
 								<label for="district" >Rue</label>
 								<input type="text" name="district" id="district" class="form-control">
 							</div>
 						</div>
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="form-group" >
 								<label for="province" >Province</label>
 								<input type="text" name="province" id="province" class="form-control">
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="form-group" >
-								<label for="current_address" >Adresse secondaire</label>
-								<input type="text" name="current_address" id="current_address" class="form-control">
 							</div>
 						</div>	
 
 					</div>
 				</div>
-			<br>
+	
+				
+
+				<br>
+
+
+				{{--------experience------}}
 				<div class="panel-heading" style="margin-top: -20px">
-					<b > <i class="fa fa-user"></i> Informations parental</b>
+					<b > <i class="fa fa-home"></i> Information professionnelle</b>
 				</div>
 				<div class="panel-body" style=" padding-bottom: 10px; padding-top: 0px">
 					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group" >
-								<label for="village" >Nom pere</label>
+								<label for="village" >Diplome</label>
 								<input type="text" name="village" id="village" class="form-control">
 							</div>
 						</div>
+
+			
+
 						<div class="col-md-3">
 							<div class="form-group" >
-								<label for="district" >Nom mere</label>
+								<label for="district" >Niveau scolaire</label>
 								<input type="text" name="district" id="district" class="form-control">
 							</div>
 						</div>
 
-						<div class="col-md-3">
-							<div class="form-group" >
-								<label for="province" >Telephone</label>
-								<input type="text" name="province" id="province" class="form-control">
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group" >
-								<label for="province" >Fix</label>
-								<input type="text" name="province" id="province" class="form-control">
-							</div>
-						</div>
-	             <div class="col-md-6">
-							<div class="form-group" >
-								<label for="current_address" >Adresse</label>
-								<input type="text" name="current_address" id="current_address" class="form-control">
-							</div>
-						</div>	
-						<div class="col-md-6">
-							<div class="form-group" >
-								<label for="current_address" >Adresse de travail</label>
-								<input type="text" name="current_address" id="current_address" class="form-control">
-							</div>
-						</div>	
-
-                    <div class="col-md-3">
-							<div class="form-group" >
-								<label for="province" >Telephone en cas d'urgence</label>
-								<input type="text" name="province" id="province" class="form-control">
-							</div>
-						</div>
 					</div>
 				</div>
+	
+				
 
 
 

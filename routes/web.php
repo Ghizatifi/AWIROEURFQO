@@ -23,6 +23,14 @@ Route::get('/dashbord',function(){
 Route::get('/eleveRegister',function(){
 	return view('eleves.eleveRegister');
 });
+Route::get('/eleveList',function(){
+	return view('eleves.eleveList');
+});
+
+
+Route::get('/profRegister',function(){
+	return view('professeur.profRegister');
+});
 
 
 Route::get('/','LoginController@getLogin');
