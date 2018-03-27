@@ -12,11 +12,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::insert([
-        	'role_id'=>2,
+        	'role_id'=>1,
         	'active'=>1,
-            'name' =>'user',
-            'username'=>'user',
-            'email' =>'user@gmail.com',
+            'name' =>'izza',
+            'username'=>'izza',
+            'email' =>'izza@gmail.com',
             'password' => bcrypt('123456'),
             'remember_token'=>str_random(10),
         ]);

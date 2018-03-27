@@ -68,8 +68,8 @@ fieldset legend{
 		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Enregistrer un eleve</h3>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href=""> Acceuil </a></li>
-			<li><i class="icon_document_alt"></i> eleve</li>
-			<li><i class="fa fa-file-text-o" ></i> enregistrer un eleve </li>
+			<li><i class="fa fa-male"></i> eleve</li>
+			<li><i class="fa fa-plus" ></i> enregistrer un eleve </li>
 
 		</ol>
 	</div>
@@ -262,13 +262,7 @@ fieldset legend{
 								<input type="text" name="province" id="province" class="form-control">
 							</div>
 						</div>
-
-						<div class="col-md-6">
-							<div class="form-group" >
-								<label for="current_address" >Adresse secondaire</label>
-								<input type="text" name="current_address" id="current_address" class="form-control">
-							</div>
-						</div>	
+	
 
 					</div>
 				</div>
@@ -303,12 +297,7 @@ fieldset legend{
 								<input type="text" name="province" id="province" class="form-control">
 							</div>
 						</div>
-	             <div class="col-md-6">
-							<div class="form-group" >
-								<label for="current_address" >Adresse</label>
-								<input type="text" name="current_address" id="current_address" class="form-control">
-							</div>
-						</div>	
+	           	
 						<div class="col-md-6">
 							<div class="form-group" >
 								<label for="current_address" >Adresse de travail</label>
