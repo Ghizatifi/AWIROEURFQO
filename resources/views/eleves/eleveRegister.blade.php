@@ -217,7 +217,7 @@ fieldset legend{
 										</tr>
 										<tr>
 											<td style="text-align: center;background:#ddd;">
-												<input type="button" name="brows_file" id="brows_file" class="form-control btn-browse" value="Importer">
+												<input type="button" name="brows_file" id="brows_file" class="btn btn-info" value="Importer">
 											</td>
 										</tr>
 									</tbody>
@@ -317,7 +317,7 @@ fieldset legend{
 
 
 				<div class="panel-footer">
-					<button value="submit" class="btn btn-default btn-save">Enregistrer <i class="fa fa-save"></i></button>
+					<button value="submit" class="btn btn-primary btn-save"> Enregistrer  <i class="fa fa-save"></i></button>
 				</div>
 				
 			</form>

@@ -1,7 +1,12 @@
 @extends('layout.master')
 
 @section('content')
-
+@include('cours.popup.annee')
+@include('cours.popup.group')
+@include('cours.popup.time')
+@include('cours.popup.niveau')
+@include('cours.popup.periode')
+@include('cours.popup.matiere')
 
 
 
@@ -12,9 +17,9 @@
 	<div class="col-lg-12">
 		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Cours</h3>
 		<ol class="breadcrumb">
-			<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-			<li><i class="icon_document_alt"></i>Course</li>
-			<li><i class="fa fa-file-text-o"></i>Manage Courses</li>
+			<li><i class="fa fa-home"></i><a href="index.html">Acceuil</a></li>
+			<li><i class="icon_document_alt"></i>Matieres</li>
+			<li><i class="fa fa-plus"></i>Ajouter une matieres</li>
 
 		</ol>
 	</div>
@@ -37,29 +42,29 @@
 
 						
 						<div class="col-sm-3" >
-							<label for="acdemic-year"> Academic Year </label>
+							<label for="acdemic-year"> Anne scolaire </label>
 							<div class="input-group">
-								<select class="form-control" name="" id="">
-							
-									<option value=""></option>
+								<select class="form-control" name="academic_id" id="academic_id">
+									@foreach($annees as $A)
+									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 
-							
+									@endforeach
 								</select>
 								<div class="input-group-addon" >
-									<span class="fa fa-plus" id="add-more-academic" ></span>
+									<span class="fa fa-plus" id="add-more-year" ></span>
 								</div>
 							</div>
 						</div>
 
 						<div class="col-sm-3" >
-							<label for="acdemic-year"> couress </label>
+							<label for="acdemic-year"> Matiere </label>
 							<div class="input-group">
-								<select class="form-control" name="program_id" id="program_id">
+							<select class="form-control" name="program_id" id="program_id">
 									<option value="">-----------</option>
-									
-									<option value=""></option>
+									@foreach($program as $key=> $p)
+									<option value="{{$p->id_matiere}}">{{$p->nom}}</option>
 
-								
+									@endforeach
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-program"></span>
@@ -68,10 +73,10 @@
 						</div>
 
 						<div class="col-sm-3" >
-							<label for="acdemic-year"> Level </label>
+							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
 								<select class="form-control" name="level_id" id="level_id">
-								
+								<option value=""></option>
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-level"></span>
@@ -79,9 +84,23 @@
 							</div>
 						</div>
 
+	<div class="col-sm-4" >
+							<label for="groub"> Groupe </label>
+							<div class="input-group">
+								<select class="form-control" name="group_id" id="group_id">
+									
+									<option value=""></option>
+
+								
+								</select>
+								<div class="input-group-addon" >
+									<span class="fa fa-plus" id="add-more-group"></span>
+								</div>
+							</div>
+						</div>
 
 						<div class="col-sm-3" >
-							<label for="acdemic-year"> Shift </label>
+							<label for="acdemic-year"> Periode </label>
 							<div class="input-group">
 								<select class="form-control" name="shift_id" id="shift_id">
 									
@@ -95,8 +114,10 @@
 							</div>
 						</div>
 
-						<div class="col-sm-4" >
-							<label for="time"> Time </label>
+					
+					
+	<div class="col-sm-4" >
+							<label for="time"> Horaire </label>
 							<div class="input-group">
 								<select class="form-control" name="time_id" id="time_id">
 								
@@ -111,76 +132,19 @@
 						</div>
 
 
-						<div class="col-sm-4" >
-							<label for="batch"> Batch </label>
-							<div class="input-group">
-								<select class="form-control" name="batche_id" id="batche_id">
-								
-									<option value=""></option>
-
-								
-								</select>
-								<div class="input-group-addon" >
-									<span class="fa fa-plus" id="add-more-batche"></span>
-								</div>
-							</div>
-						</div>
 
 
-
-						<div class="col-sm-4" >
-							<label for="groub"> Groub </label>
-							<div class="input-group">
-								<select class="form-control" name="group_id" id="group_id">
-									
-									<option value=""></option>
-
-								
-								</select>
-								<div class="input-group-addon" >
-									<span class="fa fa-plus" id="add-more-group"></span>
-								</div>
-							</div>
-						</div>
-
-
-
-						<div class="col-sm-5" >
-							<label for="groub"> Start Date </label>
-							<div class="input-group">
-								<input type="text" name="start_date" id="start_date" class="form-control" required> 
-								
-								
-								<div class="input-group-addon" >
-									<span class="fa fa-calendar"></span>
-								</div>
-							</div>
-						</div>
-
-
-
-						<div class="col-sm-5" >
-							<label for="groub"> End Date </label>
-							<div class="input-group">
-								<input type="text" name="end_date" id="end_date" class="form-control" required> 
-								
-								<div class="input-group-addon" >
-									<span class="fa fa-calendar"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
+					
 
 				</div>
 
 
 				<div class="panel-footer" >
-					<button type="submit" class=" btn btn-default btn-sm">
-						Create Couress
+					<button type="submit" class=" btn btn-primary btn-sm">
+						Créer la matière
 					</button>
 					<button type="button" class=" btn btn-success btn-sm update-class">
-						Update Couress
+					   Modifier la matière
 					</button>
 
 				</div>
@@ -190,7 +154,7 @@
 	</form>
 	<div class="panel panel-default ">
 		<div class="panel panel-heading">
-			Class Information
+			Information sur les classes
 		</div>
 		<div class="panel panel-body" id="add-class-info">
 			
@@ -202,8 +166,59 @@
 
 
 </div>
+@endsection
+@section('script')
 
+<script>
+
+    /////////////////////////////////////////////////////////////////Annee Scolaire////////////////////////////////////////////////
+    $('#add-more-year').on('click',function(){
+    	$('#academic-year-show').modal();
+    });
+
+
+//////////
+
+$('.btn-save-year').on('click',function(){
+	var annee = $('#new_year').val();
+	$.post("{{route('postInsertYear')}}",{annee:annee},function(data){
+		$('#academic_id').append($("<option/>",{
+			value : data.academic_id,
+			text  :  data.annee
+
+		}));    	
+		$('#new_year').val("");
+	});
+});
+
+
+ /////////
+ $('#add-more-program').on('click',function(){
+ 	$('#program-show').modal();
+ });
+
+
+ $('.btn-save-program').on('click',function(){
+ 	var nom = $('#new_program').val();
+ 	var description = $('#new_description').val();
+
+ 	$.post("{{route('postInsertProgram')}}",{nom:nom,description:description},function(data){
+ 	$('#program_id').append($("<option/>",{
+ 			value : data.program_id,
+ 			text  :  data.nom
+
+ 		}));    	
+ 		$('#new_program').val("");    
+ 		$('#new_description').val("");
+ 	});
+ });
+
+////////////////////////////////////////////////////////////////Level//////////////////////////////////////////////
+
+ /////////
+</script>
 
 @endsection
 
 
+add-more-year

@@ -7,16 +7,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-                <h5 class="modal-title" >Academaic Year</h5>
+                <h5 class="modal-title" >Annee Scolaire</h5>
 
       </div>
       <div class="modal-body">
-            <input type="text" class="form-control" name="academic_year" id="new_academic">
+            <input type="text" class="form-control" name="academic_year" id="new_year">
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-save-academic">Save </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary btn-save-year">Enregistrer </button>
       </div>
     </div>
   </div>

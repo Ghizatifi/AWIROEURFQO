@@ -34,6 +34,15 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::get('/gestion/cours',function(){
         return view('cours.gestionCours');
      });
+     Route::post('/gestion/cours/ajouter-annee',['as'=>'postInsertYear','uses'=>'CoursController@postInsertYear']);
+     Route::post('/gestion/cours/ajouter-matiere',['as'=>'postInsertProgram','uses'=>'CoursController@postInsertProgram']);
+
+     Route::get('/gestion/eleves',function(){
+        return view('eleves.eleveRegister');
+     });
+     Route::get('/gestion/eleveList',function(){
+        return view('eleves.eleveList');
+     });
     Route::get('/createuser',function(){
       echo 'admin test';  
    });

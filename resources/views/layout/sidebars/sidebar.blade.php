@@ -32,13 +32,13 @@
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="fa fa-graduation-cap"></i>
-                          <span>Les Eleves</span>
+                          <i class="fa fa-graduation-cap" ></i>
+                          <span>Les Elèves</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">Ajouter un eleve</a></li>
-              <li><a class="" href="">Chercher un eleve</a></li>
+              <li><a class="" href="{{ url('/gestion/eleves') }}">Ajouter un élève</a></li>
+              <li><a class="" href="{{ url('/gestion/eleveList') }}">Chercher un élève</a></li>
             </ul>
           </li>
            <li class="sub-menu">

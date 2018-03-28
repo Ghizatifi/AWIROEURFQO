@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header"> <i class="fa fa-list-alt"></i>  CHERCHER UN ELEVE  </h1>
+		<h1 class="page-header"> <i class="fa fa-th-list"></i>  CHERCHER UN ELEVE  </h1>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href=""> Accueil</a> </li>
 			<li><i class="fa fa-male"></i><a href=""> Eleves</a> </li>
