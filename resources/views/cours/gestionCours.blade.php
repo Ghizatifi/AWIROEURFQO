@@ -60,7 +60,6 @@
 							<label for="acdemic-year"> Matiere </label>
 							<div class="input-group">
 							<select class="form-control" name="program_id" id="program_id">
-									<option value="">-----------</option>
 									@foreach($program as $key=> $p)
 									<option value="{{$p->id_matiere}}">{{$p->nom}}</option>
 
@@ -75,8 +74,10 @@
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
-								<select class="form-control" name="level_id" id="level_id">
-								<option value=""></option>
+							<select class="form-control" name="level_id" id="level_id">
+								<select class="form-control" name="program_id" id="program_id">
+					
+								</select>
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-level"></span>
@@ -84,14 +85,14 @@
 							</div>
 						</div>
 
-	<div class="col-sm-4" >
+	         <div class="col-sm-4" >
 							<label for="groub"> Groupe </label>
 							<div class="input-group">
 								<select class="form-control" name="group_id" id="group_id">
-									
-									<option value=""></option>
+									@foreach($groups as $g)
+									<option value="{{$g->id_groupe}}">{{$g->groupe}}</option>
 
-								
+									@endforeach
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-group"></span>
@@ -102,12 +103,12 @@
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Periode </label>
 							<div class="input-group">
-								<select class="form-control" name="shift_id" id="shift_id">
-									
-									<option value=""></option>
+         <select class="form-control" name="shift_id" id="shift_id">
+									@foreach($periode as $s)
+									<option value="{{$s->id_periode}}">{{$s->periode}}</option>
 
-								
-								</select>
+									@endforeach
+										</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-shift"></span>
 								</div>
@@ -120,10 +121,10 @@
 							<label for="time"> Horaire </label>
 							<div class="input-group">
 								<select class="form-control" name="time_id" id="time_id">
-								
-									<option value=""></option>
+									@foreach($time as $t)
+									<option value="{{$t->id_time}}">{{$t->time}}</option>
 
-								
+									@endforeach
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-time"></span>
@@ -171,6 +172,26 @@
 
 <script>
 
+$("#form-crete-class #program_id").on('change',function(e){
+
+		var id_matiere =$(this).val();
+		var level = $('#level_id');
+		$(level).empty();
+		$.get("{{route('showLevel')}}",{id_matiere:id_matiere},function(data){
+			$.each(data,function(i,l){
+				$(level).append($("<option/>",{
+					value : l.level_id,
+					text  :  l.niveau,
+
+				}));
+			});
+			showClassInfo();
+
+		});
+	});
+
+
+
     /////////////////////////////////////////////////////////////////Annee Scolaire////////////////////////////////////////////////
     $('#add-more-year').on('click',function(){
     	$('#academic-year-show').modal();
@@ -213,9 +234,113 @@ $('.btn-save-year').on('click',function(){
  	});
  });
 
-////////////////////////////////////////////////////////////////Level//////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////Niveau///////////////////////////////////////////////
+$('#add-more-level').on('click',function(){
 
+ 	var programs= $('#program_id option');
+ 	var program= $('#form-level-create').find('#programs_id');
+ 	$(program).empty();
+ 	$.each(programs,function(i,pro){
+ 		$(program).append($("<option/>",{
+ 			value : $(pro).val(),
+ 			text  :  $(pro).text(),
+
+ 		}));
+ 	});
+ 	$('#level-show').modal('show');
+
+ });
+
+//////
+$('#form-level-create').on('submit',function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+	var url = $(this).attr('action');
+	$.post(url,data,function(data){
+		
+		$('#level_id').append($("<option/>",{
+			value : data.id_niveau,
+			text  :  data.niveau
+
+		}));  
+		$('#programs_id').val("");
+		$('#new_level').val("");    
+		$('#description').val("");
+
+	});
+});
  /////////
+
+     ////////////////////////////////////==============///////////shift/////////////////////////////////////////////////
+
+    $('#add-more-shift').on('click',function(){
+    	$('#shift-show').modal();
+    });
+
+
+//////////
+
+$('.btn-save-shift').on('click',function(){
+	var periode = $('#new_shift').val();
+	$.post("{{route('postInsertshift')}}",{periode:periode},function(data){
+		$('#shift_id').append($("<option/>",{
+			value : data.id_periode,
+			text  :  data.shift
+
+		}));    	
+		$('#new_shift').val("");
+	});
+});
+
+
+////////////////////////////////////////======time===/////////////////////////////////////////////////
+
+$('#form-time-create').on('submit',function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+	$.post("{{ route('postInserttime') }}",data,function(data){
+		
+		$('#time_id').append($("<option/>",{
+			value : data.time_id,
+			text  :  data.time
+
+		}));
+	});
+
+	$(this).trigger('reset');
+
+});
+$('#add-more-time').on('click',function(e){
+
+	$('#time-show').modal('show');
+
+
+});
+
+
+
+$('#form-group-create').on('submit',function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+	$.post("{{ route('postInsertgroup') }}",data,function(data){
+		
+		$('#group_id').append($("<option/>",{
+			value : data.id_group,
+			text  :  data.groupe
+
+		}));
+	});
+
+	$(this).trigger('reset');
+
+});
+$('#add-more-group').on('click',function(e){
+
+	$('#group-show').modal('show');
+
+
+});
+
 </script>
 
 @endsection

@@ -34,8 +34,14 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::get('/gestion/cours',function(){
         return view('cours.gestionCours');
      });
+     Route::get('/gestion/cours','CoursController@getMangeCouress');
      Route::post('/gestion/cours/ajouter-annee',['as'=>'postInsertYear','uses'=>'CoursController@postInsertYear']);
      Route::post('/gestion/cours/ajouter-matiere',['as'=>'postInsertProgram','uses'=>'CoursController@postInsertProgram']);
+     Route::post('/gestion/cours/ajouter-niveau',['as'=>'postInsertLevel','uses'=>'CoursController@postInsertLevel']);
+     Route::get('/gestion/cours/ListeNiveau',['as'=>'showLevel','uses'=>'CoursController@showLevel']);
+     Route::post('/gestion/cours/ajouter-periode',['as'=>'postInsertshift','uses'=>'CoursController@postInsertshift']);
+     Route::post('/gestion/cours/ajouter-time',['as'=>'postInserttime','uses'=>'CoursController@postInserttime']);
+     Route::post('/mange/cours/ajouter-group',['as'=>'postInsertgroup','uses'=>'CoursController@postInsertgroup']);
 
      Route::get('/gestion/eleves',function(){
         return view('eleves.eleveRegister');
