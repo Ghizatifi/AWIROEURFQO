@@ -18,8 +18,8 @@
 		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Cours</h3>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href="index.html">Acceuil</a></li>
-			<li><i class="icon_document_alt"></i>Matieres</li>
-			<li><i class="fa fa-plus"></i>Ajouter une matieres</li>
+			<li><i class="icon_document_alt"></i>Classe</li>
+			<li><i class="fa fa-plus"></i>Ajouter une classe</li>
 
 		</ol>
 	</div>
@@ -30,7 +30,7 @@
 
 		<section class="panel panel-default">
 			<header class="panel-heading">
-				Manage Courses
+				Gestion des classes
 			</header>
 			<form  action="" method="POST" class="form-horizontal" id="form-crete-class">
 				{{ csrf_field() }}
@@ -142,10 +142,10 @@
 
 				<div class="panel-footer" >
 					<button type="submit" class=" btn btn-primary btn-sm">
-						Créer la matière
-					</button>
+						Créer la classe
+ 					</button>
 					<button type="button" class=" btn btn-success btn-sm update-class">
-					   Modifier la matière
+					   Modifier la classe
 					</button>
 
 				</div>

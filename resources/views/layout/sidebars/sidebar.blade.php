@@ -11,11 +11,11 @@
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
-                          <span> Les Cours</span>
+                          <span> Les Classes</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ url('/gestion/cours') }}">Gestion des cours</a></li>
+              <li><a class="" href="{{ url('/gestion/cours') }}">Gestion des classes</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -25,7 +25,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                        <li><a class="" href="">Ajouter un professeur</a></li>
+                        <li><a class="" href="{{ url('/gestion/prof/add-prof') }}">Ajouter un professeur</a></li>
                         <li><a class="" href="">Liste des professeurs</a></li>
                         </ul>
                       
@@ -37,7 +37,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ url('/gestion/eleves') }}">Ajouter un élève</a></li>
+              <li><a class="" href="{{ url('/eleve/getRigister') }}">Ajouter un élève</a></li>
               <li><a class="" href="{{ url('/gestion/eleveList') }}">Chercher un élève</a></li>
             </ul>
           </li>

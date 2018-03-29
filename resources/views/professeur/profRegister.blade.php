@@ -77,23 +77,7 @@ fieldset legend{
 
 <div class="row">
 	
-	<div class="col-lg-12">
 
-		<div class="panel-group" id="accordion" >
-
-			<div class="panel panel-default " >
-				<div class="panel-heading">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration: none;" > Choisir l'annee scolaire </a>
-					<a href="#" class="pull-right" id="show-class-info"  ><i class="fa fa-plus"></i></a>
-				</div>
-				<div class="panel-collapse  collapse in" id="collapse1" >
-					<div class="panel-body academic-detail"><p></p></div>
-
-				</div>
-
-
-			</div>
-		</div>
 
 		<div class="panel panel-default" >
 			<div class="panel-heading">
@@ -101,7 +85,7 @@ fieldset legend{
 			</div>
 
 			<div class="panel-body" style="padding-bottom: 4px">
-				<form action="" method="POST" id="form-create-student" enctype="multipart/form-data">
+				<form action="/gestion/prof/add-prof" method="POST" id="form-create-student" enctype="multipart/form-data">
 {!! csrf_field() !!}
 					<input type="hidden" name="classe_id" id="classe_id">
 					<input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
@@ -117,7 +101,7 @@ fieldset legend{
 								<div class="col-md-4">
 									<div class="form-group" >
 										<label for="lastname">Prenom</label>
-										<input type="text" name="first_name" id="first_name" class="form-control" required>
+										<input type="text" name="nom" id="first_name" class="form-control" required>
 									</div>
 								</div>
 								{{-------Last Name-------}}
@@ -125,7 +109,7 @@ fieldset legend{
 								<div class="col-md-4">
 									<div class="form-group" >
 										<label for="lastname">Nom</label>
-										<input type="text" name="last_name" id="last_name" class="form-control" required>
+										<input type="text" name="prenom" id="last_name" class="form-control" required>
 									</div>
 								</div>
 								{{-------Gender------}}
@@ -138,22 +122,17 @@ fieldset legend{
 												<tr style="border-bottom: 1px solid #ccc">
 												<td>
 														<label>
-															<input type="radio" name="sex" id="sex" value="1" required>
-															Mlle
-														</label>
-													</td>
-													<td>
-														<label>
-															<input type="radio" name="sex" id="sex" value="0" required>
+															<input type="radio" name="sexe" id="sex" value="1" required>
 															Mme
 														</label>
 													</td>
 													<td>
 														<label>
-															<input type="radio" name="sex" id="sex" value="1" required>
+															<input type="radio" name="sexe" id="sex" value="0" required>
 															Mr
 														</label>
 													</td>
+													
 												</tr>
 											</table>
 										</fieldset>
@@ -170,7 +149,7 @@ fieldset legend{
 										<div class="input-group-addon" >
 											<i class="fa fa-calender"></i>
 										</div>
-										<input type="text" name="dob" id="dob" class="form-control" required>
+										<input type="text" name="date_naissance" id="dob" class="form-control" required>
 
 									</div>
 								</div>
@@ -184,7 +163,7 @@ fieldset legend{
 							<div class="col-md-4">
 								<div class="form-group" >
 									<label for="phone">Telephone</label>
-									<input type="text" name="phone" id="phone" class="form-control" required>
+									<input type="text" name="telephone" id="phone" class="form-control" required>
 								</div>
 							</div>
 
@@ -194,7 +173,7 @@ fieldset legend{
 							<div class="col-md-4">
 								<div class="form-group" >
 									<label for="nationality">Nationalite</label>
-									<input type="text" name="nationality" id="nationality" class="form-control" required>
+									<input type="text" name="Nationalite" id="nationality" class="form-control" required>
 								</div>
 							</div>
 
@@ -248,7 +227,7 @@ fieldset legend{
 						<div class="col-md-4">
 							<div class="form-group" >
 								<label for="village" >Ville</label>
-								<input type="text" name="village" id="village" class="form-control">
+								<input type="text" name="ville" id="village" class="form-control">
 							</div>
 						</div>
 
@@ -257,7 +236,7 @@ fieldset legend{
 						<div class="col-md-4">
 							<div class="form-group" >
 								<label for="district" >Rue</label>
-								<input type="text" name="district" id="district" class="form-control">
+								<input type="text" name="rue" id="district" class="form-control">
 							</div>
 						</div>
 
@@ -285,7 +264,7 @@ fieldset legend{
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="village" >Diplome</label>
-								<input type="text" name="village" id="village" class="form-control">
+								<input type="text" name="diplome" id="diplome" class="form-control">
 							</div>
 						</div>
 
@@ -294,7 +273,7 @@ fieldset legend{
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="district" >Niveau scolaire</label>
-								<input type="text" name="district" id="district" class="form-control">
+								<input type="text" name="niveau_scolaire" id="niveau_scolaire" class="form-control">
 							</div>
 						</div>
 
@@ -306,7 +285,7 @@ fieldset legend{
 
 
 				<div class="panel-footer">
-					<button value="submit" class="btn btn-default btn-save">Enregistrer <i class="fa fa-save"></i></button>
+        <button type="button" class="btn btn-primary btn-save-prof">Save </button>
 				</div>
 				
 			</form>
@@ -324,10 +303,14 @@ fieldset legend{
 
 		<script type="text/javascript">
 
-			$('#form-multi-class #btn-go').addClass('hidden');
 
 
-			$( "#dob" ).datepicker({
+
+
+
+	
+	$('#form-multi-class #btn-go').addClass('hidden');
+		$( "#dob" ).datepicker({
 		changeMonth: true,
 		changeYear: true,
 		dateFormat:'yy-mm-dd'

@@ -65,7 +65,7 @@ fieldset legend{
 <div class="row">
 	
 	<div class="col-lg-12">
-		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Enregistrer un eleve</h3>
+		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Creer un dossier eleve</h3>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href=""> Acceuil </a></li>
 			<li><i class="fa fa-male"></i> eleve</li>
@@ -162,7 +162,7 @@ fieldset legend{
 									<label for="dob">Date Naissance</label>
 									<div class="input-group">
 										<div class="input-group-addon" >
-											<i class="fa fa-calender"></i>
+											<i class="fa fa-calendar"></i>
 										</div>
 										<input type="text" name="dob" id="dob" class="form-control" required>
 
@@ -199,7 +199,7 @@ fieldset legend{
 
 
 						{{-------photo------}}
-						<div class="col-lg-3 col-md-3 col-sm-3">
+							<div class="col-lg-3 col-md-3 col-sm-3">
 							<div class="form-group form-group-login">
 								<table style="margin:0 auto;">
 									<thead>
@@ -211,13 +211,13 @@ fieldset legend{
 									<tbody>
 										<tr>
 											<td class="photo">
-											
+												{!! Html::image('photo/primaire3.png',null,['class'=>'student-photo','id'=>'showPhoto']) !!}
 												<input type="file" name="photo" id="photo"  accept="image/gif, image/jpg, image/jpeg, image/png">
 											</td>
 										</tr>
 										<tr>
 											<td style="text-align: center;background:#ddd;">
-												<input type="button" name="brows_file" id="brows_file" class="btn btn-info" value="Importer">
+												<input type="button" name="brows_file" id="brows_file" class="form-control btn-browse" value="Brows">
 											</td>
 										</tr>
 									</tbody>
@@ -324,6 +324,7 @@ fieldset legend{
 		</div></div></div></div>
 
 
+@include('classes.classPopup')
 @endsection
 
 
@@ -335,8 +336,12 @@ fieldset legend{
 
 		<script type="text/javascript">
 
-			$('#form-multi-class #btn-go').addClass('hidden');
+	$('#form-multi-class #btn-go').addClass('hidden');
+$('#show-class-info').on('click',function(e){
+	e.preventDefault();
+		$('#academic-choose').modal('show');
 
+	});
 
 			$( "#dob" ).datepicker({
 		changeMonth: true,

@@ -34,6 +34,7 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::get('/gestion/cours',function(){
         return view('cours.gestionCours');
      });
+    //////////////////////////////////Classe/////////////////////////////////////////////
      Route::get('/gestion/cours','CoursController@getMangeCouress');
      Route::post('/gestion/cours/ajouter-annee',['as'=>'postInsertYear','uses'=>'CoursController@postInsertYear']);
      Route::post('/gestion/cours/ajouter-matiere',['as'=>'postInsertProgram','uses'=>'CoursController@postInsertProgram']);
@@ -42,15 +43,21 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
      Route::post('/gestion/cours/ajouter-periode',['as'=>'postInsertshift','uses'=>'CoursController@postInsertshift']);
      Route::post('/gestion/cours/ajouter-time',['as'=>'postInserttime','uses'=>'CoursController@postInserttime']);
      Route::post('/mange/cours/ajouter-group',['as'=>'postInsertgroup','uses'=>'CoursController@postInsertgroup']);
+     
+     
+     //////////////////////////////////Eleve/////////////////////////////////////////////
+     Route::get('/eleve/getRigister',['as'=>'getRegisterationEleve','uses'=>'EleveController@getRegisterationEleve']);
+     Route::post('/gestion/cours/ajouter-group',['as'=>'postRegisterationSEleve','uses'=>'EleveController@postRegisterationSEleve']);
 
-     Route::get('/gestion/eleves',function(){
-        return view('eleves.eleveRegister');
-     });
+
+
+     Route::get('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
+    //  Route::get('/gestion/prof/getProf',['as'=>'createProf','uses'=>'ProfController@createProf']);
+
+   
      Route::get('/gestion/eleveList',function(){
         return view('eleves.eleveList');
      });
-    Route::get('/createuser',function(){
-      echo 'admin test';  
-   });
+
 
 });

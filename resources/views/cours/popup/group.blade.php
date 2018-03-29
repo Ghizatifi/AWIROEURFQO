@@ -13,7 +13,7 @@
      
         <div class="row">
          <div class="col-sm-12">
-            <input type="text" class="form-control" name="group" id="new_group" placeholder="group">
+            <input type="text" class="form-control" name="groupe" id="new_group" placeholder="group">
 
             </div>
       </div>
