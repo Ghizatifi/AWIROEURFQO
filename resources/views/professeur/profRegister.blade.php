@@ -280,14 +280,9 @@ fieldset legend{
 					</div>
 				</div>
 	
-				
-
-
-
 				<div class="panel-footer">
-        <button type="button" class="btn btn-primary btn-save-prof">Save </button>
-				</div>
-				
+        <input type="submit" value="Enreggistrer" class="btn btn-primary btn-save">
+		<i class="fa fa-save"></i></input>		
 			</form>
 		</div></div></div></div>
 

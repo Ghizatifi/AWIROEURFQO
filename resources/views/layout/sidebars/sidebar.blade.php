@@ -26,7 +26,7 @@
                         </a>
                         <ul class="sub">
                         <li><a class="" href="{{ url('/gestion/prof/add-prof') }}">Ajouter un professeur</a></li>
-                        <li><a class="" href="">Liste des professeurs</a></li>
+                        <li><a class="" href="{{ url('/gestion/prof/view') }}">Liste des professeurs</a></li>
                         </ul>
                       
           </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Professeur;
 use App\Http\Requests;
+use Auth;
 class ProfController extends Controller
 {
 
@@ -22,6 +23,7 @@ class ProfController extends Controller
             $ar->province=$request->input('province');
             $ar->diplome=$request->input('diplome');
             $ar->niveau_scolaire=$request->input('niveau_scolaire');
+            $ar->id_user=Auth::user()->id;
             $ar->save();
             return redirect('/gestion/eleveList');
         }
@@ -29,8 +31,10 @@ class ProfController extends Controller
 
 
     }
-public function createProf(Request $request)
-{ 
-    return $request->all();
-}
+
+    public  function  view(){
+        $prof= Professeur::all();
+        $ar=Array('prof'=>$prof);
+        return view('professeur.profList',$ar);
+    }
 }

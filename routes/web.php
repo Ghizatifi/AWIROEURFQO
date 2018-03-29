@@ -51,8 +51,10 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 
 
 
-     Route::get('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
-    //  Route::get('/gestion/prof/getProf',['as'=>'createProf','uses'=>'ProfController@createProf']);
+     Route::get('/gestion/prof/view',['as'=>'view','uses'=>'ProfController@view']);
+     Route::post('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
+
+     //  Route::get('/gestion/prof/getProf',['as'=>'createProf','uses'=>'ProfController@createProf']);
 
    
      Route::get('/gestion/eleveList',function(){
