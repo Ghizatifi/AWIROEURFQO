@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Professeur;
 use App\Http\Requests;
 use Auth;
+use App\Post;
 class ProfController extends Controller
 {
 
@@ -23,9 +24,10 @@ class ProfController extends Controller
             $ar->province=$request->input('province');
             $ar->diplome=$request->input('diplome');
             $ar->niveau_scolaire=$request->input('niveau_scolaire');
+            $ar->email=$request->input('email');
             $ar->id_user=Auth::user()->id;
             $ar->save();
-            return redirect('/gestion/eleveList');
+            return redirect('/gestion/prof/view');
         }
     return view('professeur.profRegister');
 
@@ -37,4 +39,12 @@ class ProfController extends Controller
         $ar=Array('prof'=>$prof);
         return view('professeur.profList',$ar);
     }
-}
+
+   
+    
+
+
+
+
+
+   }

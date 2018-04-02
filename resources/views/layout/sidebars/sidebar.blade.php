@@ -26,7 +26,7 @@
                         </a>
                         <ul class="sub">
                         <li><a class="" href="{{ url('/gestion/prof/add-prof') }}">Ajouter un professeur</a></li>
-                        <li><a class="" href="{{ url('/gestion/prof/view') }}">Liste des professeurs</a></li>
+                        <li><a class="" href="{{ url('/gestion/prof/getProf') }}">Liste des professeurs</a></li>
                         </ul>
                       
           </li>
@@ -37,8 +37,19 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ url('/eleve/getRigister') }}">Ajouter un élève</a></li>
-              <li><a class="" href="{{ url('/gestion/eleveList') }}">Chercher un élève</a></li>
+              <li><a class="" href="{{ url('/gestion/eleve') }}">Ajouter un élève</a></li>
+              <li><a class="" href="{{ url('/gestion/eleve/info') }}">Chercher un élève</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="fa fa-font" ></i>
+                          <span>Les Matieres</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="{{ url('/matiere/getRigister') }}">Ajouter une matiere</a></li>
+              <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Liste des Matieres</a></li>
             </ul>
           </li>
            <li class="sub-menu">

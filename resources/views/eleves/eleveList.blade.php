@@ -35,15 +35,34 @@
 	<table class="table  table-condensed table-hover table-striped table-bordered ">
 		<thead>
 			<th>N<sup>o</sup></th>
-			<th>Nom </th>
-			<th>Prenom </th>
-			<th>Sexe </th>
-			<th>Date de naissance</th>
-			<th> Niveau </th>
+			<th>Code Eleve </th>
+			<th>Photo </th>
+			<th>Nom Complet </th>
+			<th>Adresse</th>
+			<th>Email </th>
 			<th>Classe </th>
 			<th>Action</th>
 		</thead>
 		
+<tbody>
+
+			@foreach($eleve as $art)
+			<tr>
+			<td> {{ $art->id_eleve }}</td>
+			<td> {{ $art->code }}</td>
+              <td><img src="{{ asset($art->photo) }}"></td>
+ 			<td> {{ $art->nom }} {{ $art->prenom }}</td>
+			<td> {{ $art->ville }} {{ $art->rue }} {{ $art->province }} </td>
+			<td> {{ $art->email }} </td>
+			<td> {{ $art->niveau }} {{ $art->groupe }} </td>
+			<td>
+				<a href="#" class="btn btn-info">Edite</a>
+                
+				<a href="#" class="btn btn-danger">delete</a>
+			</td>
+		</tr>
+			@endForeach
+		</tbody>
 
 
 

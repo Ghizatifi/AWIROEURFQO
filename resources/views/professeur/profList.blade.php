@@ -8,7 +8,7 @@
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href=""> Accueil</a> </li>
 			<li><i class="fa fa-male"></i><a href=""> Professeur</a> </li>
-			<li><i class="fa fa-search"></i><a href=""> Chercher un eleve</a> </li>
+			<li><i class="fa fa-search"></i><a href=""> Chercher un professeur</a> </li>
 		</ol>
 	</div>
 </div>

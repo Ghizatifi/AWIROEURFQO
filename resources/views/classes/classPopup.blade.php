@@ -49,10 +49,7 @@
 							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
 								<select class="form-control" name="niveau_id" id="level_id">
-									@foreach($niveau as $key=> $n)
-									<option value="{{$n->id_niveau}}">{{$n->niveau}}</option>
-
-									@endforeach
+									
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-level"></span>
@@ -65,10 +62,7 @@
 							<label for="acdemic-year"> Periode </label>
 							<div class="input-group">
 								<select class="form-control" name="periode_id" id="shift_id">
-									@foreach($periode as $key=> $p)
-									<option value="{{$p->id_periode}}">{{$p->periode}}</option>
-
-									@endforeach	
+									
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-shift"></span>
@@ -80,10 +74,7 @@
 							<label for="time"> Horaire </label>
 							<div class="input-group">
 								<select class="form-control" name="time_id" id="time_id">
-								@foreach($time as $key=> $t)
-									<option value="{{$t->id_time}}">{{$t->time}}</option>
-
-									@endforeach	
+							
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-time"></span>
@@ -96,10 +87,7 @@
 							<label for="groub"> Groupe </label>
 							<div class="input-group">
 								<select class="form-control" name="group_id" id="group_id">
-									@foreach($group as $key=> $g)
-									<option value="{{$g->id_group}}">{{$g->groupe}}</option>
-
-									@endforeach	
+								
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-group"></span>

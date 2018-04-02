@@ -26,6 +26,7 @@ class CoursController extends Controller
         $periode=Periode::all();
         $annees=Annee::orderBy('id_annee','DESC')->get();
         $time=Time::all();
+        // $niveau=niveau::all();
         $groups=Group::all();
         return view('cours.gestionCours',compact('program','annees','groups','periode','time'));
 

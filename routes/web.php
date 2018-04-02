@@ -46,20 +46,26 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
      
      
      //////////////////////////////////Eleve/////////////////////////////////////////////
-     Route::get('/eleve/getRigister',['as'=>'getRegisterationEleve','uses'=>'EleveController@getRegisterationEleve']);
+     Route::post('/eleve/getRigister',['as'=>'RegisterEleve','uses'=>'EleveController@RegisterEleve']);
      Route::post('/gestion/cours/ajouter-group',['as'=>'postRegisterationSEleve','uses'=>'EleveController@postRegisterationSEleve']);
+     Route::get('/gestion/eleve','EleveController@getUnivInfo');
+     Route::get('/gestion/eleveList','EleveController@getUnivInfo');
 
 
 
-     Route::get('/gestion/prof/view',['as'=>'view','uses'=>'ProfController@view']);
+     Route::get('/gestion/eleve/info',['as'=>'view','uses'=>'EleveController@view']);
      Route::post('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
 
-     //  Route::get('/gestion/prof/getProf',['as'=>'createProf','uses'=>'ProfController@createProf']);
+    Route::get('/gestion/prof/getProf',['as'=>'view','uses'=>'ProfController@view']);
 
-   
-     Route::get('/gestion/eleveList',function(){
-        return view('eleves.eleveList');
+
+     Route::get('/gestion/prof/add-prof',function(){
+        return view('professeur.profRegister');
      });
 
+     //Route::get('/matiere/getMatInfo','MatController@getMatInfo');
+    Route::post('/matiere/getRigister',['as'=>'matRegister','uses'=>'MatController@matRegister']);
+    Route::get('/matiere/ListMatiere','MatController@getMatInfo');
+    Route::post('/matiere/ListMatiere','MatController@getMatInfo');
 
 });

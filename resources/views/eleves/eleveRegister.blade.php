@@ -101,7 +101,7 @@ fieldset legend{
 			</div>
 
 			<div class="panel-body" style="padding-bottom: 4px">
-				<form action="" method="POST" id="form-create-student" enctype="multipart/form-data">
+				<form action="/eleve/getRigister" method="POST" id="form-create-student" enctype="multipart/form-data">
 {!! csrf_field() !!}
 					<input type="hidden" name="classe_id" id="classe_id">
 					<input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
@@ -117,7 +117,7 @@ fieldset legend{
 								<div class="col-md-4">
 									<div class="form-group" >
 										<label for="lastname">Prenom</label>
-										<input type="text" name="first_name" id="first_name" class="form-control" required>
+										<input type="text" name="prenom" id="prenom" class="form-control" required>
 									</div>
 								</div>
 								{{-------Last Name-------}}
@@ -125,7 +125,7 @@ fieldset legend{
 								<div class="col-md-4">
 									<div class="form-group" >
 										<label for="lastname">Nom</label>
-										<input type="text" name="last_name" id="last_name" class="form-control" required>
+										<input type="text" name="nom" id="nom" class="form-control" required>
 									</div>
 								</div>
 								{{-------Gender------}}
@@ -138,13 +138,13 @@ fieldset legend{
 												<tr style="border-bottom: 1px solid #ccc">
 													<td>
 														<label>
-															<input type="radio" name="sex" id="sex" value="0" required>
+															<input type="radio" name="sexe" id="sexe" value="0" required>
 															Fille
 														</label>
 													</td>
 													<td>
 														<label>
-															<input type="radio" name="sex" id="sex" value="1" required>
+															<input type="radio" name="sexe" id="sexe" value="1" required>
 															Garçon
 														</label>
 													</td>
@@ -164,15 +164,20 @@ fieldset legend{
 										<div class="input-group-addon" >
 											<i class="fa fa-calendar"></i>
 										</div>
-										<input type="text" name="dob" id="dob" class="form-control" required>
+										<input type="text" name="date_naissance" id="dob" class="form-control" required>
 
 									</div>
 								</div>
 							</div>
 							{{-------National Card------}}
+<div class="col-md-4">
+								<div class="form-group" >
+									<label for="phone">Email</label>
+									<input type="text" name="email" id="email" class="form-control" required>
+								</div>
+							</div>
 
-
-
+		
 
 							{{-------phone------}}
 							<div class="col-md-4">
@@ -188,7 +193,7 @@ fieldset legend{
 							<div class="col-md-4">
 								<div class="form-group" >
 									<label for="nationality">Nationalite</label>
-									<input type="text" name="nationality" id="nationality" class="form-control" required>
+									<input type="text" name="nationalite" id="nationalite" class="form-control" required>
 								</div>
 							</div>
 
@@ -243,7 +248,7 @@ fieldset legend{
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="village" >Ville</label>
-								<input type="text" name="village" id="village" class="form-control">
+								<input type="text" name="ville" id="ville" class="form-control">
 							</div>
 						</div>
 
@@ -252,7 +257,7 @@ fieldset legend{
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="district" >Rue</label>
-								<input type="text" name="district" id="district" class="form-control">
+								<input type="text" name="rue" id="rue" class="form-control">
 							</div>
 						</div>
 
@@ -275,46 +280,110 @@ fieldset legend{
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="village" >Nom pere</label>
-								<input type="text" name="village" id="village" class="form-control">
+								<input type="text" name="nom_Pere" id="nom_Pere" class="form-control">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="district" >Nom mere</label>
-								<input type="text" name="district" id="district" class="form-control">
+								<input type="text" name="nom_Mere" id="nom_Mere" class="form-control">
 							</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="province" >Telephone</label>
-								<input type="text" name="province" id="province" class="form-control">
+								<input type="text" name="phone" id="phone" class="form-control">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="province" >Fix</label>
-								<input type="text" name="province" id="province" class="form-control">
+								<input type="text" name="fix" id="fix" class="form-control">
 							</div>
 						</div>
 	           	
 						<div class="col-md-6">
 							<div class="form-group" >
 								<label for="current_address" >Adresse de travail</label>
-								<input type="text" name="current_address" id="current_address" class="form-control">
+								<input type="text" name="adresse_travail" id="adresse_travail" class="form-control">
 							</div>
 						</div>	
 
                     <div class="col-md-3">
 							<div class="form-group" >
 								<label for="province" >Telephone en cas d'urgence</label>
-								<input type="text" name="province" id="province" class="form-control">
+								<input type="text" name="phone_urgence" id="phone_urgence" class="form-control">
 							</div>
 						</div>
 					</div>
 				</div>
 
 
+				<br>
+
+
+				{{--------address------}}
+				<div class="panel-heading" style="margin-top: -20px">
+					<b > <i class="fa fa-home"></i> Informations universitaire</b>
+				</div>
+				<div class="panel-body" style=" padding-bottom: 10px; padding-top: 0px">
+					<div class="col-md-3">
+							<div class="form-group" >
+								<label for="niveau" >Annee universitaire</label>
+								<div class="input-group" >
+								<select class="form-control" name="academic_id" id="academic_id">
+									@foreach($annees as $A)
+									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
+
+									@endforeach
+								</select>
+								<div class="input-group-addon" >
+								<span class="fa fa-calendar" ></span>
+								</div>
+							</div>
+							</div>
+						</div>
+
+			
+
+						<div class="col-md-3">
+							<div class="form-group" >
+								<label for="niveau" >Niveau scolaire</label>
+								<div class="input-group" >
+								<select class="form-control" name="niveau" id="niveau" >
+									@foreach($niveau as $g)
+									<option value="{{$g->id_niveau}}">{{$g->niveau}}</option>
+									@endforeach
+
+								</select>
+								<div class="input-group-addon" >
+								<span class="fa fa-signal" ></span>
+								</div>
+							</div>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group" >
+								<label for="niveau" >Groupe</label>
+								<div class="input-group " >
+						        <select class="form-control" name="group_id" id="group_id">
+									@foreach($program as $g)
+									<option value="{{$g->id_groupe}}">{{$g->groupe}}</option>
+									@endforeach
+								</select>
+								<div class="input-group-addon " >
+									<span class="fa fa-indent" ></span>
+
+								</div>
+							</div>
+							</div>
+						</div>
+	
+
+					</div>
+				</div>
 
 				<div class="panel-footer">
 					<button value="submit" class="btn btn-primary btn-save"> Enregistrer  <i class="fa fa-save"></i></button>

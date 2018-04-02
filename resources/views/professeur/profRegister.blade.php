@@ -196,6 +196,8 @@ fieldset legend{
 									<tbody>
 										<tr>
 											<td class="photo">
+												{!! Html::image('photo/prof1.jpg',null,['class'=>'student-photo','id'=>'showPhoto']) !!}
+
 												<input type="file" name="photo" id="photo"  accept="image/gif, image/jpg, image/jpeg, image/png">
 											</td>
 										</tr>
@@ -210,7 +212,12 @@ fieldset legend{
 						</div>
 
 						{{--------------------------------}}
-
+                <div class="col-md-4">
+								<div class="form-group" >
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" class="form-control" required>
+								</div>
+							</div>
 
 					</div>
 				</div>
@@ -220,11 +227,11 @@ fieldset legend{
 
 				{{--------address------}}
 				<div class="panel-heading" style="margin-top: -20px">
-					<b > <i class="fa fa-home"></i> Address</b>
+					<b > <i class="fa fa-home"></i> Adresse</b>
 				</div>
 				<div class="panel-body" style=" padding-bottom: 10px; padding-top: 0px">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group" >
 								<label for="village" >Ville</label>
 								<input type="text" name="ville" id="village" class="form-control">
@@ -280,9 +287,9 @@ fieldset legend{
 					</div>
 				</div>
 	
-				<div class="panel-footer">
-        <input type="submit" value="Enreggistrer" class="btn btn-primary btn-save">
-		<i class="fa fa-save"></i></input>		
+			<div class="panel-footer">
+					<button value="submit" class="btn btn-primary btn-save"> Enregistrer  <i class="fa fa-save"></i></button>
+				</div>		
 			</form>
 		</div></div></div></div>
 
