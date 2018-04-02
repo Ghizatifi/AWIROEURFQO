@@ -27,7 +27,7 @@ class ProfController extends Controller
             $ar->email=$request->input('email');
             $ar->id_user=Auth::user()->id;
             $ar->save();
-            return redirect('/gestion/prof/view');
+            return redirect('/gestion/prof/getProf');
         }
     return view('professeur.profRegister');
 
@@ -41,6 +41,13 @@ class ProfController extends Controller
     }
 
    
+    public function destroy($id)
+    {
+        $prof = Professeur::find($id);
+        $prof->delete();
+
+        return redirect('/gestion/prof/getProf')->with('success', 'prof has been deleted!!');
+    }
     
 
 

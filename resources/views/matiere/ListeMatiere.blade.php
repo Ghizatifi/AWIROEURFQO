@@ -38,7 +38,7 @@
 {{-------------------}}
 <div class="panel panel-default">
 <div class="panel-body">
-	<form action="" method="POST" id="=form-search">
+	<form action="{{ route('MatInfo') }}" method="POST" id="=form-search">
 		<table>
 			<tr>
 				<td>
@@ -69,9 +69,13 @@
 			<td> {{ $art->nom }}</td>
 			<td> {{ $art->description }}</td>
 			<td>
-				<a href="#" class="btn btn-info">Modifier</a>
-                
-				<a href="#" class="btn btn-danger">Supprimer</a>
+			<a href="{{action('MatController@edit',$art->id)}}" class="btn btn-primary">Modifier</a>
+                <td>
+			 <form action="{{action('MatController@destroy', $art->id_matiere)}}" method="post">
+                    {{csrf_field()}}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
 			</td>
 		</tr>
 			@endForeach

@@ -57,6 +57,7 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
      Route::post('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
 
     Route::get('/gestion/prof/getProf',['as'=>'view','uses'=>'ProfController@view']);
+    Route::delete('/matiere/deleteProf/{id}','ProfController@destroy');
 
 
      Route::get('/gestion/prof/add-prof',function(){
@@ -67,5 +68,17 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::post('/matiere/getRigister',['as'=>'matRegister','uses'=>'MatController@matRegister']);
     Route::get('/matiere/ListMatiere','MatController@getMatInfo');
     Route::post('/matiere/ListMatiere','MatController@getMatInfo');
+    Route::get('/matiere/search',['as'=>'MatInfo','uses'=>'MatiereController@MatInfo']);
+    Route::delete('/matiere/deleteMat/{id}','MatController@destroy');
 
+    Route::get('/edit/mat/{id}','MatController@edit');
+    Route::post('/edit/mat/{id}','MatController@updateMate');
+
+////////////////////////////////////////////////////////////////////
+    //Route::get('contact','EmailController@contact');
+    Route::get('contact', 'EmailController@getContact');
+    Route::post('contact', 'EmailController@postContact');
+
+
+    
 });

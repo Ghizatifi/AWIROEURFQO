@@ -56,9 +56,13 @@
 			<td> {{ $art->email }} </td>
 
 			<td>
-				<a href="#" class="btn btn-info">Edite</a>
-                
-				<a href="#" class="btn btn-danger">delete</a>
+				<a href="" class="btn btn-info">Edite</a>
+                <td>
+					 <form action="{{action('ProfController@destroy', $art->id_prof)}}" method="post">
+                    {{csrf_field()}}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
 			</td>
 		</tr>
 			@endForeach
