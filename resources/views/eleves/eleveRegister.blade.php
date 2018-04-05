@@ -332,7 +332,7 @@ fieldset legend{
 							<div class="form-group" >
 								<label for="niveau" >Annee universitaire</label>
 								<div class="input-group" >
-								<select class="form-control" name="academic_id" id="academic_id">
+								<select class="form-control" name="id_annee" id="id_annee">
 									@foreach($annees as $A)
 									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 
@@ -351,7 +351,7 @@ fieldset legend{
 							<div class="form-group" >
 								<label for="niveau" >Niveau scolaire</label>
 								<div class="input-group" >
-								<select class="form-control" name="niveau" id="niveau" >
+								<select class="form-control" name="id_niveau" id="id_niveau" >
 									@foreach($niveau as $g)
 									<option value="{{$g->id_niveau}}">{{$g->niveau}}</option>
 									@endforeach
@@ -368,7 +368,7 @@ fieldset legend{
 							<div class="form-group" >
 								<label for="niveau" >Groupe</label>
 								<div class="input-group " >
-						        <select class="form-control" name="group_id" id="group_id">
+						        <select class="form-control" name="id_group" id="id_group">
 									@foreach($program as $g)
 									<option value="{{$g->id_groupe}}">{{$g->groupe}}</option>
 									@endforeach

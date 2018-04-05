@@ -18,11 +18,14 @@ Route::post('/login','LoginController@postLogin');
 Route::get('/noPermission',function(){
 	return view('noPermission');
 });
+Route::get('/dashboard',function(){
+	return view('dashboard');
+});
 
 
 Route::group(['middleware'=>['authen']],function(){
 
-    Route::get('/dashboard',['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
+    //Route::get('/dashboard',['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
     Route::get('/logout','LoginController@getLogout');
     
     });
@@ -74,10 +77,17 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::get('/edit/mat/{id}','MatController@edit');
     Route::post('/edit/mat/{id}','MatController@updateMate');
 
+    Route::get('/edit/eleve/{id}','EleveController@edit');
+    Route::post('/update/eleve/{id}',['as'=>'update','uses'=>'EleveController@update']);
+    
 ////////////////////////////////////////////////////////////////////
     //Route::get('contact','EmailController@contact');
     Route::get('contact', 'EmailController@getContact');
     Route::post('contact', 'EmailController@postContact');
+    /////////////////////////////////////////////////////////
+   
+
+   
 
 
     

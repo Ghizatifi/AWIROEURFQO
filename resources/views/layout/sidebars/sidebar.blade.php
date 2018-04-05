@@ -3,7 +3,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="index.html">
+            <a class="" href="{{ url('/dashboard') }}">
                           <i class="fa fa-dashboard"></i>
                           <span>Statistique</span>
                       </a>
@@ -49,7 +49,7 @@
                       </a>
             <ul class="sub">
               <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Ajouter une matiere</a></li>
-              <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Liste des Matieres</a></li>
+              <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Affecter les Matieres</a></li>
             </ul>
           </li>
            <li class="sub-menu">

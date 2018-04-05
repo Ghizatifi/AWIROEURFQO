@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Session;
 class EmailController extends Controller
 {
     ////////////////////////////////////

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Matiere;
+use App\matCateg;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,7 @@ class MatController extends Controller
     public function matRegister(Request $request)
     {
         $matiere= new Matiere();
+        $matCateg= new matCateg();
         $matiere->nom=$request->input('nom');
         $matiere->description=$request->input('description');
         $matiere->save();

@@ -53,6 +53,16 @@
      {!!Html::style('css/bootstrap-timepicker.min.css')!!}
     {!!Html::style('css/buttons.dataTables.min.css')!!}
     {!!Html::style('css/jquery.dataTables.min.css')!!}
+      <!-- Bootstrap Core CSS 
+ <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
 
     @yield('style')
 

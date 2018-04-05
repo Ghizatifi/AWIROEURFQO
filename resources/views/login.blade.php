@@ -38,26 +38,20 @@
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
-          <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+          <input type="text" name="username" class="form-control" placeholder="Login" autofocus>
         </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Mot de passe">
         </div>
         <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+                <span class="pull-right"> <a href="#"> Mot de passe oublie?</a></span>
             </label>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-        <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Valider</button>
       </div>
     </form>
-    <div class="text-right">
-      <div class="credits">
-        
-          <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </div>
+  
   </div>
 
 

@@ -154,20 +154,15 @@ fieldset legend{
 									</div>
 								</div>
 							</div>
-							{{-------National Card------}}
 
 
-
-
-							{{-------phone------}}
-							<div class="col-md-4">
+						<div class="col-md-4">
 								<div class="form-group" >
 									<label for="phone">Telephone</label>
 									<input type="text" name="telephone" id="phone" class="form-control" required>
 								</div>
 							</div>
 
-							{{-------Nationality------}}
 
 
 							<div class="col-md-4">
@@ -181,9 +176,6 @@ fieldset legend{
 						</div>
 
 
-
-
-						{{-------photo------}}
 						<div class="col-lg-3 col-md-3 col-sm-3">
 							<div class="form-group form-group-login">
 								<table style="margin:0 auto;">
@@ -211,8 +203,7 @@ fieldset legend{
 							</div>
 						</div>
 
-						{{--------------------------------}}
-                <div class="col-md-4">
+                <div class="col-md-3">
 								<div class="form-group" >
 									<label for="email">Email</label>
 									<input type="email" name="email" id="email" class="form-control" required>

@@ -77,8 +77,9 @@ public function RegisterEleve(Request $request){
         $ar->email=$request->input('email');
         $ar->id_user=Auth::user()->id;
         $ar->photo=FileUpload::photo($request,'photo');
-        $ar->id_user=Auth::user()->id;
-        $ar->id_user=Auth::user()->id;
+        $ar->id_annee=$request->input('id_annee');
+        $ar->id_group=$request->input('id_group');
+        $ar->id_niveau=$request->input('id_niveau');
      
         $ar->save();
         return view('eleves.eleveList');
@@ -94,6 +95,42 @@ public  function  view(){
     $eleve= Eleve::all();
     $ar=Array('eleve'=>$eleve);
     return view('eleves.eleveList',$ar);
+}
+
+//////////////////////////////////////////////
+
+public function edit($id)
+    {
+        $eleve = Eleve::where('id_user', auth()->user()->id)
+                        ->where('id_eleve', $id)
+                        ->first();
+
+        return view('eleves.edit', compact('eleve', 'id'));
+    }
+
+
+    ////////////////////////////////////////
+    public function update(Request $request, $id)
+    {
+        $eleve = new Eleve();
+        $data = $this->validate($request, [
+            'nom'=>'required',
+            'prenom'=> 'required'
+        ]);
+        $data['id_eleve'] = $id;
+        $eleve->updateEleve($data);
+
+        return redirect('contact')->with('success', ' student has been updated!!');
+    }
+    //////////////////////////////////
+    public function updateEleve($data)
+{
+        $eleve = $this->find($data['id_eleve']);
+        $eleve->id_user = auth()->user()->id;
+        $eleve->nom = $data['nom'];
+        $eleve->prenom = $data['prenom'];
+        $eleve->save();
+        return 1;
 }
 
 }

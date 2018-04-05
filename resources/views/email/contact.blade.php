@@ -1,7 +1,9 @@
+@extends('layout.master')
 
+@section('content')
         <div class="row">
             <div class="col-md-12">
-                <h1>Contact Me</h1>
+                <h1>Contacter les tuteurs</h1>
                 <hr>
                 <form action="{{ url('contact') }}" method="POST">
                     {{ csrf_field() }}
@@ -11,16 +13,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label name="subject">Subject:</label>
+                        <label name="subject">Objet:</label>
                         <input id="subject" name="subject" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label name="message">Message:</label>
-                        <textarea id="message" name="message" class="form-control">Type your message here...</textarea>
+                        <textarea id="message" name="message" class="form-control"></textarea>
                     </div>
 
-                    <input type="submit" value="Send Message" class="btn btn-success">
+                    <input type="submit" value="Envoyer" class="btn btn-success">
                 </form>
             </div>
         </div>
+
+        @endsection

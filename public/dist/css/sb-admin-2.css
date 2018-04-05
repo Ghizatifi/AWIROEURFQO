@@ -3,6 +3,14 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
+ #banniere
+ {
+ /* code déjà rédigé */
+ text-align: center;
+ }
+ 
+
 body {
   background-color: #f8f8f8;
 }
@@ -238,19 +246,51 @@ table.dataTable thead .sorting:after {
   font-size: 40px;
 }
 .panel-green {
-  border-color: #5cb85c;
+  border-color: #3882e4;
 }
 .panel-green > .panel-heading {
-  border-color: #5cb85c;
+  border-color: #3882e4;
   color: white;
-  background-color: #5cb85c;
+  background-color: #3882e4;
 }
 .panel-green > a {
-  color: #5cb85c;
+  color: #3882e4;
 }
 .panel-green > a:hover {
-  color: #3d8b3d;
+  color: #3882e4;
 }
+
+.panel-rose {
+  border-color: #e438b9;
+}
+.panel-rose > .panel-heading {
+  border-color: #e438b9;
+  color: white;
+  background-color: #e438b9;
+}
+.panel-rose > a {
+  color: #e438b9;
+}
+.panel-rose > a:hover {
+  color: #e438b9;
+}
+
+.panel-vert {
+  border-color: #a10c32;
+}
+.panel-vert > .panel-heading {
+  border-color: #a10c32;
+  color: white;
+  background-color: #a10c32;
+}
+.panel-vert > a {
+  color: #a10c32;
+}
+.panel-vert > a:hover {
+  color: #a10c32;
+}
+
+
 .panel-red {
   border-color: #d9534f;
 }

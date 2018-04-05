@@ -50,13 +50,14 @@
 			<tr>
 			<td> {{ $art->id_eleve }}</td>
 			<td> {{ $art->code }}</td>
-              <td><img src="{{ asset($art->photo) }}"></td>
+            <td><img src="{{ asset('storage/'.$art->photo) }}"></td>
  			<td> {{ $art->nom }} {{ $art->prenom }}</td>
 			<td> {{ $art->ville }} {{ $art->rue }} {{ $art->province }} </td>
 			<td> {{ $art->email }} </td>
 			<td> {{ $art->niveau }} {{ $art->groupe }} </td>
-			<td>
-				<a href="#" class="btn btn-info">Edite</a>
+			
+			 <td><a href="{{action('EleveController@edit',$art->id_eleve)}}" class="btn btn-primary">Edit</a></td>
+                <td>
                 
 				<a href="#" class="btn btn-danger">delete</a>
 			</td>
