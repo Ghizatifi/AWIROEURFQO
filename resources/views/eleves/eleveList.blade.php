@@ -24,7 +24,7 @@
 					<input type="search" name="search" value="{{ request('search') }}" class="form-control" placeholder="Saiair ID ou le nom">
 				</td>
 			</tr>
-	
+
        </table>
 	</form>
 
@@ -43,7 +43,7 @@
 			<th>Classe </th>
 			<th>Action</th>
 		</thead>
-		
+
 <tbody>
 
 			@foreach($eleve as $art)
@@ -55,10 +55,10 @@
 			<td> {{ $art->ville }} {{ $art->rue }} {{ $art->province }} </td>
 			<td> {{ $art->email }} </td>
 			<td> {{ $art->niveau }} {{ $art->groupe }} </td>
-			
+
 			 <td><a href="{{action('EleveController@edit',$art->id_eleve)}}" class="btn btn-primary">Edit</a></td>
                 <td>
-                
+
 				<a href="#" class="btn btn-danger">delete</a>
 			</td>
 		</tr>
@@ -72,7 +72,7 @@
 	</table>
 </div>
 <div class="footer">
-	
+
 </div>
  </div>
 @endsection

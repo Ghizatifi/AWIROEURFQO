@@ -1,12 +1,12 @@
 @extends('layout.master')
 
 @section('content')
-@include('cours.popup.annee')
-@include('cours.popup.group')
-@include('cours.popup.time')
-@include('cours.popup.niveau')
-@include('cours.popup.periode')
-@include('cours.popup.matiere')
+@include('programm.popup.annee')
+@include('programm.popup.group')
+@include('programm.popup.time')
+@include('programm.popup.niveau')
+@include('programm.popup.periode')
+@include('programm.popup.matiere')
 
 
 
@@ -15,7 +15,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Cours</h3>
+		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Classe</h3>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-home"></i><a href="index.html">Acceuil</a></li>
 			<li><i class="icon_document_alt"></i>Classe</li>
@@ -32,20 +32,20 @@
 			<header class="panel-heading">
 				Gestion des classes
 			</header>
-			<form  action="" method="POST" class="form-horizontal" id="form-crete-class">
+			<form  action="{{ route('createclasses') }}" method="POST" class="form-horizontal" id="form-crete-class">
 				{{ csrf_field() }}
 				<input type="hidden" name="active" id="active" value="1">
-				<input type="hidden" name="classe_id" id="classe_id">
+				<input type="hidden" name="id_classe" id="id_classe">
 
 				<div class="panel-body" >
 					<div class="form-group">
 
-						
+
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Anne scolaire </label>
 							<div class="input-group">
-								<select class="form-control" name="academic_id" id="academic_id">
-									@foreach($annees as $A)
+								<select class="form-control" name="id_annee" id="academic_id">
+								@foreach($annees as $A)
 									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 
 									@endforeach
@@ -56,12 +56,12 @@
 							</div>
 						</div>
 
-						<div class="col-sm-3" >
-							<label for="acdemic-year"> Matiere </label>
+						<div class="col-sm-4" >
+							<label for="acdemic-year"> Programme </label>
 							<div class="input-group">
-							<select class="form-control" name="program_id" id="program_id">
-									@foreach($program as $key=> $p)
-									<option value="{{$p->is_programm}}">{{$p->nom}}</option>
+							<select class="form-control" name="id_program" id="program_id">
+								@foreach($program as $key=> $p)
+									<option value="{{$p->id_programm}}">{{$p->nom}}</option>
 
 									@endforeach
 								</select>
@@ -74,9 +74,9 @@
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
-							<select class="form-control" name="level_id" id="level_id">
+							<select class="form-control" name="id_niveau" id="level_id">
 								<select class="form-control" name="program_id" id="program_id">
-					
+
 								</select>
 								</select>
 								<div class="input-group-addon" >
@@ -85,12 +85,12 @@
 							</div>
 						</div>
 
-	         <div class="col-sm-4" >
+	         <div class="col-sm-3" >
 							<label for="groub"> Groupe </label>
 							<div class="input-group">
-								<select class="form-control" name="group_id" id="group_id">
-									@foreach($groups as $g)
-									<option value="{{$g->id_groupe}}">{{$g->groupe}}</option>
+								<select class="form-control" name="id_group" id="group_id">
+								@foreach($groups as $g)
+									<option value="{{$g->id_group}}">{{$g->groupe}}</option>
 
 									@endforeach
 								</select>
@@ -99,44 +99,6 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="col-sm-3" >
-							<label for="acdemic-year"> Periode </label>
-							<div class="input-group">
-         <select class="form-control" name="shift_id" id="shift_id">
-									@foreach($periode as $s)
-									<option value="{{$s->id_periode}}">{{$s->periode}}</option>
-
-									@endforeach
-										</select>
-								<div class="input-group-addon" >
-									<span class="fa fa-plus" id="add-more-shift"></span>
-								</div>
-							</div>
-						</div>
-
-					
-					
-	<div class="col-sm-4" >
-							<label for="time"> Horaire </label>
-							<div class="input-group">
-								<select class="form-control" name="time_id" id="time_id">
-									@foreach($time as $t)
-									<option value="{{$t->id_time}}">{{$t->time}}</option>
-
-									@endforeach
-								</select>
-								<div class="input-group-addon" >
-									<span class="fa fa-plus" id="add-more-time"></span>
-								</div>
-							</div>
-						</div>
-
-
-
-
-					
-
 				</div>
 
 
@@ -155,10 +117,10 @@
 	</form>
 	<div class="panel panel-default ">
 		<div class="panel panel-heading">
-			Information sur les classes
+			Infos Classe
 		</div>
 		<div class="panel panel-body" id="add-class-info">
-			
+
 		</div>
 	</div>
 </section>
@@ -167,17 +129,20 @@
 
 
 </div>
-@endsection
-@section('script')
 
+
+@endsection
+
+@section('script')
 <script>
+			showClassInfo();
 
 $("#form-crete-class #program_id").on('change',function(e){
 
-		var id_matiere =$(this).val();
+		var id_programm =$(this).val();
 		var level = $('#level_id');
 		$(level).empty();
-		$.get("{{route('showLevel')}}",{id_matiere:id_matiere},function(data){
+		$.get("{{route('showLevel')}}",{id_programm:id_programm},function(data){
 			$.each(data,function(i,l){
 				$(level).append($("<option/>",{
 					value : l.level_id,
@@ -207,7 +172,7 @@ $('.btn-save-year').on('click',function(){
 			value : data.academic_id,
 			text  :  data.annee
 
-		}));    	
+		}));
 		$('#new_year').val("");
 	});
 });
@@ -228,12 +193,38 @@ $('.btn-save-year').on('click',function(){
  			value : data.program_id,
  			text  :  data.nom
 
- 		}));    	
- 		$('#new_program').val("");    
+ 		}));
+ 		$('#new_program').val("");
  		$('#new_description').val("");
  	});
  });
+///////////////////////////////////////////////////////////////////////
+function MergeCommonRows(table){
 
+	var firstColumnBrakes =[];
+	$.each(table.find('th'),function(i){
+		var previous = null,cellToExtend =null ,rowspan = 1;
+		table.find("td:nth-child("+ i +")").each(function(index ,e){
+			var jthis= $(this),content = jthis.text();
+			if (previous == content && content!== "" && $.inArray(index, firstColumnBrakes) === -1) {
+				jthis.addClass('hidden');
+				cellToExtend.attr("rowspan", (rowspan=rowspan+1));
+
+
+			}
+			else{
+				if (i == 1) firstColumnBrakes.push(index);
+				rowspan=1;
+				previous = content;
+				cellToExtend=jthis;
+
+
+			}
+
+		});
+	});
+	$('td.hidden').remove();
+}
   /////////////////////////////////////////////////////////////////Niveau///////////////////////////////////////////////
 $('#add-more-level').on('click',function(){
 
@@ -257,14 +248,14 @@ $('#form-level-create').on('submit',function(e){
 	var data = $(this).serialize();
 	var url = $(this).attr('action');
 	$.post(url,data,function(data){
-		
+
 		$('#level_id').append($("<option/>",{
 			value : data.id_niveau,
 			text  :  data.niveau
 
-		}));  
+		}));
 		$('#programs_id').val("");
-		$('#new_level').val("");    
+		$('#new_level').val("");
 		$('#description').val("");
 
 	});
@@ -287,7 +278,7 @@ $('.btn-save-shift').on('click',function(){
 			value : data.id_periode,
 			text  :  data.shift
 
-		}));    	
+		}));
 		$('#new_shift').val("");
 	});
 });
@@ -299,7 +290,7 @@ $('#form-time-create').on('submit',function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	$.post("{{ route('postInserttime') }}",data,function(data){
-		
+
 		$('#time_id').append($("<option/>",{
 			value : data.time_id,
 			text  :  data.time
@@ -323,7 +314,7 @@ $('#form-group-create').on('submit',function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	$.post("{{ route('postInsertgroup') }}",data,function(data){
-		
+
 		$('#group_id').append($("<option/>",{
 			value : data.id_group,
 			text  :  data.groupe
@@ -340,6 +331,53 @@ $('#add-more-group').on('click',function(e){
 
 
 });
+
+////////////////////////////////////////======ADD AClass===////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$('#form-crete-class').on('submit',function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+
+	var url = $(this).attr('action');
+	$.post(url,data,function(data){
+		showClassInfo(data.academic_id);
+	});
+	$(this).trigger('reset');
+
+});
+
+//////////////////////////////////////////////// addAclass in table
+function showClassInfo(){
+var data = $('#form-crete-class').serialize();
+
+	//var academic_id= $('#academic_id').val();
+	$.get("{{ route('showClassInformation') }}",data,function(data){
+			$('#add-class-info').empty().append(data);
+			MergeCommonRows($('#table-class-info'))
+
+
+	})
+
+	/////////////////////////////////////////////////////////////deletClass////////////////////////////////////////////////////
+$(document).on('click','.del-class',function(e){
+	id_classe = $(this).val();
+	$.post("{{ route('deletClass') }}" ,{id_classe:id_classe},function(data){
+			showClassInfo($('#academic_id').val());
+
+	})
+})
+
+}///////////////////////////////////////////////////////////////updateClass/////////////////////////////////////////////
+$('.update-class').on('click',function(e){
+	e.preventDefault();
+	var data =$('#form-crete-class').serialize(data);
+	$.post("{{ route('updateClass') }}",data,function(dta){
+					showClassInfo(data.academic_id);
+
+	})
+})
 
 </script>
 

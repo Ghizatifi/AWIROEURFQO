@@ -1,69 +1,69 @@
-@extends('layout.master')
+					@extends('layout.master')
 
-@section('content')
-
-
-<style type="text/css">
-.student-photo{
-	height: 160px;
-	padding-left: 1px;
-	padding-right: 1px;
-	border: 1px solid #ccc;
-	background: #eee;
-	width: 140px;
-	margin: 0 auto;
-}
-
-.photo > input[type='file']{
-	display: none;
-}
-.photo{
-	width: 30px;
-	height: 30px;
-	border-radius: 100%;
-
-}
-.student-id{
-	background-repeat: repeat-x;
-	border-color: #ccc;
-	padding: 5px;
-	text-align: center;
-	background:#eee;
-	border-bottom: 1px solid #ccc;
-}
-.btn-browse{
-	border-color: #ccc;
-	padding: 5px;
-	text-align: center;
-	background:#eee;
-	border: none;
-	border-top: 1px solid #ccc;
-
-}
-fieldset{
-	margin-top: 5px;
-
-}
-fieldset legend{
-	display: block;
-	width: 100%;
-	padding: 0px;
-	font-size: 15px;
-	line-height: inherit;
-	color: #797979;
-	border: 0;
-	border-bottom: 1px solid #e5e5e5;
-
-}
+					@section('content')
 
 
+					<style type="text/css">
+					.student-photo{
+						height: 160px;
+						padding-left: 1px;
+						padding-right: 1px;
+						border: 1px solid #ccc;
+						background: #eee;
+						width: 140px;
+						margin: 0 auto;
+					}
+
+					.photo > input[type='file']{
+						display: none;
+					}
+					.photo{
+						width: 30px;
+						height: 30px;
+						border-radius: 100%;
+
+					}
+					.student-id{
+						background-repeat: repeat-x;
+						border-color: #ccc;
+						padding: 5px;
+						text-align: center;
+						background:#eee;
+						border-bottom: 1px solid #ccc;
+					}
+					.btn-browse{
+						border-color: #ccc;
+						padding: 5px;
+						text-align: center;
+						background:#eee;
+						border: none;
+						border-top: 1px solid #ccc;
+
+					}
+					fieldset{
+						margin-top: 5px;
+
+					}
+					fieldset legend{
+						display: block;
+						width: 100%;
+						padding: 0px;
+						font-size: 15px;
+						line-height: inherit;
+						color: #797979;
+						border: 0;
+						border-bottom: 1px solid #e5e5e5;
+
+					}
 
 
-</style>
+
+
+					</style>
 
 
 <div class="row">
-	
+
 	<div class="col-lg-12">
 		<h3 class="page-header"><i class="fa fa-file-text-o"></i> Creer un dossier eleve</h3>
 		<ol class="breadcrumb">
@@ -76,14 +76,15 @@ fieldset legend{
 </div>
 
 <div class="row">
-	
+
 	<div class="col-lg-12">
 
 		<div class="panel-group" id="accordion" >
 
 			<div class="panel panel-default " >
 				<div class="panel-heading">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration: none;" > Choisir l'annee scolaire </a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration: none;" > Choose
+					Academic </a>
 					<a href="#" class="pull-right" id="show-class-info"  ><i class="fa fa-plus"></i></a>
 				</div>
 				<div class="panel-collapse  collapse in" id="collapse1" >
@@ -177,7 +178,7 @@ fieldset legend{
 								</div>
 							</div>
 
-		
+
 
 							{{-------phone------}}
 							<div class="col-md-4">
@@ -252,7 +253,7 @@ fieldset legend{
 							</div>
 						</div>
 
-			
+
 
 						<div class="col-md-3">
 							<div class="form-group" >
@@ -267,7 +268,7 @@ fieldset legend{
 								<input type="text" name="province" id="province" class="form-control">
 							</div>
 						</div>
-	
+
 
 					</div>
 				</div>
@@ -302,13 +303,13 @@ fieldset legend{
 								<input type="text" name="fix" id="fix" class="form-control">
 							</div>
 						</div>
-	           	
+
 						<div class="col-md-6">
 							<div class="form-group" >
 								<label for="current_address" >Adresse de travail</label>
 								<input type="text" name="adresse_travail" id="adresse_travail" class="form-control">
 							</div>
-						</div>	
+						</div>
 
                     <div class="col-md-3">
 							<div class="form-group" >
@@ -345,7 +346,7 @@ fieldset legend{
 							</div>
 						</div>
 
-			
+
 
 						<div class="col-md-3">
 							<div class="form-group" >
@@ -369,7 +370,7 @@ fieldset legend{
 								<label for="niveau" >Groupe</label>
 								<div class="input-group " >
 						        <select class="form-control" name="id_group" id="id_group">
-									@foreach($program as $g)
+									@foreach($group as $g)
 									<option value="{{$g->id_groupe}}">{{$g->groupe}}</option>
 									@endforeach
 								</select>
@@ -380,7 +381,7 @@ fieldset legend{
 							</div>
 							</div>
 						</div>
-	
+
 
 					</div>
 				</div>
@@ -388,7 +389,7 @@ fieldset legend{
 				<div class="panel-footer">
 					<button value="submit" class="btn btn-primary btn-save"> Enregistrer  <i class="fa fa-save"></i></button>
 				</div>
-				
+
 			</form>
 		</div></div></div></div>
 
@@ -402,52 +403,55 @@ fieldset legend{
 
 
 @section('script')
-
+@include('script.scriptClassPopup')
 		<script type="text/javascript">
 
-	$('#form-multi-class #btn-go').addClass('hidden');
-$('#show-class-info').on('click',function(e){
-	e.preventDefault();
-		$('#academic-choose').modal('show');
+							$('#form-multi-class #btn-go').addClass('hidden');
 
-	});
+						$('#show-class-info').on('click',function(e){
+							e.preventDefault();
+								$('#academic-choose').modal('show');
 
-			$( "#dob" ).datepicker({
-		changeMonth: true,
-		changeYear: true,
-		dateFormat:'yy-mm-dd'
+							});
+
+							$( "#dob" ).datepicker({
+						changeMonth: true,
+						changeYear: true,
+						dateFormat:'yy-mm-dd'
 
 
-	});
-	$(document).on('click','#class-edite',function(e){
-		e.preventDefault();
-		$('#classe_id').val($(this).data('id'));
-		$('.academic-detail p').text($(this).text());
-		$('#academic-choose').modal('hide');
+					});
+					$(document).on('click','#class-edite',function(e){
+						e.preventDefault();
+						$('#classe_id').val($(this).data('id'));
+						$('.academic-detail p').text($(this).text());
+						$('#academic-choose').modal('hide');
 
-	})
+					})
 
-	////////////////////////////////browse photo////////////////
-	$('#brows_file').on('click',function(){
-		$('#photo').click();
+				////////////////////////////////browse photo////////////////
+				$('#brows_file').on('click',function(){
+					$('#photo').click();
 
-	});
+				});
 
-	$('#photo').on('change',function(e){
-		showFile(this,'#showPhoto');
-	})
-	//////////////////
-	function showFile(fileInput,img,showName){
-		if (fileInput.files[0]) {
-              var reader = new FileReader();
-			reader.onload= function (e){
-				$(img).attr('src',e.target.result);
+				$('#photo').on('change',function(e){
+					showFile(this,'#showPhoto');
+				})
+				//////////////////
+				function showFile(fileInput,img,showName){
+					if (fileInput.files[0]) {
+			              var reader = new FileReader();
+						reader.onload= function (e){
+							$(img).attr('src',e.target.result);
 
-			}
-			reader.readAsDataURL(fileInput.files[0]);
-		}
-		$(showName).text(fileInput.files[0].name)
-	};
+						}
+						reader.readAsDataURL(fileInput.files[0]);
+					}
+					$(showName).text(fileInput.files[0].name)
+				};
+
+	
 
 
 </script>

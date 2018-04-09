@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Annee;
 use App\Matiere;
 use App\Niveau;
-use App\Periode;
-use App\Time;
+use App\Programm;
 use App\Group;
 use App\FileUpload;
 use File;
@@ -18,46 +17,43 @@ use Auth;
 use App\Eleve;
 class EleveController extends Controller
 {
-    public function getRegisterationEleve(){
-
-        $annees=Annee::orderBy('id_annee','DESC')->get();
-        $program = Matiere::all();
-        // $shift=Shift::all();
-        $niveau=Niveau::orderBy('id_niveau','DESC')->get();
-         $time=Time::all();
-         $periode=Periode::all();
-         $group=Group::all();
-         $id_eleve =Eleve::max('id_eleve');
-
-
-
-    return view('eleves.eleveRegister',compact('annees','program','group','periode','time','niveau','id_eleve'));
-}
+//     public function getRegisterationEleve(){
+//
+//         $annees=Annee::orderBy('id_annee','DESC')->get();
+//         $program = Matiere::all();
+//         $niveau = Niveau::all();
+//       //  $niveau=Niveau::orderBy('id_niveau','DESC')->get();
+//          $group=Group::all();
+//          $id_eleve =Eleve::max('id_eleve');
+//
+//     return view('eleves.eleveRegister',compact('annees','program','group','niveau','id_eleve'));
+// }
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////        
+/////////////////////////////////////////////////////////////////////////////////////
 
-public function postRegisterationSEleve(Request $request)
-		{
+    public function postRegisterationSEleve(Request $request)
+	    	{
         return $request->all();
-            
         }
 
-        public function getUnivInfo()
+
+
+        public function getUnivInfo(Request $request)
         {
+            //$niveau = Niveau::where('id_programm',$request->id_programm)->get();
             $niveau = Niveau::all();
             $annees=Annee::orderBy('id_annee','DESC')->get();
-            $program=Group::all();
-            return view('eleves.eleveRegister',compact('program','groups','annees','niveau'));
-    
-    
-                }
+            $group=Group::all();
+            $programs=programm::all();
+            return view('eleves.eleveRegister',compact('annees','niveau','programs','group'));
+        }
 
-/////////////////////////////////////////////////////////////////////////////////////        
+/////////////////////////////////////////////////////////////////////////////////////
 
 public function RegisterEleve(Request $request){
-    if ($request->isMethod('post')){
+  //  if ($request->isMethod('post')){
         $ar= new Eleve();
         $ar->nom=$request->input('nom');
         $ar->prenom=$request->input('prenom');
@@ -77,14 +73,14 @@ public function RegisterEleve(Request $request){
         $ar->email=$request->input('email');
         $ar->id_user=Auth::user()->id;
         $ar->photo=FileUpload::photo($request,'photo');
-        $ar->id_annee=$request->input('id_annee');
-        $ar->id_group=$request->input('id_group');
-        $ar->id_niveau=$request->input('id_niveau');
-     
+        // $ar->id_annee=$request->input('id_annee');
+        // $ar->id_group=$request->input('id_group');
+        // $ar->id_niveau=$request->input('id_niveau');
+
         $ar->save();
-        return view('eleves.eleveList');
-    }
-return view('eleves.eleveRegister');
+        return redirect('/gestion/eleveList');
+    //}
+//return view('eleves.eleveRegister');
 
 
 

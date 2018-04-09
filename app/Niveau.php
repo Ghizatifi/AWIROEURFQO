@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Niveau extends Model
 {
     protected $table ='niveaux' ;
-    protected $fillable = ['id_matiere','niveau','description'];
-
+    protected $fillable = ['niveau','id_programm','description'];
     protected $primaryKey ='id_niveau';
     public $timestamps =false;
 }
