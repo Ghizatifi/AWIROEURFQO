@@ -35,7 +35,6 @@
 	<table class="table  table-condensed table-hover table-striped table-bordered ">
 		<thead>
 			<th>N<sup>o</sup></th>
-			<th>Code Eleve </th>
 			<th>Photo </th>
 			<th>Nom Complet </th>
 			<th>Adresse</th>
@@ -49,16 +48,15 @@
 			@foreach($eleve as $art)
 			<tr>
 			<td> {{ $art->id_eleve }}</td>
-			<td> {{ $art->code }}</td>
-            <td><img src="{{ asset('storage/'.$art->photo) }}"></td>
+
+            <td><img src="{{ asset('storage/'.$art->photo) }}" height="100" width="100"></td>
  			<td> {{ $art->nom }} {{ $art->prenom }}</td>
 			<td> {{ $art->ville }} {{ $art->rue }} {{ $art->province }} </td>
 			<td> {{ $art->email }} </td>
-			<td> {{ $art->niveau }} {{ $art->groupe }} </td>
+			<td> {{ $art->programe }}  </td>
 
-			 <td><a href="{{action('EleveController@edit',$art->id_eleve)}}" class="btn btn-primary">Edit</a></td>
-                <td>
-
+			 <td><a href="{{action('EleveController@edit',$art->id_eleve)}}" class="btn btn-primary">Edit</a>
+&nbsp;&nbsp;
 				<a href="#" class="btn btn-danger">delete</a>
 			</td>
 		</tr>

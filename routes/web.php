@@ -95,6 +95,10 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::post('contact', 'EmailController@postContact');
     /////////////////////////////////////////////////////////
 
+		Route::get('/gestion/eleve/payment',['as'=>'getFeePayment','uses'=>'PayementController@getFeePayment']);
+		Route::get('eleve/payment',['as'=>'showStudentPayment','uses'=>'PayementController@showStudentPayment']);
+
+
 
 
 

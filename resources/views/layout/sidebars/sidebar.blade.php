@@ -28,7 +28,7 @@
                         <li><a class="" href="{{ url('/gestion/prof/add-prof') }}">Ajouter un professeur</a></li>
                         <li><a class="" href="{{ url('/gestion/prof/getProf') }}">Liste des professeurs</a></li>
                         </ul>
-                      
+
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
@@ -60,7 +60,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">Paiement eleve </a></li>
+              <li><a class="" href="{{route('getFeePayment')}}">Paiement eleve </a></li>
               <li><a class="" href="">Rapport de frais</a></li>
 
             </ul>
@@ -82,9 +82,9 @@
 
 
 
-     
 
-        
+
+
 
         </ul>
         <!-- sidebar menu end-->

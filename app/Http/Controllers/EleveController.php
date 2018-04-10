@@ -73,8 +73,8 @@ public function RegisterEleve(Request $request){
         $ar->email=$request->input('email');
         $ar->id_user=Auth::user()->id;
         $ar->photo=FileUpload::photo($request,'photo');
-        // $ar->id_annee=$request->input('id_annee');
-        // $ar->id_group=$request->input('id_group');
+        $ar->id_classe=$request->input('classe_id');
+        $ar->date_inscription=$request->input('dateregistred');
         // $ar->id_niveau=$request->input('id_niveau');
 
         $ar->save();
@@ -88,10 +88,40 @@ public function RegisterEleve(Request $request){
 
 
 public  function  view(){
-    $eleve= Eleve::all();
-    $ar=Array('eleve'=>$eleve);
+    // $eleve= Eleve::all();
+    // $ar=Array('eleve'=>$eleve);
+ $eleve = DB::table('etudiants')
+       //return Eleve::
+            ->join('classes', 'classes.id_classe', '=', 'etudiants.id_classe')
+            ->join('programms', 'programms.id_programm', '=', 'classes.id_program')
+          //  ->where($filter)
+          ->select('etudiants.*','programms.*')
+            ->orderBy('etudiants.id_eleve','DESC')
+            ->get();
+     $ar=Array('eleve'=>$eleve);
+
     return view('eleves.eleveList',$ar);
 }
+
+public function showStdInformation(Request $request){
+          $filter = [
+          'annees.id_annee'=>$request->id_annee,
+           'programms.id_programm'=>$request->id_programm,
+            'niveaux.id_niveau'=>$request->id_niveau,
+             'groups.id_group'=>$request->id_group];
+         $eleve = $this->view($filter)->get();
+      return view('eleves.eleveList',compact('eleve'));
+
+     }
+
+
+     // public  function  View(){
+     //     $classes= Classe::all();
+     //     $ar=Array('classes'=>$classes);
+     //     return view('classes.classeInfo',$ar);
+     // }
+
+
 
 //////////////////////////////////////////////
 
