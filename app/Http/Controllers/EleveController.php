@@ -46,8 +46,8 @@ class EleveController extends Controller
             $niveau = Niveau::all();
             $annees=Annee::orderBy('id_annee','DESC')->get();
             $group=Group::all();
-            $programs=programm::all();
-            return view('eleves.eleveRegister',compact('annees','niveau','programs','group'));
+            $program=programm::all();
+            return view('eleves.eleveRegister',compact('annees','niveau','program','group'));
         }
 
 /////////////////////////////////////////////////////////////////////////////////////

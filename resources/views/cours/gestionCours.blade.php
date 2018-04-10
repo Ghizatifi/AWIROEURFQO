@@ -40,7 +40,7 @@
 				<div class="panel-body" >
 					<div class="form-group">
 
-						
+
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Anne scolaire </label>
 							<div class="input-group">
@@ -76,7 +76,7 @@
 							<div class="input-group">
 							<select class="form-control" name="level_id" id="level_id">
 								<select class="form-control" name="program_id" id="program_id">
-					
+
 								</select>
 								</select>
 								<div class="input-group-addon" >
@@ -115,8 +115,8 @@
 							</div>
 						</div>
 
-					
-					
+
+
 	<div class="col-sm-4" >
 							<label for="time"> Horaire </label>
 							<div class="input-group">
@@ -135,7 +135,7 @@
 
 
 
-					
+
 
 				</div>
 
@@ -158,7 +158,7 @@
 			Information sur les classes
 		</div>
 		<div class="panel panel-body" id="add-class-info">
-			
+
 		</div>
 	</div>
 </section>
@@ -207,7 +207,7 @@ $('.btn-save-year').on('click',function(){
 			value : data.academic_id,
 			text  :  data.annee
 
-		}));    	
+		}));
 		$('#new_year').val("");
 	});
 });
@@ -228,8 +228,8 @@ $('.btn-save-year').on('click',function(){
  			value : data.program_id,
  			text  :  data.nom
 
- 		}));    	
- 		$('#new_program').val("");    
+ 		}));
+ 		$('#new_program').val("");
  		$('#new_description').val("");
  	});
  });
@@ -257,14 +257,14 @@ $('#form-level-create').on('submit',function(e){
 	var data = $(this).serialize();
 	var url = $(this).attr('action');
 	$.post(url,data,function(data){
-		
+
 		$('#level_id').append($("<option/>",{
 			value : data.id_niveau,
 			text  :  data.niveau
 
-		}));  
+		}));
 		$('#programs_id').val("");
-		$('#new_level').val("");    
+		$('#new_level').val("");
 		$('#description').val("");
 
 	});
@@ -287,7 +287,7 @@ $('.btn-save-shift').on('click',function(){
 			value : data.id_periode,
 			text  :  data.shift
 
-		}));    	
+		}));
 		$('#new_shift').val("");
 	});
 });
@@ -299,7 +299,7 @@ $('#form-time-create').on('submit',function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	$.post("{{ route('postInserttime') }}",data,function(data){
-		
+
 		$('#time_id').append($("<option/>",{
 			value : data.time_id,
 			text  :  data.time
@@ -323,7 +323,7 @@ $('#form-group-create').on('submit',function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	$.post("{{ route('postInsertgroup') }}",data,function(data){
-		
+
 		$('#group_id').append($("<option/>",{
 			value : data.id_group,
 			text  :  data.groupe

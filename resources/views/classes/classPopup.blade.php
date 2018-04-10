@@ -18,7 +18,7 @@
 						<div class="col-sm-6" >
 							<label for="acdemic-year"> Annee scolaire </label>
 							<div class="input-group">
-       <select class="form-control" name="academic_id" id="academic_id">
+         <select class="form-control" name="id_annee" id="academic_id">
 							@foreach($annees as $A)
 									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 									@endforeach
@@ -33,7 +33,7 @@
 							<label for="acdemic-year"> Programme </label>
 							<div class="input-group">
                 <select class="form-control" name="id_program" id="program_id">
-  								@foreach($programs as $key=> $p)
+  								@foreach($program as $key=> $p)
   									<option value="{{$p->id_programm}}">{{$p->nom}}</option>
 
   									@endforeach
@@ -86,10 +86,11 @@
 
 	</form>
 	{{----------------}}
-  <form accept="#" method="get" id="form-multi-class">
+	<form accept="#" method="get" id="form-multi-class">
 	<div class="panel panel-default ">
 		<div class="panel panel-heading">
-			Class Informationss
+			details d'Informations
+
 			<button class="btn btn-info btn-xs pull-right" id="btn-go" style="margin-top: 5px">Go </button>
 		</div>
 		<div class="panel panel-body" id="add-class-info" style="overflow-y: auto; height: 250px">

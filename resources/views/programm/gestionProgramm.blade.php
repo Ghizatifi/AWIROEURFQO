@@ -382,6 +382,3 @@ $('.update-class').on('click',function(e){
 </script>
 
 @endsection
-
-
-add-more-year

@@ -333,7 +333,7 @@
 							<div class="form-group" >
 								<label for="niveau" >Annee universitaire</label>
 								<div class="input-group" >
-								<select class="form-control" name="id_annee" id="id_annee">
+								<select class="form-control" name="id_annee" id="academic_id">
 									@foreach($annees as $A)
 									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 
@@ -369,7 +369,7 @@
 							<div class="form-group" >
 								<label for="niveau" >Groupe</label>
 								<div class="input-group " >
-						        <select class="form-control" name="id_group" id="id_group">
+						        <select class="form-control" name="id_group" id="group_id">
 									@foreach($group as $g)
 									<option value="{{$g->id_groupe}}">{{$g->groupe}}</option>
 									@endforeach
@@ -429,6 +429,7 @@
 
 					})
 
+
 				////////////////////////////////browse photo////////////////
 				$('#brows_file').on('click',function(){
 					$('#photo').click();
@@ -451,8 +452,14 @@
 					$(showName).text(fileInput.files[0].name)
 				};
 
-	
+				/////========================================///////[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]///////
 
+				$('#show-class-info').on('click',function(e){
+				showClassInfo()
+
+				e.preventDefault();
+				$('#academic-choose').modal('show');
+				})
 
 </script>
 
