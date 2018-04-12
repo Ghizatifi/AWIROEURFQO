@@ -8,13 +8,13 @@ class FraisTransaction extends Model
 {
   protected $table= 'transactions';
   protected $fillable =['date',
-            'remark',
-            'description',
+            'type_paiement',
             'paye',
-            'id_frais',
             'id_eleve',
             'id_user',
-            'id_frais_etudiant'
+            'id_frais_etudiant',
+            'id_frais'
+
                       ];
   protected $primaryKey = 'id_transaction';
   public $timestamps = false;

@@ -3,6 +3,7 @@
 @section('content')
 
 @include('payements.stylesheet.css-pay')
+@include('payements.creatFrais')
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -16,7 +17,7 @@
 		</div>
 		<div class="col-md-3"></div>
 		<div class="col-md-3" style="text-align: right;">
-			<label class="invoice-number"> Recus N<sup>0</sup>: <b></b></label>
+			<label class="invoice-number"> Recus N<sup>0</sup> : <b> {{sprintf('%06d',$id_reçus)}}</b></label>
 		</div>
 		<div class="col-md-3" style="text-align: right;">
 			<label class="date-invoice">Date: <b>{{ date('d-M-Y') }}</b></label></div>
@@ -26,11 +27,11 @@
 
 
 		</div>
-		<form action="" method="POST" id="formPayment">
+		<form action="{{ route('savePayment') }}" method="POST" id="formPayment">
 			{{ csrf_field() }}
 			<div class="panel-body">
-				<table style="margin-top: -12px">
-					<caption class="acadeaicDetails" style="color:blue; font-size:120%;">
+				<table style="margin-top: -12px width:100%  border-spacing: 5px;"  >
+					<caption class="acadeaicDetails" style="color:#ff00d2; font-size:120%; ">
 					La classe :	&nbsp;{{ $status->programe }}&nbsp;&nbsp;
 							{{ $status->niveau }}&nbsp;&nbsp;
 								{{ $status->groupe }}
@@ -39,13 +40,12 @@
 					</caption>
 					<thead>
 						<tr>
-							<th>Programme</th>
-		 					<th>Niveau</th>
+							<th>Programme</th></br>
+		 					<th>Niveau</th></br>
 		 					<th>Frais Scolarite (dh)</th>
-		 					<th>Montant (dh)</th>
-		 					<!-- <th>Dis(%)</th> -->
+		 					<!-- <th>Montant (dh)</th> -->
 		 					<th>Payé (dh)</th>
-		 					<th>Montant manque (dh)</th>
+		 					<th>Le reste (dh)</th>
 
 						</tr>
 					</thead>
@@ -67,43 +67,45 @@
 					</td>
 					<td>
 						<div class="input-group">
-							<span class="input-group-addon create-fee" title="create fee" style="cursor: pointer; color: blue; padding: 0px 3px; padding-right: none;">$</span>
-							<input type="text" name="fee" id="Fee" value="" readonly="true" >
+							<input type="text" name="fee" id="Fee" value="{{ $fraisEtudiant->montant or null }}" readonly="true" >
+							<span class="input-group-addon create-fee" title="create fee" style="cursor: pointer; color: #ff00d2; padding: 0px 3px; padding-right: none;">dh</span>
+
 						</div>
-						<input type="hidden" name="id_frais" id="feeID" value="">
-						<input type="hidden" name="id_eleve" id="studentD"  value="" >
-						<input type="hidden" name="id_niveau" value="" id="levelID" >
+						<input type="hidden" name="id_frais" id="feeID" value="{{$fraisEtudiant->id_frais or null}}">
+						<input type="hidden" name="id_eleve" id="studentD"  value="{{$id_eleve}}" >
+						<input type="hidden" name="id_niveau" value="{{$status->id_niveau}}" id="levelID" >
 						<input type="hidden" name="id_user" id="userID" value="{{ Auth::id() }}" >
 						<input type="hidden" name="date" value="{{ date('Y-m-d H:i:s') }}" id="TransacDate" >
-						<input type="hidden" name="id_frais_etudiant" id="s_fee_id" >
+						<input type="hidden" name="id_frais_etudiant" id="id_frais_etudiant" >
 
 					</td>
-					<td>
-						<input type="text" name="amount" id="Amount" required class="d">
-					</td>
+					<!-- <td>
+						<input type="text" name="montant" id="Amount" required class="d">
+					</td> -->
 					<!-- <td>
 						<input type="text" name="discount" id="Discount" class="d" >
 					</td> -->
+					<!-- <td>
+						<input type="text" name="montant" id="Paid" >
+					</td> -->
 					<td>
-						<input type="text" name="paid" id="Paid" >
+						<input type="text" name="montant" id="Paid" >
 					</td>
 					<td>
 						<input type="text" name="lack" id="Lack" disabled>
 					</td>
+
 				</tr>
 				<thead>
 					<tr>
-						<!-- <th colspan="2">Remarck</th> -->
-						<th colspan="5">Description</th>
+						<th colspan="2">Type de paiement</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<!-- <td colspan="2">
-							<input type="text" name="remark" id="remark">
-						</td> -->
-						<td colspan="5">
-							<input type="text" name="description" id="description">
+
+						<td colspan="2">
+							<input type="text" name="type_paiement" id="type_paiement">
 						</td>
 					</tr>
 				</tbody>
@@ -111,16 +113,20 @@
 		</div>
 		<div class="panel-footer" >
 			<input type="submit" id="btn-go" name="btn-go" class="btn-primary btn-payment" value="Enregistrer">
-					<a href="" target="_blank" class="btn btn-warning btn-xs"><i class="fa fa-print" title="Print"></i>Imprimer</a>
+					<!-- <a href="" target="_blank" class="btn btn-warning btn-xs"><i class="fa fa-print" title="Print"></i>Imprimer</a> -->
 			<input type="button" onclick="this.form.reset()"  class="btn btn-default btn-reset pull-right" value="Reset" >
 
 		</div>
 	</form>
 </div>
-
+@if(count($readstudentFee)!=0)
+@include('payements.list.ListFraisEtd')
 <input type="hidden" name="0" id="disabled">
+@endif
 @endsection
 
 @section('script')
+@include('payements.script.calculFrais')
+@include('payements.script.payment')
 
 @endsection

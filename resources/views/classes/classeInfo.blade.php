@@ -36,7 +36,7 @@
 
                     <td class="caadimic">
                     	<a href="#" data-id="{{$c->id_classe}}" id="class-edite">
-                    		Programme:{{$c->nom}} / Niveau: {{$c->niveau}} / Groupe:{{$c->groupe}}
+                    		Programme:{{$c->programe}} / Niveau: {{$c->niveau}} / Groupe:{{$c->groupe}}
 
 
                     </a>

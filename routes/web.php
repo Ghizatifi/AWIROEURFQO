@@ -97,6 +97,10 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 
 		Route::get('/gestion/eleve/payment',['as'=>'getFeePayment','uses'=>'PayementController@getFeePayment']);
 		Route::get('eleve/payment',['as'=>'showStudentPayment','uses'=>'PayementController@showStudentPayment']);
+		Route::get('eleve/go/to/payment/{id_eleve}',['as'=>'goPayment','uses'=>'PayementController@goPayment']);
+		Route::post('eleve/go/to/payment/save',['as'=>'savePayment','uses'=>'PayementController@savePayment']);
+		Route::post('frais/create',['as'=>'createFrais','uses'=>'PayementController@createFrais']);
+		Route::get('frais/eleve/pay',['as'=>'pay','uses'=>'PayementController@pay']);
 
 
 

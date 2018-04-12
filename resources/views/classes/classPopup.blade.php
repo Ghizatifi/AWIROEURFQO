@@ -34,7 +34,7 @@
 							<div class="input-group">
                 <select class="form-control" name="id_program" id="program_id">
   								@foreach($program as $key=> $p)
-  									<option value="{{$p->id_programm}}">{{$p->nom}}</option>
+  									<option value="{{$p->id_programm}}">{{$p->programe}}</option>
 
   									@endforeach
   								</select>

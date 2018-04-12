@@ -325,10 +325,10 @@
 
 
 				{{--------address------}}
-				<div class="panel-heading" style="margin-top: -20px">
+		<!--	s		<div class="panel-heading" style="margin-top: -20px">
 					<b > <i class="fa fa-home"></i> Informations universitaire</b>
 				</div>
-				<div class="panel-body" style=" padding-bottom: 10px; padding-top: 0px">
+			<div class="panel-body" style=" padding-bottom: 10px; padding-top: 0px">
 					<div class="col-md-3">
 							<div class="form-group" >
 								<label for="niveau" >Annee universitaire</label>
@@ -348,7 +348,7 @@
 
 
 
-						<div class="col-md-3">
+						 <div class="col-md-3">
 							<div class="form-group" >
 								<label for="niveau" >Niveau scolaire</label>
 								<div class="input-group" >
@@ -384,7 +384,7 @@
 
 
 					</div>
-				</div>
+				</div>-->
 
 				<div class="panel-footer">
 					<button value="submit" class="btn btn-primary btn-save"> Enregistrer  <i class="fa fa-save"></i></button>

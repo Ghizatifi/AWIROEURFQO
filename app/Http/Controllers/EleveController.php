@@ -78,7 +78,10 @@ public function RegisterEleve(Request $request){
         // $ar->id_niveau=$request->input('id_niveau');
 
         $ar->save();
-        return redirect('/gestion/eleveList');
+        $student_id=$ar->id_eleve;
+        //return redirect('/gestion/eleveList');
+        return redirect()->route('goPayment',['id_eleve'=>$student_id]);
+
     //}
 //return view('eleves.eleveRegister');
 
