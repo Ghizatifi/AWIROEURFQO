@@ -36,13 +36,13 @@
 
 						</td>
 						<td style="text-align: center; width: 115px; ">
-							<a href="#" class="btn btn-success btn-sfee-edit" title="Edit" data-id-update-student-fee="{{$var->id_frais_etudiant}}" >
-								<i class="fa fa-edit"></i> </a>
-									<button type="button" class="btn btn-danger btn-xs btn-paid" value="{{ $var->student_amount - $readstudentTrans->where('id_frais_etudiant',$var->id_frais_etudiant)->sum('paid') }}" data-id-paid="{{$var->id_frais_etudiant}}">
+							<!-- <a href="#" class="btn btn-success btn-sfee-edit" title="Edit" data-id-update-student-fee="{{$var->id_frais_etudiant}}" >
+								<i class="fa fa-edit"></i> </a> -->
+									<button type="button" class="btn-xs btn-paid" value="{{ $var->student_amount - $readstudentTrans->where('id_frais_etudiant',$var->id_frais_etudiant)->sum('paid') }}" data-id-paid="{{$var->id_frais_etudiant}}">
 											<i class="fa fa-usd" title="Complete"></i></button>
 
 
-									<button class="btn btn-primary btn-xs accordion-toggle" data-toggle="collapse" data-target="#demo{{$key}}" title="Partial"> <span class="fa fa-eye"></span> </button>
+									<button class="btn-xs accordion-toggle" data-toggle="collapse" data-target="#demo{{$key}}" title="Partial"> <span class="fa fa-eye"></span> </button>
 								</td>
 							</tr>
 							<tr>

@@ -1,5 +1,22 @@
 <?php
+use Cornford\Googlmapper\Facades\MapperFacade;
+use Illuminate\Support\Facades\Route;
 
+// Route::get('/contactB',function ()
+// {
+// 	Mapper::map(
+// 		53.381,
+// 		-1.47,
+// 		[
+// 			'zoom'=>16,
+// 			'draggable'=>true,
+// 			'marker'=>false,
+// 			'eventAfterLoad'=>
+// 			'circleListner(maps[0].shapes[0].circle_0);'
+// 		]
+// 	);
+// 	return view('welcome');
+// });
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +37,19 @@ Route::get('/noPermission',function(){
 });
 
 Route::get('/dashboard',['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
+Route::get('/welcome',['as'=>'index','uses'=>'MapController@index']);
 
+////////////////////////////////////////////////Front
+Route::get('/index',function(){
+	return view('FrontEnd.index');
+});
+Route::get('/apropos',function(){
+	return view('FrontEnd.apropos');
+});
 
+// Route::get('/contactB',function(){
+// 	return view('FrontEnd.contact');
+// });
 Route::group(['middleware'=>['authen']],function(){
 
     //Route::get('/dashboard',['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
@@ -95,13 +123,17 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::post('contact', 'EmailController@postContact');
     /////////////////////////////////////////////////////////
 
+		Route::get('contactB', 'EmailController@getContactB');
+    Route::post('contactB', 'EmailController@postContactB');
+    /////////////////////////////////////////////////////////
+
 		Route::get('/gestion/eleve/payment',['as'=>'getFeePayment','uses'=>'PayementController@getFeePayment']);
 		Route::get('eleve/payment',['as'=>'showStudentPayment','uses'=>'PayementController@showStudentPayment']);
 		Route::get('eleve/go/to/payment/{id_eleve}',['as'=>'goPayment','uses'=>'PayementController@goPayment']);
 		Route::post('eleve/go/to/payment/save',['as'=>'savePayment','uses'=>'PayementController@savePayment']);
 		Route::post('frais/create',['as'=>'createFrais','uses'=>'PayementController@createFrais']);
 		Route::get('frais/eleve/pay',['as'=>'pay','uses'=>'PayementController@pay']);
-
+		Route::post('frais/eleve/exstra/pay',['as'=>'exstraPay','uses'=>'PayementController@exstraPay']);
 
 
 

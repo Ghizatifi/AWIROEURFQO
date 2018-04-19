@@ -185,4 +185,22 @@ class PayementController extends Controller
        return response($etdPay);
       }
       //////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function exstraPay(Request $request){
+  $transact = FraisTransaction::create($request->all());
+  if (count($transact)!=0) {
+    $transact_id = $transact->transact_id;
+    $student_id =  $transact->student_id;
+    $receipt_id =Reçus::autoNumber();
+
+    Reçus::create([
+     'id_reçus'=>$receipt_id,
+     'id_eleve'=>$student_id,
+     'id_transaction'=>$transact_id
+
+   ]);
+  }
+  return back();
+
+}
 }

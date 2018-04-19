@@ -112,7 +112,7 @@
 			</table>
 		</div>
 		<div class="panel-footer" >
-			<input type="submit" id="btn-go" name="btn-go" class="btn-primary btn-payment" value="Enregistrer">
+			<input type="submit" id="btn-go" name="btn-go" class="btn-primary btn-payment" value="{{ count($readstudentTrans)!=0? 'Extra Pay': 'Enregistrer' }}">
 					<!-- <a href="" target="_blank" class="btn btn-warning btn-xs"><i class="fa fa-print" title="Print"></i>Imprimer</a> -->
 			<input type="button" onclick="this.form.reset()"  class="btn btn-default btn-reset pull-right" value="Reset" >
 

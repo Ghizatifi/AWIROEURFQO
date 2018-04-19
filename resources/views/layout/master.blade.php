@@ -33,7 +33,7 @@
   <!-- easy pie chart-->
     {!!Html::style('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')!!}
 
-  <!-- owl carousel --> 
+  <!-- owl carousel -->
    {!!Html::style('css/owl.carousel.css')!!}
 
     {!!Html::style('css/jquery-jvectormap-1.2.2.css')!!}
@@ -53,7 +53,7 @@
      {!!Html::style('css/bootstrap-timepicker.min.css')!!}
     {!!Html::style('css/buttons.dataTables.min.css')!!}
     {!!Html::style('css/jquery.dataTables.min.css')!!}
-      <!-- Bootstrap Core CSS 
+      <!-- Bootstrap Core CSS
  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -81,9 +81,6 @@
 </section>
 
 
-
-
-
   <!-- javascripts -->
       {!!Html::script('js/jquery.js')!!}
 
@@ -93,7 +90,7 @@
 
         {!!Html::script('js/jquery-ui-1.9.2.custom.min.js')!!}
 
-  <!-- bootstrap -->     
+  <!-- bootstrap -->
    {!!Html::script('js/bootstrap.min.js')!!}
 
         {!!Html::script('js/jquery.scrollTo.min.js')!!}
