@@ -37,7 +37,7 @@ Route::get('/noPermission',function(){
 });
 
 Route::get('/dashboard',['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
-Route::get('/welcome',['as'=>'index','uses'=>'MapController@index']);
+// Route::get('/welcome',['as'=>'index','uses'=>'MapController@index']);
 
 ////////////////////////////////////////////////Front
 Route::get('/index',function(){
@@ -123,7 +123,7 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     Route::post('contact', 'EmailController@postContact');
     /////////////////////////////////////////////////////////
 
-		Route::get('contactB', 'EmailController@getContactB');
+		Route::get('contactB', ['as'=>'getContactB','uses'=>'EmailController@getContactB']);
     Route::post('contactB', 'EmailController@postContactB');
     /////////////////////////////////////////////////////////
 
@@ -135,9 +135,20 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 		Route::get('frais/eleve/pay',['as'=>'pay','uses'=>'PayementController@pay']);
 		Route::post('frais/eleve/exstra/pay',['as'=>'exstraPay','uses'=>'PayementController@exstraPay']);
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Route::get('events','EventController@index');
+// Route::post('events', 'EmailController@addEvent');
+		// Route::get('events', 'EventController@index')->name('events.index');
+		// Route::post('events', 'EventController@addEvent')->name('events.add');
 
+		Route::resource('tasks', 'TasksController');
 
+	///////////////////////////////////////////////////
+	Route::get('/agenda', function () {
+	    return view('welcome');
+	});
 
-
+	Route::resource('events', 'EventController',['only' => ['index', 'store', 'update', 'destroy']]);
 
 });

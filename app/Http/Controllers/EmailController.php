@@ -6,10 +6,15 @@ use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
+use Mapper;
+
 class EmailController extends Controller
 {
     ////////////////////////////////////
     public function getContact() {
+      // Mapper::map(31.637679,-8.010225, ['zoom' => 15,
+      //  'markers' => ['title' => 'Eureka creation', 'animation' => 'DROP'],
+      //  'clusters' => ['size' => 15, 'center' => true, 'zoom' => 20]]);
 		return view('email.contact');
 	}
 
@@ -34,8 +39,24 @@ class EmailController extends Controller
 	}
 
 
+
+  public function index()
+{
+  // Mapper::map(31.637679,-8.010225);
+Mapper::map(31.637679,-8.010225, ['zoom' => 15,
+'markers' => ['title' => 'Eureka creation', 'animation' => 'DROP'],
+'clusters' => ['size' => 15, 'center' => true, 'zoom' => 20]]);
+
+  return view('welcome');
+}
+
+
+
   ////////////////////////////////////
   public function getContactB() {
+    Mapper::map(31.517564,-8.061250, ['zoom' => 15,
+    'markers' => ['title' => 'Eureka creation', 'animation' => 'DROP'],
+    'clusters' => ['size' => 15, 'center' => true, 'zoom' => 20]]);
   return view('FrontEnd.contact');
 }
 

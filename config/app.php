@@ -170,6 +170,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,11 +231,14 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-      'Html' => Collective\Html\HtmlFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
       // 'Mapper' => cornford\googlmapper\Facades\MapperFacade::class,
 // 'GMaps' => FarhanWazir\GoogleMaps\Facades\GMapsFacade::class,
-'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
-   'Mapper'     => Cornford\Googlmapper\Facades\MapperFacade::class,
+       'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
+       'Mapper'     => Cornford\Googlmapper\Facades\MapperFacade::class,
+       'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+
+
 
     ],
 

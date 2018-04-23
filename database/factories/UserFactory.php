@@ -21,3 +21,16 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+use Carbon\Carbon;
+
+$factory->define(App\Events::class, function (Faker\Generator $faker) {
+    $date_start = $faker->dateTimeThisYear();
+    $date_end = new Carbon($date_start->format('r'));
+    return [
+        'title' => $faker->sentence(4),
+        'start' =>  $date_start,
+        'end' =>  $date_end->addHours($faker->numberBetween(1, 35)),
+        'color' => $faker->hexColor
+    ];
+});

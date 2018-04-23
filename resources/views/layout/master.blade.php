@@ -99,7 +99,6 @@
         {!!Html::script('js/jquery.nicescroll.js')!!}
 
 
-
         {!!Html::script('assets/jquery-knob/js/jquery.knob.js')!!}
 
         {!!Html::script('js/jquery.sparkline.js')!!}

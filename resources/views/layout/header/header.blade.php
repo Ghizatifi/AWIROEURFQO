@@ -12,7 +12,7 @@
         <ul class="nav top-menu">
           <li>
             <form class="navbar-form">
-            
+
               <input class="form-control" placeholder="Search" type="text">
             </form>
           </li>
@@ -108,7 +108,7 @@
               </li>
             </ul>
           </li>
-    
+
           <li id="mail_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-l"></i>
@@ -172,7 +172,7 @@
               </li>
             </ul>
           </li>
-      
+
           <li id="alert_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
@@ -237,7 +237,7 @@
               <li>
                 <a href="{{ url('logout') }}"><i class="icon_key_alt"></i> Deconnecter</a>
               </li>
-             
+
             </ul>
           </li>
           <!-- user login dropdown end -->
