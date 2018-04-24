@@ -171,6 +171,10 @@ return [
         FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        // ConsoleTVs\Charts\ChartsServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
@@ -237,6 +241,7 @@ return [
        'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
        'Mapper'     => Cornford\Googlmapper\Facades\MapperFacade::class,
        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+       // 'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
 
 
 

@@ -4,7 +4,6 @@
 
 
 
-
 /////========================================//////////////
 
 $('#academic_id').on('change',function(e){
@@ -14,7 +13,12 @@ $('#academic_id').on('change',function(e){
 $('#level_id').on('change',function(e){
 	showClassInfo()
 })
-
+$('#shift_id').on('change',function(e){
+	showClassInfo()
+})
+$('#time_id').on('change',function(e){
+	showClassInfo()
+})
 $('#batche_id').on('change',function(e){
 	showClassInfo()
 })
@@ -30,18 +34,18 @@ $('#group_id').on('change',function(e){
 
 	$("#form-view-class #program_id").on('change',function(e){
 
-		var id_programm =$(this).val();
+		var program_id =$(this).val();
 		var level = $('#level_id');
 		$(level).empty();
-		$.get("{{route('showLevel')}}",{id_programm:id_programm},function(data){
+		$.get("{{route('showLevel')}}",{program_id:program_id},function(data){
 			$.each(data,function(i,l){
 				$(level).append($("<option/>",{
 					value : l.level_id,
-					text  :  l.niveau,
+					text  :  l.level,
 
 				}));
 			});
-			showClassInfo();
+	showClassInfo()
 
 		});
 	});
@@ -51,13 +55,12 @@ $('#group_id').on('change',function(e){
 
 //////////////////////////============================select classPopup//////////////////
 
-$('#show-class-info').on('click',function(e){
-showClassInfo()
+	$('#show-class-info').on('click',function(e){
+	showClassInfo()
 
-e.preventDefault();
-$('#academic-choose').modal('show');
-})
-
+		e.preventDefault();
+		$('#academic-choose').modal('show');
+	})
 
 
 //////////////////////////////////////////////// addAclass in table

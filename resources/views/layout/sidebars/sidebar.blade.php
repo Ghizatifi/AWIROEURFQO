@@ -75,8 +75,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">Student Lists </a></li>
-              <li><a class="" href="">Student Enroll </a></li>
+              <li><a class="" href="{{route('getListEtd')}}">Liste des etudiants </a></li>
+              <li><a class="" href="{{route('NewStudentRegister')}}">Student Enroll </a></li>
             </ul>
           </li>
 

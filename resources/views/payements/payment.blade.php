@@ -40,25 +40,26 @@
 					</caption>
 					<thead>
 						<tr>
-							<th>Programme</th></br>
-		 					<th>Niveau</th></br>
-		 					<th>Frais Scolarite (dh)</th>
-		 					<!-- <th>Montant (dh)</th> -->
-		 					<th>Payé (dh)</th>
-		 					<th>Le reste (dh)</th>
+							<th>Programs</th>
+							<th>Leavel</th>
+							<th>School Fee($)</th>
+							<!-- <th>Amount ($)</th> -->
+							<!-- <th>Dis(%)</th> -->
+							<th>Paid($)</th>
+							<th>Amount Lack($)</th>
 
 						</tr>
 					</thead>
 					<tr>
 						<td>
-							<select id="id_programm" name="id_programm" class="d">
+							<select id="program_id" name="program_id" class="d">
 								@foreach($program as $p)
 								<option value="{{$p->id_programm}}"{{$p->program_id == $status->id_programm ?'selected' : null}}>{{$p->programe}}  </option>
 										@endforeach
 							</select>
 						</td>
 						<td>
-							<select id="id_niveau" name="id_niveau" class="d">
+							<select id="level_Id" name="level_id" class="d">
 								@foreach($niveau as $l)
 											<option value="{{$l->id_niveau}}" {{$l->id_niveau == $status->id_niveau? 'selected' :null}}>{{$l->niveau}}</option>
 									@endforeach
@@ -69,7 +70,6 @@
 						<div class="input-group">
 							<input type="text" name="fee" id="Fee" value="{{ $fraisEtudiant->montant or null }}" readonly="true" >
 							<span class="input-group-addon create-fee" title="create fee" style="cursor: pointer; color: #ff00d2; padding: 0px 3px; padding-right: none;">dh</span>
-
 						</div>
 						<input type="hidden" name="id_frais" id="feeID" value="{{$fraisEtudiant->id_frais or null}}">
 						<input type="hidden" name="id_eleve" id="studentD"  value="{{$id_eleve}}" >
@@ -80,32 +80,31 @@
 
 					</td>
 					<!-- <td>
-						<input type="text" name="montant" id="Amount" required class="d">
-					</td> -->
-					<!-- <td>
+						<input type="text" name="amount" id="Amount" required class="d">
+					</td>
+					<td>
 						<input type="text" name="discount" id="Discount" class="d" >
 					</td> -->
-					<!-- <td>
-						<input type="text" name="montant" id="Paid" >
-					</td> -->
 					<td>
-						<input type="text" name="montant" id="Paid" >
+						<input type="text" name="paid" id="Paid" >
 					</td>
 					<td>
 						<input type="text" name="lack" id="Lack" disabled>
 					</td>
-
 				</tr>
 				<thead>
 					<tr>
-						<th colspan="2">Type de paiement</th>
+						<th colspan="2">Remarck</th>
+						<th colspan="5">Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-
 						<td colspan="2">
-							<input type="text" name="type_paiement" id="type_paiement">
+							<input type="text" name="remark" id="remark">
+						</td>
+						<td colspan="5">
+							<input type="text" name="description" id="description">
 						</td>
 					</tr>
 				</tbody>
@@ -113,7 +112,7 @@
 		</div>
 		<div class="panel-footer" >
 			<input type="submit" id="btn-go" name="btn-go" class="btn-primary btn-payment" value="{{ count($readstudentTrans)!=0? 'Extra Pay': 'Enregistrer' }}">
-					<!-- <a href="" target="_blank" class="btn btn-warning btn-xs"><i class="fa fa-print" title="Print"></i>Imprimer</a> -->
+					<a href="{{ route('printInvoice',$id_reçus) }}" target="_blank" class="btn btn-warning btn-xs"><i class="fa fa-print" title="Print"></i>Imprimer</a>
 			<input type="button" onclick="this.form.reset()"  class="btn btn-default btn-reset pull-right" value="Reset" >
 
 		</div>

@@ -26,11 +26,13 @@
 
 						<td style="text-align: center;">{{$var->niveau}}</td>
 						<td style="text-align: center;">{{number_format($var->school_fee,2)}} dh</td>
-						<!-- <td style="text-align: center;">{{number_format($var->student_amount,2)}} dh</td> -->
-						<td style="text-align: center; color: BlueViolet  ">{{ number_format($readstudentTrans->where('id_frais_etudiant',$var->id_frais_etudiant)->sum('paye'),2) }} dh
+						<td style="text-align: center;">{{number_format($var->student_amount,2)}} dh</td>
+						<!-- <td style="text-align: center; color: BlueViolet  ">{{ number_format($readstudentTrans->where('id_frais_etudiant',$var->id_frais_etudiant)->sum('paye'),2) }} dh
 							<input type="hidden" name="b" id="b">
-						</td>
+						</td> -->
 						<td style="text-align: center; color: red">{{ number_format($var->school_fee - $readstudentTrans->where('id_frais_etudiant',$var->id_frais_etudiant)->sum('paye'),2) }} dh
+							<input type="hidden" name="b" id="b">
+
 							<!-- <input type="hidden" name="c" id="c"> -->
 							<!-- <input type="text" name="b" id="b"> -->
 

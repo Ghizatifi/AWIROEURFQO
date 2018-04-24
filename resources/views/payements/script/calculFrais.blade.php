@@ -14,6 +14,7 @@ if (paid!='' && amt!='') {
 
 	var dis = (((parseFloat(fee)-parseFloat(paid)) * 100)/fee);
 	$('#Lack').val(parseFloat(amt)-parseFloat(paid));
+
 }
 
 if (amt== '' && paid == '') {
@@ -53,6 +54,7 @@ if (pay!='') {
 if (pay!='' && b!='') {
 	var lack = parseFloat(b)-parseFloat(paid)
 	$('#Lack').val(parseFloat(lack));
+
 }
 if ($('#Lack').val()<0) {
 			$('#Lack').css("color" ,'red');
@@ -75,7 +77,7 @@ c= $('#c').val()
  }
 if (pay!='' && b !='') {
 
-var lack = parseFloat(b)-parseFloat(paid);
+var lack = parseFloat(b)-parseFloat(pay);
 $('#Lack').val(parseFloat(lack));
 }
 if ($('#Lack').val()<0) {

@@ -9,7 +9,7 @@
 			</header>
 			<form  action="#" method="POST" class="form-horizontal" id="form-view-class">
 				{{ csrf_field() }}
-				<input type="hidden" name="classe_id" id="classe_id">
+				<input type="hidden" name="id_classe" id="id_classe">
 
 				<div class="panel-body" >
 					<div class="form-group">

@@ -134,6 +134,22 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 		Route::post('frais/create',['as'=>'createFrais','uses'=>'PayementController@createFrais']);
 		Route::get('frais/eleve/pay',['as'=>'pay','uses'=>'PayementController@pay']);
 		Route::post('frais/eleve/exstra/pay',['as'=>'exstraPay','uses'=>'PayementController@exstraPay']);
+		Route::get('frais/eleve/print/invoice/{receiptId}',['as'=>'printInvoice','uses'=>'PayementController@printInvoice']);
+		Route::get('frais/eleve/transaction/dalete/{id_transaction}',['as'=>'deleteTransaction','uses'=>'PayementController@deleteTransaction']);
+
+
+		////////////////////////////////////////////Les rapports////////////////////////
+
+
+		Route::get('rapport/etudiant-list',['as'=>'getListEtd','uses'=>'RapportController@getListEtd']);
+		// Route::get('rapport/etudiant-info',['as'=>'getstudentInfo','uses'=>'RapportController@getstudentInfo']);
+		Route::get('report/student-info',['as'=>'getstudentInfo','uses'=>'RapportController@getstudentInfo']);
+
+		// Route::get('report/student-multi-class',['as'=>'getStudentListsMulitiClass','uses'=>'ReportController@getStudentListsMulitiClass']);
+		// Route::get('report/student-multi-class-show',['as'=>'showStudentMultiClass','uses'=>'ReportController@showStudentMultiClass']);
+		Route::get('report/student-Enorrl',['as'=>'NewStudentRegister','uses'=>'RapportController@NewStudentRegister']);
+		//
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

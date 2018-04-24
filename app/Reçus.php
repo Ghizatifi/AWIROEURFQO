@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reçus extends Model
 {
   protected $table= 'recus';
-  protected $fillable =['id_eleve','id_transaction'];
+  protected $fillable =['id_transaction','id_eleve'];
   protected $primaryKey = 'id_reçus';
   public $timestamps = false;
 

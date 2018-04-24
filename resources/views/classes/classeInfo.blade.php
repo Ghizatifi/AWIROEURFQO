@@ -20,10 +20,12 @@
                       <th>Niveau</th>
                       <th>Groupe</th>
                         <th>Details</th>
-                    <th id="hidden">Action</th>
+                        <th id="hidden">Action</th>
+                        <th>
+                          <input type="checkbox" id="checkAll">
+                        </th>
 
-
-                  </tr>
+                      </tr>
                 </thead>
                 <tbody>
                 	@foreach($classes as $c)
@@ -43,7 +45,10 @@
 
                     </td>
                     <td class="action" id="hidden"><button value="{{$c->id_classe}}" class="btn btn-danger  del-class"> Supprimer </button></td>
+                    <td>
+                        <input type="checkbox" name="chk[]" value="{{ $c->id_classe }}" class="chk">
 
+                     </td>
 
 
                     </tr>

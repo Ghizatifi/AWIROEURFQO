@@ -10,6 +10,8 @@ use App\Niveau;
 use App\Periode;
 use App\Time;
 use App\Statue;
+use App\Classe;
+
 use App\Group;
 use App\frais;
 use App\FraisType;
@@ -92,14 +94,23 @@ class PayementController extends Controller
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function savePayment(Request $request)
     {
-      $studentfee =FraisEtudiant::create($request->all());
+      //$studentfee =FraisEtudiant::create($request->all());
+      $studentfee =FraisEtudiant::create([
+        'date'=>$request->date,
+        'id_user'=>$request->id_user,
+        'montant'=>$request->paid,
+        'id_eleve'=>$request->id_eleve,
+        'id_frais'=>$request->id_frais,
+        'id_niveau'=>$request->id_niveau,
+
+      ]);
 
       $transact =FraisTransaction::create([
         'date'=>$request->date,
         'id_user'=>$request->id_user,
         'description'=>$request->description,
         'id_frais_etudiant'=>$studentfee->id_frais_etudiant,
-        'paye'=>$request->montant,
+        'paye'=>$request->paid,
         'id_eleve'=>$request->id_eleve,
         'id_frais'=>$request->id_frais,
         'type_paiement'=>$request->type_paiement
@@ -203,4 +214,67 @@ public function exstraPay(Request $request){
   return back();
 
 }
+
+// $receipt_id
+    public function printInvoice ($receipt_id)
+    {
+
+    $Invoice = Reçus::join('transactions','transactions.id_transaction','=','recus.id_transaction')
+    ->join('etudiants','etudiants.id_eleve','=','recus.id_eleve')
+    ->join('frais','frais.id_frais','=','transactions.id_frais')
+    ->join('niveaux','niveaux.id_niveau','=','frais.id_niveau')
+    ->join('programms','programms.id_programm','=','niveaux.id_programm')
+    ->join('users','users.id','=','transactions.id_user')
+    // ->join('statues','statues.student_id','=','students.student_id')
+
+    ->select(
+      'etudiants.id_eleve',
+      'etudiants.nom',
+      'etudiants.prenom',
+      'etudiants.sexe',
+      'frais.montant as school_fee',
+      'frais.id_frais',
+      'transactions.date',
+      'transactions.paye',
+      'users.name',
+      'recus.id_reçus',
+      'niveaux.id_niveau',
+      'transactions.id_frais_etudiant'
+    )
+    ->where('recus.id_reçus',$receipt_id)
+    ->first();
+
+
+    // ////
+
+    $status = Classe::join('niveaux','niveaux.id_niveau','=','classes.id_niveau')
+     ->join('programms','programms.id_programm','=','niveaux.id_programm')
+     ->join('annees','annees.id_annee','=','classes.id_annee')
+
+     ->join('groups', 'groups.id_group','=','classes.id_group')
+     ->where('niveaux.id_niveau',$Invoice->id_niveau)
+        // ->where('statues.student_id',$Invoice->student_id)
+
+     ->select(DB::raw('CONCAT(programms.programe,
+      " / Niveau-",niveaux.niveau,
+      " / Groupe-",groups.groupe,
+      " / Annee-",annees.annee
+     ) As detail'))->first();
+
+
+    $studentFee= FraisEtudiant::where('id_frais_etudiant',$Invoice->id_frais_etudiant)->first();
+
+
+     $totalPaid = FraisTransaction::where('id_frais_etudiant',$Invoice->s_fee_id)->sum('paye');
+    return view('invoice.invoice',compact('Invoice','status','totalPaid','studentFee'));
+    }
+
+
+//////////////////////////////////////////////////
+public function deleteTransaction($transact_id){
+
+  FraisTransaction::destroy($transact_id);
+  return back();
+}
+
 }
