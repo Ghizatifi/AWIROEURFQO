@@ -8,21 +8,16 @@
         </button>
                 <h5 class="modal-title" >Add A New Time</h5>
       </div>
-      <form action="{{ route('postInsertgroup') }}" method="POST" id="form-group-create" >
+      <form action="#" method="POST" id="form-group-create" >
 <div class="modal-body">
-<div class="row">
-         <div class="col-sm-12">
-            <select  class="form-control" name="id_niveau" id="id_niveau" ></select>
-            </div>
-      </div>
-
+     
         <div class="row">
          <div class="col-sm-12">
             <input type="text" class="form-control" name="groupe" id="new_group" placeholder="group">
 
             </div>
       </div>
-
+     
       </div>
 
       <div class="modal-footer">

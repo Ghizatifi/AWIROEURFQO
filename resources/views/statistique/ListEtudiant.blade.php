@@ -42,20 +42,19 @@
 
  @endsection
 
-
-
  @section('script')
 
  @include('script.scriptClassPopup')
  <script type="text/javascript">
- 	$(document).on('click','#class-edite',function(e){
- 		e.preventDefault();
- 		id_classe =($(this).data('id'));
- 		$.get('{{ route('getstudentInfo') }}',{id_classe:id_classe},function (data) {
-console.log(id_classe);
- 			$('.show-student-info').empty().append(data);
- 		})
+  $(document).on('click','#class-edite',function(e){
+ 	 e.preventDefault();
+ 	 id_classe =($(this).data('id'));
+	 console.log(id_classe);
+ 	 $.get("{{route('getEtudiantInfo')}}",{id_classe:id_classe},function (data) {
+     console.log(data);
+ 		//$('.show-student-info').empty().append(data);
+ 	 })
 
- 	})
+  })
  </script>
  @endsection

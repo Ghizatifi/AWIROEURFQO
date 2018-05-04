@@ -16,6 +16,7 @@
                       </a>
             <ul class="sub">
               <li><a class="" href="{{ url('/gestion/cours') }}">Gestion des classes</a></li>
+              <li><a class="" href="{{ url('/gestion/matiere') }}">Gestion des matieres</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -75,7 +76,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{route('getListEtd')}}">Liste des etudiants </a></li>
+              <li><a class="" href="{{route('getListEtudiant')}}">Liste des etudiants </a></li>
               <li><a class="" href="{{route('NewStudentRegister')}}">Student Enroll </a></li>
             </ul>
           </li>

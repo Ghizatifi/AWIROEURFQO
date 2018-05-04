@@ -13,15 +13,7 @@ $('#academic_id').on('change',function(e){
 $('#level_id').on('change',function(e){
 	showClassInfo()
 })
-$('#shift_id').on('change',function(e){
-	showClassInfo()
-})
-$('#time_id').on('change',function(e){
-	showClassInfo()
-})
-$('#batche_id').on('change',function(e){
-	showClassInfo()
-})
+
 $('#group_id').on('change',function(e){
 	showClassInfo()
 })
@@ -34,14 +26,14 @@ $('#group_id').on('change',function(e){
 
 	$("#form-view-class #program_id").on('change',function(e){
 
-		var program_id =$(this).val();
+		var id_programm =$(this).val();
 		var level = $('#level_id');
 		$(level).empty();
-		$.get("{{route('showLevel')}}",{program_id:program_id},function(data){
+		$.get("{{route('showLevel')}}",{id_programm:id_programm},function(data){
 			$.each(data,function(i,l){
 				$(level).append($("<option/>",{
 					value : l.level_id,
-					text  :  l.level,
+					text  :  l.niveau,
 
 				}));
 			});
@@ -66,6 +58,7 @@ $('#group_id').on('change',function(e){
 //////////////////////////////////////////////// addAclass in table
 function showClassInfo(){
 	var data = $('#form-view-class').serialize();
+	console.log(data);
 	$.get("{{ route('showClassInformation') }}",data,function(data){
 			$('#add-class-info').empty().append(data);
 			$('td#hidden').addClass('hidden');

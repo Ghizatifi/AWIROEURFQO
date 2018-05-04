@@ -40,7 +40,7 @@ class ProfController extends Controller
         return view('professeur.profList',$ar);
     }
 
-   
+
     public function destroy($id)
     {
         $prof = Professeur::find($id);
@@ -48,7 +48,53 @@ class ProfController extends Controller
 
         return redirect('/gestion/prof/getProf')->with('success', 'prof has been deleted!!');
     }
-    
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+      {
+          // $prof = Professeur::where('id_user', auth()->user()->id)
+          //                 ->where('id_prof', $id)
+          //                 ->first();
+          $prof = Professeur::find($id);
+          return view('professeur.edit', compact('prof'));
+      }
+
+      // public function updateProf($data)
+      // {
+      //         $prof = $this->find($data['id']);
+      //         $prof->id_user = auth()->user()->id;
+      //         $prof->nom = $data['nom'];
+      //         $prof->prenom = $data['prenom'];
+      //         $prof->save();
+      //         return 1;
+      // }
+/////////////////////////////////////////////////////////////////////////
+/**
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+public function update(Request $request, $id)
+    {
+
+      $this->validate($request ,[
+        'nom'=>'required',
+        'prenom'=> 'required'
+         ]);
+      // request()->validate($request ,[
+      //   'nom'=>'required',
+      //   'prenom'=> 'required']);
+      Professeur::find($id)->update($request->all());
+      return redirect('/gestion/prof/getProf')->with('success', 'New support ticket has been updated!!');
+    }
 
 
 

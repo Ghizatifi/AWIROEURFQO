@@ -10,7 +10,7 @@
 
       </div>
       <div class="modal-body">
-            <input type="text" class="form-control" name="programe" id="new_program" placeholder="courses">
+            <input type="text" class="form-control" name="program" id="new_program" placeholder="courses">
 
       </div>
        <div class="modal-body">

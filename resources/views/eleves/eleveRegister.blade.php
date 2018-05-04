@@ -121,6 +121,8 @@
 										<input type="text" name="prenom" id="prenom" class="form-control" required>
 									</div>
 								</div>
+
+							
 								{{-------Last Name-------}}
 
 								<div class="col-md-4">
@@ -405,6 +407,9 @@
 @section('script')
 @include('script.scriptClassPopup')
 		<script type="text/javascript">
+
+
+
 
 							$('#form-multi-class #btn-go').addClass('hidden');
 

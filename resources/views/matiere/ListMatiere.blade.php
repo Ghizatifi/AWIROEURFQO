@@ -1,12 +1,13 @@
 @extends('layout.master')
 
 @section('content')
+
 @include('programm.popup.annee')
 @include('programm.popup.group')
+@include('programm.popup.time')
 @include('programm.popup.niveau')
+@include('programm.popup.periode')
 @include('programm.popup.matiere')
-
-
 
 
 
@@ -30,7 +31,7 @@
 			<header class="panel-heading">
 				Gestion des classes
 			</header>
-			<form  action="{{ route('createclasses') }}" method="POST" class="form-horizontal" id="form-crete-class">
+			<form  action="{{ route('creatematprogramme') }}" method="POST" class="form-horizontal" id="form-crete-class">
 				{{ csrf_field() }}
 				<input type="hidden" name="active" id="active" value="1">
 				<input type="hidden" name="id_classe" id="id_classe">
@@ -42,7 +43,7 @@
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Anne scolaire </label>
 							<div class="input-group">
-								<select class="form-control" name="id_annee" id="id_annee">
+								<select class="form-control" name="id_annee" id="academic_id">
 								@foreach($annees as $A)
 									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 
@@ -57,7 +58,7 @@
 						<div class="col-sm-4" >
 							<label for="acdemic-year"> Programme </label>
 							<div class="input-group">
-							<select class="form-control" name="id_programm" id="id_programm">
+							<select class="form-control" name="id_program" id="program_id">
 								@foreach($program as $key=> $p)
 									<option value="{{$p->id_programm}}">{{$p->programe}}</option>
 
@@ -72,12 +73,10 @@
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
-							<select class="form-control" name="id_niveau" id="id_niveau">
+							<select class="form-control" name="id_niveau" id="level_id">
+								<select class="form-control" name="program_id" id="program_id">
 
-								@foreach($niveau as $g)
-									<option value="{{$g->id_niveau}}">{{$g->niveau}}</option>
-
-									@endforeach
+								</select>
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-level"></span>
@@ -85,20 +84,21 @@
 							</div>
 						</div>
 
-	         <div class="col-sm-3" >
-							<label for="groub"> Groupe </label>
-							<div class="input-group">
-								<select class="form-control" name="id_group" id="id_group">
-								@foreach($groups as $g)
-									<option value="{{$g->id_group}}">{{$g->groupe}}</option>
+            <div class="col-sm-4" >
+              <label for="acdemic-year"> Matiere </label>
+              <div class="input-group">
+              <select class="form-control" name="id_matiere" id="id_matiere">
+                @foreach($matiere as $key=> $p)
+                  <option value="{{$p->id_matiere}}">{{$p->matiere}}</option>
 
-									@endforeach
-								</select>
-								<div class="input-group-addon" >
-									<span class="fa fa-plus" id="add-more-group"></span>
-								</div>
-							</div>
-						</div>
+                  @endforeach
+                </select>
+                <div class="input-group-addon" >
+                  <span class="fa fa-plus" id="add-more-program"></span>
+                </div>
+              </div>
+            </div>
+
 				</div>
 
 
@@ -117,7 +117,7 @@
 	</form>
 	<div class="panel panel-default ">
 		<div class="panel panel-heading">
-			Infos Classe
+			List des matieres
 		</div>
 		<div class="panel panel-body" id="add-class-info">
 
@@ -137,20 +137,20 @@
 <script>
 			showClassInfo();
 
-$("#form-crete-class #id_programm").on('change',function(e){
+$("#form-crete-class #program_id").on('change',function(e){
 
 		var id_programm =$(this).val();
-		var level = $('#id_niveau');
+		var level = $('#level_id');
 		$(level).empty();
 		$.get("{{route('showLevel')}}",{id_programm:id_programm},function(data){
 			$.each(data,function(i,l){
 				$(level).append($("<option/>",{
-					value : l.id_niveau,
+					value : l.level_id,
 					text  :  l.niveau,
 
 				}));
 			});
-			//showClassInfo();
+			showClassInfo();
 
 		});
 	});
@@ -168,8 +168,8 @@ $("#form-crete-class #id_programm").on('change',function(e){
 $('.btn-save-year').on('click',function(){
 	var annee = $('#new_year').val();
 	$.post("{{route('postInsertYear')}}",{annee:annee},function(data){
-		$('#id_annee').append($("<option/>",{
-			value : data.id_annee,
+		$('#academic_id').append($("<option/>",{
+			value : data.academic_id,
 			text  :  data.annee
 
 		}));
@@ -184,15 +184,13 @@ $('.btn-save-year').on('click',function(){
  });
 
 
- $('.btn-save-program').on('click',function(){
- 	var programe = $('#new_program').val();
- 	var description = $('#new_description').val();
+ $('.btn-save-matiere').on('click',function(){
+ 	var matiere = $('#new_program').val();
 
-
- 	$.post("{{route('postInsertProgram')}}",{programe:programe,description:description},function(data){
- 	$('#id_programm').append($("<option/>",{
- 			value : data.id_programm,
- 			text  :  data.programe
+ 	$.post("{{route('postInsertProgram')}}",{matiere:matiere},function(data){
+ 	$('#program_id').append($("<option/>",{
+ 			value : data.program_id,
+ 			text  :  data.nom
 
  		}));
  		$('#new_program').val("");
@@ -229,8 +227,8 @@ function MergeCommonRows(table){
   /////////////////////////////////////////////////////////////////Niveau///////////////////////////////////////////////
 $('#add-more-level').on('click',function(){
 
- 	var programs= $('#id_programm option');
- 	var program= $('#form-level-create').find('#id_programm');
+ 	var programs= $('#program_id option');
+ 	var program= $('#form-level-create').find('#programs_id');
  	$(program).empty();
  	$.each(programs,function(i,pro){
  		$(program).append($("<option/>",{
@@ -243,53 +241,94 @@ $('#add-more-level').on('click',function(){
 
  });
 
-
-
-
 //////
 $('#form-level-create').on('submit',function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	var url = $(this).attr('action');
 	$.post(url,data,function(data){
-		$('#id_niveau').append($("<option/>",{
+
+		$('#level_id').append($("<option/>",{
 			value : data.id_niveau,
 			text  :  data.niveau
+
 		}));
-		$('#id_programm').val("");
+		$('#programs_id').val("");
 		$('#new_level').val("");
 		$('#description').val("");
 
 	});
 });
+ /////////
+
      ////////////////////////////////////==============///////////shift/////////////////////////////////////////////////
+
+    $('#add-more-shift').on('click',function(){
+    	$('#shift-show').modal();
+    });
+
+
+//////////
+
+$('.btn-save-shift').on('click',function(){
+	var periode = $('#new_shift').val();
+	$.post("{{route('postInsertshift')}}",{periode:periode},function(data){
+		$('#shift_id').append($("<option/>",{
+			value : data.id_periode,
+			text  :  data.shift
+
+		}));
+		$('#new_shift').val("");
+	});
+});
+
+
+////////////////////////////////////////======time===/////////////////////////////////////////////////
+
+$('#form-time-create').on('submit',function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+	$.post("{{ route('postInserttime') }}",data,function(data){
+
+		$('#time_id').append($("<option/>",{
+			value : data.time_id,
+			text  :  data.time
+
+		}));
+	});
+
+	$(this).trigger('reset');
+
+});
+$('#add-more-time').on('click',function(e){
+
+	$('#time-show').modal('show');
+
+
+});
+
+
+
 $('#form-group-create').on('submit',function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	$.post("{{ route('postInsertgroup') }}",data,function(data){
-		$('#id_group').append($("<option/>",{
+
+		$('#group_id').append($("<option/>",{
 			value : data.id_group,
 			text  :  data.groupe
+
 		}));
 	});
+
 	$(this).trigger('reset');
 
 });
 $('#add-more-group').on('click',function(e){
 
-	var programs= $('#id_niveau option');
-	var program= $('#form-group-create').find('#id_niveau');
-	$(program).empty();
-	$.each(programs,function(i,pro){
-		$(program).append($("<option/>",{
-			value : $(pro).val(),
-			text  :  $(pro).text(),
-
-		}));
-	});
-
-
 	$('#group-show').modal('show');
+
+
 });
 
 ////////////////////////////////////////======ADD AClass===////////////////////////////////////////////////////////////
@@ -302,7 +341,7 @@ $('#form-crete-class').on('submit',function(e){
 
 	var url = $(this).attr('action');
 	$.post(url,data,function(data){
-		showClassInfo(data.id_annee);
+		showClassInfo(data.academic_id);
 	});
 	$(this).trigger('reset');
 
@@ -312,8 +351,8 @@ $('#form-crete-class').on('submit',function(e){
 function showClassInfo(){
 var data = $('#form-crete-class').serialize();
 
-	//var id_annee= $('#id_annee').val();
-	$.get("{{ route('viewClasses') }}",data,function(data){
+	//var academic_id= $('#academic_id').val();
+	$.get("{{ route('showClassInformation') }}",data,function(data){
 			$('#add-class-info').empty().append(data);
 			MergeCommonRows($('#table-class-info'))
 
@@ -324,28 +363,17 @@ var data = $('#form-crete-class').serialize();
 $(document).on('click','.del-class',function(e){
 	id_classe = $(this).val();
 	$.post("{{ route('deletClass') }}" ,{id_classe:id_classe},function(data){
-			showClassInfo($('#id_annee').val());
+			showClassInfo($('#academic_id').val());
 
 	})
 })
-////////////////////////////////////////////////////////class-edite//////////////////////////////
-$(document).on('click','#class-edite',function(data){
-	var id_classe =$(this).data('id');
-	$.get("{{route('editeClass')}}",{id_classe:id_classe},function(data){
-		$('#id_annee').val(data.id_annee);
-		$('#id_niveau').val(data.id_niveau);
-		$('#id_group').val(data.id_group);
-		$('#id_classe').val(data.id_classe);
-		$('#id_programm').val(data.id_programm);
 
-	})
-})
 }///////////////////////////////////////////////////////////////updateClass/////////////////////////////////////////////
 $('.update-class').on('click',function(e){
 	e.preventDefault();
 	var data =$('#form-crete-class').serialize(data);
 	$.post("{{ route('updateClass') }}",data,function(dta){
-					showClassInfo(data.id_annee);
+					showClassInfo(data.academic_id);
 
 	})
 })

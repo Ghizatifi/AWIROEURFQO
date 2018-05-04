@@ -14,21 +14,6 @@
 
   <title>SYSTEM STUDENT</title>
 
-<!-- full calendar -->
-<!-- {!! Html::style('vendor/izzaCalendar/bootstrap/css/bootstrap.min.css') !!}
-{!! Html::style('vendor/izzaCalendar/fullcalendar/fullcalendar.min.css') !!}
-{!! Html::style('vendor/izzaCalendar/bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css') !!}
-{!! Html::style('vendor/izzaCalendar/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
-
-
-{!! Html::script('vendor/izzaCalendar/jquery.min.js') !!}
-{!! Html::script('vendor/izzaCalendar/bootstrap/js/bootstrap.min.js') !!}
-{!! Html::script('vendor/izzaCalendar/fullcalendar/lib/moment.min.js') !!}
-{!! Html::script('vendor/izzaCalendar/fullcalendar/fullcalendar.min.js') !!}
-{!! Html::script('vendor/izzaCalendar/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js') !!}
-{!! Html::script('vendor/izzaCalendar/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') !!} -->
-
-<!-- /full calendar -->
   <!-- Bootstrap CSS -->
   {!!Html::style('css/bootstrap.min.css')!!}
   <!-- bootstrap theme -->
@@ -40,10 +25,10 @@
 
     {!!Html::style('css/font-awesome.min.css')!!}
 
-  <!-- {!!Html::style('assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css')!!} -->
+    {!!Html::style('assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css')!!}
 
   <!-- full calendar css-->
-    <!-- {!!Html::style('assets/fullcalendar/fullcalendar/fullcalendar.css')!!} -->
+    {!!Html::style('assets/fullcalendar/fullcalendar/fullcalendar.css')!!}
 
   <!-- easy pie chart-->
     {!!Html::style('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')!!}
@@ -53,7 +38,7 @@
 
     {!!Html::style('css/jquery-jvectormap-1.2.2.css')!!}
 
-    <!-- {!!Html::style('css/fullcalendar.css')!!} -->
+    {!!Html::style('css/fullcalendar.css')!!}
 
   <!-- Custom styles -->
     {!!Html::style('css/widgets.css')!!}
@@ -124,10 +109,10 @@
 
   <!-- jQuery full calendar -->
     <!-- Full Google Calendar - Calendar -->
-          <!-- {!!Html::script('js/fullcalendar.min.js')!!} -->
+          {!!Html::script('js/fullcalendar.min.js')!!}
 
     <!--script for this page only-->
-          <!-- {!!Html::script('assets/fullcalendar/fullcalendar/fullcalendar.js')!!} -->
+          {!!Html::script('assets/fullcalendar/fullcalendar/fullcalendar.js')!!}
 
           {!!Html::script('js/calendar-custom.js')!!}
 

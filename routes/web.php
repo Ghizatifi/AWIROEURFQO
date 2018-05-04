@@ -71,8 +71,6 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
      Route::post('/gestion/cours/ajouter-matiere',['as'=>'postInsertProgram','uses'=>'ProgrammController@postInsertProgram']);
      Route::post('/gestion/cours/ajouter-niveau',['as'=>'postInsertLevel','uses'=>'ProgrammController@postInsertLevel']);
      Route::get('/gestion/cours/ListeNiveau',['as'=>'showLevel','uses'=>'ProgrammController@showLevel']);
-     Route::post('/gestion/cours/ajouter-periode',['as'=>'postInsertshift','uses'=>'ProgrammController@postInsertshift']);
-     Route::post('/gestion/cours/ajouter-time',['as'=>'postInserttime','uses'=>'ProgrammController@postInserttime']);
      Route::post('/mange/cours/ajouter-group',['as'=>'postInsertgroup','uses'=>'ProgrammController@postInsertgroup']);
      Route::get('/gestion/cours/ListeGroup',['as'=>'showGroup','uses'=>'ProgrammController@showGroup']);
 
@@ -80,22 +78,25 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 
      Route::get('/mange/courese/classe-Info',['as'=>'showClassInformation','uses'=>'ProgrammController@showClassInformation']);
 		 Route::get('/mange/courese/classInfo',['as'=>'classInformation','uses'=>'ProgrammController@classInformation']);
+		 Route::get('/mange/courese/classList',['as'=>'viewClasses','uses'=>'ProgrammController@viewClasses']);
+
 		 Route::post('/mange/courese/delet-Class',['as'=>'deletClass','uses'=>'ProgrammController@deletClass']);
 		 Route::get('/mange/courese/classe-edite',['as'=>'editeClass','uses'=>'ProgrammController@editeClass']);
 		 Route::post('/mange/courese/update-Class',['as'=>'updateClass','uses'=>'ProgrammController@updateClass']);
-
+//////////////////////////////////////matiere//////////////////////////////////
+Route::get('/gestion/matiere','MatController@getMatiere');
+Route::post('/gestion/matiere/affectaion',['as'=>'creatematprogramme','uses'=>'MatController@creatematprogramme']);
 
      //////////////////////////////////Eleve/////////////////////////////////////////////
      Route::post('/eleve/getRigister',['as'=>'RegisterEleve','uses'=>'EleveController@RegisterEleve']);
      Route::post('/gestion/cours/ajouter-group',['as'=>'postRegisterationSEleve','uses'=>'EleveController@postRegisterationSEleve']);
      Route::get('/gestion/eleve','EleveController@getUnivInfo');
      Route::get('/gestion/eleveList','EleveController@view');
-
-
+		 Route::get('/gestion/eleveList/absence','absenceController@view');
 
      Route::get('/gestion/eleve/info',['as'=>'view','uses'=>'EleveController@view']);
-     Route::post('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
-
+///////////////////////////////////////////////////////////////////
+		 Route::post('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
     Route::get('/gestion/prof/getProf',['as'=>'view','uses'=>'ProfController@view']);
     Route::delete('/matiere/deleteProf/{id}','ProfController@destroy');
 
@@ -103,6 +104,10 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
      Route::get('/gestion/prof/add-prof',function(){
         return view('professeur.profRegister');
      });
+
+		 // Route::get('/edit/prof/{id_prof}',['as'=>'edit','uses'=>'ProfController@edit']);
+		 // Route::post('/update/prof/{id_prof}',['as'=>'update','uses'=>'ProfController@update']);
+Route::resource('profs','ProfController');
 
      //Route::get('/matiere/getMatInfo','MatController@getMatInfo');
     Route::post('/matiere/getRigister',['as'=>'matRegister','uses'=>'MatController@matRegister']);
@@ -141,9 +146,9 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 		////////////////////////////////////////////Les rapports////////////////////////
 
 
-		Route::get('rapport/etudiant-list',['as'=>'getListEtd','uses'=>'RapportController@getListEtd']);
-		// Route::get('rapport/etudiant-info',['as'=>'getstudentInfo','uses'=>'RapportController@getstudentInfo']);
-		Route::get('report/student-info',['as'=>'getstudentInfo','uses'=>'RapportController@getstudentInfo']);
+		//Route::get('rapport/etudiant-list',['as'=>'getListEtd','uses'=>'RapportController@getListEtd']);
+    Route::get('statistique/liste-etudiant',['as'=>'getListEtudiant','uses'=>'statistiqueController@getListEtudiant']);
+		Route::get('statistique/Info-etudiant',['as'=>'getEtudiantInfo','uses'=>'statistiqueController@getEtudiantInfo']);
 
 		// Route::get('report/student-multi-class',['as'=>'getStudentListsMulitiClass','uses'=>'ReportController@getStudentListsMulitiClass']);
 		// Route::get('report/student-multi-class-show',['as'=>'showStudentMultiClass','uses'=>'ReportController@showStudentMultiClass']);
@@ -151,19 +156,11 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 		//
 
 
-/////////////////////////////////////////////////////////////////////////////
-//
-// Route::get('events','EventController@index');
-// Route::post('events', 'EmailController@addEvent');
-		// Route::get('events', 'EventController@index')->name('events.index');
-		// Route::post('events', 'EventController@addEvent')->name('events.add');
-
-		Route::resource('tasks', 'TasksController');
 
 	///////////////////////////////////////////////////
-	Route::get('/agenda', function () {
-	    return view('welcome');
-	});
+				Route::get('/agenda', function () {
+				    return view('events.events');
+				});
 
 	Route::resource('events', 'EventController',['only' => ['index', 'store', 'update', 'destroy']]);
 

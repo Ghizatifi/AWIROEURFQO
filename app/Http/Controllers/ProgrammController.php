@@ -19,12 +19,17 @@ class ProgrammController extends Controller
         $this->middleware('web');
     }
 
-    public function getMangeCouress()
+    public function getMangeCouress(Request $request)
     {
         $program = Programm::all();
         $annees=Annee::orderBy('id_annee','DESC')->get();
-        $niveau=niveau::all();
-        $groups=Group::all();
+         $niveau=niveau::all();
+      //   $pr=$request->id_programm;
+      // $niveau = DB::table('niveaux')
+      //            ->select('niveaux.*')
+      //            ->where('niveaux.id_programm','=',$pr)
+      //            ->get();
+        $groups=Group::orderBy('id_niveau','DESC')->get();
         return view('programm.gestionProgramm',compact('program','annees','groups','niveau'));
 
 
@@ -90,55 +95,20 @@ public function createclasses(Request $request)
         return response(Classe::create($request->all()));
     }
 }
-public function  classInformation($filter)
-{
- //  $classes = DB::table('classes')
-   return Classe::
-    join('annees','annees.id_annee','=','classes.id_annee')
-   ->join('groups','groups.id_group','=','classes.id_group')
-    ->join('niveaux','niveaux.id_niveau','=','classes.id_niveau')
-     ->join('programms','programms.id_programm','=','niveaux.id_programm')
-     ->where($filter)
-     ->orderBy('classes.id_classe','DESC');
-    // ->get();
-
-   // print_r($classes);
 
 
-   //return view('classes.classeInfo',compact('classes'));
 
-}
-public function showClassInformation(Request $request){
-
-      if ($request->id_annee!="" && $request->id_programm=="")
-      {
-             $filter = ['annees.id_annee'=>$request->id_annee];
-   }
-
-       if (
-           $request->id_annee!="" &&
-            $request->id_programm!="" &&
-        $request->id_niveau!="" &&
-           $request->id_group!=""
-          )
-        {
-          $filter = [
-          'annees.id_annee'=>$request->id_annee,
-           'programms.id_programm'=>$request->id_programm,
-            'niveaux.id_niveau'=>$request->id_niveau,
-             'groups.id_group'=>$request->id_group];
-               }
-
-         $classes = $this->classInformation($filter)->get();
-       //dd($filter);
-         return view('classes.classeInfo',compact('classes'));
-
-     }
-
-
-     public  function  View(){
-         $classes= Classe::all();
-         $ar=Array('classes'=>$classes);
+     public  function  viewClasses(){
+         $classes = DB::table('classes')
+              ->join('annees','annees.id_annee','=','classes.id_annee')
+              ->join('groups','groups.id_group','=','classes.id_group')
+               ->join('niveaux','niveaux.id_niveau','=','classes.id_niveau')
+                //->join('programms','programms.id_programm','=','niveaux.id_programm')
+                ->join('programms','programms.id_programm','=','classes.id_programm')
+                ->orderBy('annees.id_annee','DESC')
+                  ->orderBy('niveaux.id_niveau','ASC')
+                    ->get();
+             $ar=Array('classes'=>$classes);
          return view('classes.classeInfo',$ar);
      }
 
@@ -163,7 +133,76 @@ public function showClassInformation(Request $request){
 
          if ($request->ajax()) {
 
-                 return response(Classe::updateOrCreate(['id_classe'=>$request->id_classe],$request->all()));
-                         }
+          return response(Classe::updateOrCreate(['id_classe'=>$request->id_classe],$request->all()));
+          }
      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     ///////////////////////////////////////////
+
+
+
+
+
+
+
+
+     public function  classInformation($filter)
+     {
+        return Classe::
+         join('annees','annees.id_annee','=','classes.id_annee')
+        ->join('groups','groups.id_group','=','classes.id_group')
+         ->join('niveaux','niveaux.id_niveau','=','classes.id_niveau')
+          ->join('programms','programms.id_programm','=','niveaux.id_programm')
+          ->where($filter)
+          ->orderBy('classes.id_classe','DESC');
+
+     }
+
+     public function showClassInformation(Request $request){
+           if ($request->id_annee!="" && $request->id_programm=="")
+           {
+                  $filter = ['annees.id_annee'=>$request->id_annee];
+           }
+            if (
+                $request->id_annee!="" &&
+                 $request->id_programm!="" &&
+                 $request->id_niveau!="" &&
+                $request->id_group!=""
+               )
+             {
+               $filter = [
+               'annees.id_annee'=>$request->id_annee,
+                'programms.id_programm'=>$request->id_programm,
+                 'niveaux.id_niveau'=>$request->id_niveau,
+                  'groups.id_group'=>$request->id_group];
+                    }
+              $classes = $this->classInformation($filter)->get();
+     dump($classes);
+              return view('classes.classeInfo',compact('classes'));
+
+          }
 }

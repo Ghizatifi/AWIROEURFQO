@@ -12,17 +12,17 @@
 <div class="modal-body">
 <div class="row">
          <div class="col-sm-12">
-            <select  class="form-control" name="id_niveau" id="id_niveau" ></select>
+            <select  class="form-control" name="id_niveau" id="niveaux_id" ></select>
             </div>
       </div>
-
+     
         <div class="row">
          <div class="col-sm-12">
             <input type="text" class="form-control" name="groupe" id="new_group" placeholder="group">
 
             </div>
       </div>
-
+     
       </div>
 
       <div class="modal-footer">
