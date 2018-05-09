@@ -11,9 +11,6 @@
       <form action="{{ route('postInsertLevel') }}" method="POST" id="form-level-create" >
 <div class="modal-body">
          <div class="row">
-         <div class="col-sm-12">
-            <select  class="form-control" name="id_programm" id="programs_id" ></select>
-            </div>
       </div>
         <div class="row">
          <div class="col-sm-12">

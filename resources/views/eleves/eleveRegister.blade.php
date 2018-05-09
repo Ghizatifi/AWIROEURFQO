@@ -83,8 +83,7 @@
 
 			<div class="panel panel-default " >
 				<div class="panel-heading">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration: none;" > Choose
-					Academic </a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration: none;" > Choisir la classe </a>
 					<a href="#" class="pull-right" id="show-class-info"  ><i class="fa fa-plus"></i></a>
 				</div>
 				<div class="panel-collapse  collapse in" id="collapse1" >
@@ -104,7 +103,7 @@
 			<div class="panel-body" style="padding-bottom: 4px">
 				<form action="/eleve/getRigister" method="POST" id="form-create-student" enctype="multipart/form-data">
 {!! csrf_field() !!}
-					<input type="hidden" name="classe_id" id="classe_id">
+					<input type="hidden" name="id_classe" id="id_classe">
 					<input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
 					<input type="hidden" name="dateregistred" id="dateregistred" value="{{date('Y-m-d')}}">
 					<div class="row">
@@ -122,7 +121,7 @@
 									</div>
 								</div>
 
-							
+
 								{{-------Last Name-------}}
 
 								<div class="col-md-4">
@@ -428,7 +427,7 @@
 					});
 					$(document).on('click','#class-edite',function(e){
 						e.preventDefault();
-						$('#classe_id').val($(this).data('id'));
+						$('#id_classe').val($(this).data('id'));
 						$('.academic-detail p').text($(this).text());
 						$('#academic-choose').modal('hide');
 

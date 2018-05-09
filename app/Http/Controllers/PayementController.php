@@ -42,7 +42,7 @@ class PayementController extends Controller
       ->join('annees','annees.id_annee','=','classes.id_annee')
       ->join('groups','groups.id_group','=','classes.id_group')
        ->join('niveaux','niveaux.id_niveau','=','classes.id_niveau')
-        ->join('programms','programms.id_programm','=','niveaux.id_programm')
+        ->join('programms','programms.id_programm','=','classes.id_programm')
         ->select('etudiants.*','programms.*','niveaux.*','groups.*','annees.*')
       ->where('etudiants.id_eleve',$studentId)
       ->get();
@@ -54,7 +54,8 @@ class PayementController extends Controller
       $status = $this->Etudiant_Prog($id_eleve)->first();
 
        $program = Programm::where('id_programm',$status->id_programm)->get();
-       $niveau=Niveau::where('id_programm',$status->id_programm)->get();
+       $niveau=Niveau::all();
+      // :where('id_programm',$status->id_programm)->get();
 
        $fraisEtudiant = $this->show_school_fee($status->id_niveaus)->first();
        $id_reçus= Reçus::where('id_eleve',$id_eleve)->max('id_reçus');
@@ -79,7 +80,7 @@ class PayementController extends Controller
     {
            return	Frais::join('annees','annees.id_annee','=','frais.id_annee')
            ->join('niveaux','niveaux.id_niveau','=','frais.id_niveau')
-           ->join('programms','programms.id_programm','=','niveaux.id_programm')
+          // ->join('programms','programms.id_programm','=','niveaux.id_programm')
            ->join('fraistype','fraistype.id_fraistype','=','frais.id_fraistype')
            // ->where('niveaux.id_niveau',$id_niveau)
            ->orderBy('frais.montant','DESC');
@@ -135,10 +136,10 @@ class PayementController extends Controller
               return FraisEtudiant::join('frais','frais.id_frais','=','fraisetudiants.id_frais')
               ->join('etudiants','etudiants.id_eleve','=','fraisetudiants.id_eleve')
               ->join('niveaux','niveaux.id_niveau','=','fraisetudiants.id_niveau')
-              ->join('programms','programms.id_programm','=','niveaux.id_programm')
+              // ->join('programms','programms.id_programm','=','niveaux.id_programm')
               ->select('niveaux.id_niveau',
                 'niveaux.niveau',
-                'programms.programe',
+                // 'programms.programe',
 
                 'frais.montant as school_fee',
                 'etudiants.id_eleve',

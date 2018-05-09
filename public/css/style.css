@@ -35,7 +35,9 @@ body {
     font-size:14px !important;
 
 }
-
+.panel-rose {
+    border-color: #337ab7;
+}
 h1,h2,h3,h4,h5{
 
     font-weight: 300;
@@ -74,7 +76,7 @@ table tr th { color: #0c0c0c;}
 
 ::selection {
 
-    background: #0055aa;
+    background: #0055AA;
 
     color: #fff;
 

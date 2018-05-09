@@ -12,7 +12,7 @@
 
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>SYSTEM STUDENT</title>
+  <title>Ecole IZZA</title>
 
 <!-- full calendar -->
 <!-- {!! Html::style('vendor/izzaCalendar/bootstrap/css/bootstrap.min.css') !!}

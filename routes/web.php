@@ -68,7 +68,8 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
     //////////////////////////////////Classe/////////////////////////////////////////////
      Route::get('/gestion/cours','ProgrammController@getMangeCouress');
      Route::post('/gestion/cours/ajouter-annee',['as'=>'postInsertYear','uses'=>'ProgrammController@postInsertYear']);
-     Route::post('/gestion/cours/ajouter-matiere',['as'=>'postInsertProgram','uses'=>'ProgrammController@postInsertProgram']);
+		 Route::post('/gestion/cours/ajouter-matiere',['as'=>'postInsertMat','uses'=>'ProgrammController@postInsertMat']);
+		 Route::post('/gestion/cours/ajouter-programe',['as'=>'postInsertProgram','uses'=>'ProgrammController@postInsertProgram']);
      Route::post('/gestion/cours/ajouter-niveau',['as'=>'postInsertLevel','uses'=>'ProgrammController@postInsertLevel']);
      Route::get('/gestion/cours/ListeNiveau',['as'=>'showLevel','uses'=>'ProgrammController@showLevel']);
      Route::post('/mange/cours/ajouter-group',['as'=>'postInsertgroup','uses'=>'ProgrammController@postInsertgroup']);
@@ -86,6 +87,7 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 //////////////////////////////////////matiere//////////////////////////////////
 Route::get('/gestion/matiere','MatController@getMatiere');
 Route::post('/gestion/matiere/affectaion',['as'=>'creatematprogramme','uses'=>'MatController@creatematprogramme']);
+Route::get('/gestion/matiere/Liste',['as'=>'viewMatiere','uses'=>'MatController@viewMatiere']);
 
      //////////////////////////////////Eleve/////////////////////////////////////////////
      Route::post('/eleve/getRigister',['as'=>'RegisterEleve','uses'=>'EleveController@RegisterEleve']);
@@ -94,7 +96,9 @@ Route::post('/gestion/matiere/affectaion',['as'=>'creatematprogramme','uses'=>'M
      Route::get('/gestion/eleveList','EleveController@view');
 		 Route::get('/gestion/eleveList/absence','absenceController@view');
 
-     Route::get('/gestion/eleve/info',['as'=>'view','uses'=>'EleveController@view']);
+    // Route::get('/gestion/eleve/info',['as'=>'view','uses'=>'EleveController@view']);
+		 Route::get('/gestion/eleve/search',['as'=>'studentInfo','uses'=>'EleveController@studentInfo']);
+
 ///////////////////////////////////////////////////////////////////
 		 Route::post('/gestion/prof/add-prof',['as'=>'getRegisterationProf','uses'=>'ProfController@getRegisterationProf']);
     Route::get('/gestion/prof/getProf',['as'=>'view','uses'=>'ProfController@view']);
@@ -145,15 +149,13 @@ Route::resource('profs','ProfController');
 
 		////////////////////////////////////////////Les rapports////////////////////////
 
-
-		//Route::get('rapport/etudiant-list',['as'=>'getListEtd','uses'=>'RapportController@getListEtd']);
-    Route::get('statistique/liste-etudiant',['as'=>'getListEtudiant','uses'=>'statistiqueController@getListEtudiant']);
-		Route::get('statistique/Info-etudiant',['as'=>'getEtudiantInfo','uses'=>'statistiqueController@getEtudiantInfo']);
-
-		// Route::get('report/student-multi-class',['as'=>'getStudentListsMulitiClass','uses'=>'ReportController@getStudentListsMulitiClass']);
-		// Route::get('report/student-multi-class-show',['as'=>'showStudentMultiClass','uses'=>'ReportController@showStudentMultiClass']);
-		Route::get('report/student-Enorrl',['as'=>'NewStudentRegister','uses'=>'RapportController@NewStudentRegister']);
-		//
+Route::get('etudiant/rapport/listeEtudiant',['as'=>'getListEtudiant','uses'=>'RapportController@getListEtudiant']);
+Route::get('etudiant/rapport/InfoEtudiant',['as'=>'EtudiantList','uses'=>'RapportController@EtudiantList']);
+Route::get('report/etudiant-multi-class',['as'=>'getEtudiantListMulitiClass','uses'=>'RapportController@getEtudiantListMulitiClass']);
+Route::get('report/etudiant-multi-class-show',['as'=>'showEtudiantMultiClass','uses'=>'RapportController@showEtudiantMultiClass']);
+Route::get('rapport/etudiant-Enorrl',['as'=>'NewStudentRegister','uses'=>'RapportController@NewStudentRegister']);
+		///////////////////////////////////////////////////////////////////////////
+		Route::get('emplois/create',['as'=>'createEmplois','uses'=>'EmploisController@createEmplois']);
 
 
 

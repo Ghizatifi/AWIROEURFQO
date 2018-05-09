@@ -10,25 +10,15 @@
           width:60px;
 
         }
-        th {
-            background-color: #0055AA;
-            color: white;
-
-        }
-        table tr th {
-            color: white;
-        }
       </style>
 
       <table class="table-bordered table-hover table-condensed table-striped" id="table-class-info" style="width: 100%">
         <thead>
           <tr>
-            <th>ID CLasse</th>
             <th>Annee</th>
             <th>Programme</th>
-              <th>niveau</th>
-            <th>groupe</th>
-            <th>Nomination</th>
+            <th>Niveau</th>
+            <th>Details</th>
             <th id="hidden">Action</th>
             <th>
               <input type="checkbox" id="checkAll">
@@ -37,22 +27,20 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($classes as $c)
+          @foreach($mat_prog as $c)
           <tr>
-            <td>{{$c->id_classe}}</td>
             <td>{{$c->annee}}</td>
              <td>{{$c->programe}}</td>
-             <td>{{$c->niveau}}</td>
-             <td>{{$c->groupe}}</td>
-          <td class="caadimic">
-              <a href="#" data-id="{{$c->id_classe}}" id="class-edite">
-                {{$c->programe}}{{$c->niveau}}-{{$c->groupe}}
+             <td>{{$c->niveau}} annee</td>
+            <td class="caadimic">
+              <a href="#" data-id="{{$c->id_matprog}}" id="class-edite">
+                Niveau : {{$c->niveau}} annee ** Matiere : {{$c->matiere}}
             </a>
 
             </td>
-            <td class="action" id="hidden"><button value="{{$c->id_classe}}" class="btn btn-danger  del-class"> Supp </button></td>
+            <td class="action" id="hidden"><button value="{{$c->id_matprog}}" class="btn btn-danger  del-class"> Supp </button></td>
         <td>
-            <input type="checkbox" name="chk[]" id="checkbox" value="{{$c->id_classe}}" class="chk">
+            <input type="checkbox" name="chk[]" value="{{$c->id_matprog}}" class="chk">
 
          </td>
 

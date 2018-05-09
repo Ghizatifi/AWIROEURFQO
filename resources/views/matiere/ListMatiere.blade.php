@@ -2,12 +2,11 @@
 
 @section('content')
 
-@include('programm.popup.annee')
-@include('programm.popup.group')
-@include('programm.popup.time')
-@include('programm.popup.niveau')
-@include('programm.popup.periode')
-@include('programm.popup.matiere')
+@include('matiere.popup.annee')
+@include('matiere.popup.group')
+@include('matiere.popup.niveau')
+@include('matiere.popup.matiere')
+@include('matiere.popup.programm')
 
 
 
@@ -58,7 +57,7 @@
 						<div class="col-sm-4" >
 							<label for="acdemic-year"> Programme </label>
 							<div class="input-group">
-							<select class="form-control" name="id_program" id="program_id">
+							<select class="form-control" name="id_programm" id="id_programm">
 								@foreach($program as $key=> $p)
 									<option value="{{$p->id_programm}}">{{$p->programe}}</option>
 
@@ -73,11 +72,13 @@
 						<div class="col-sm-3" >
 							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
-							<select class="form-control" name="id_niveau" id="level_id">
-								<select class="form-control" name="program_id" id="program_id">
+								<select class="form-control" name="id_niveau" id="id_niveau">
 
-								</select>
-								</select>
+									@foreach($niveau as $g)
+										<option value="{{$g->id_niveau}}">{{$g->niveau}}</option>
+
+										@endforeach
+									</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-level"></span>
 								</div>
@@ -94,7 +95,7 @@
                   @endforeach
                 </select>
                 <div class="input-group-addon" >
-                  <span class="fa fa-plus" id="add-more-program"></span>
+                  <span class="fa fa-plus" id="add-more-matiere"></span>
                 </div>
               </div>
             </div>
@@ -137,15 +138,15 @@
 <script>
 			showClassInfo();
 
-$("#form-crete-class #program_id").on('change',function(e){
+$("#form-crete-class #id_programm").on('change',function(e){
 
 		var id_programm =$(this).val();
-		var level = $('#level_id');
+		var level = $('#id_niveau');
 		$(level).empty();
 		$.get("{{route('showLevel')}}",{id_programm:id_programm},function(data){
 			$.each(data,function(i,l){
 				$(level).append($("<option/>",{
-					value : l.level_id,
+					value : l.id_niveau,
 					text  :  l.niveau,
 
 				}));
@@ -178,19 +179,43 @@ $('.btn-save-year').on('click',function(){
 });
 
 
- /////////
+/////////////////////////////////matiere///////////////////////////////////////
+$('#add-more-matiere').on('click',function(){
+	$('#matiere-show').modal();
+});
+
+
+//////////
+
+$('.btn-save-matiere').on('click',function(){
+var matiere = $('#new_matiere').val();
+$.post("{{route('postInsertMat')}}",{matiere:matiere},function(data){
+$('#id_matiere').append($("<option/>",{
+	value : data.id_matiere,
+	text  :  data.matiere
+
+}));
+$('#new_matiere').val("");
+});
+});
+ //////////////////////////////////////
+
+
+
  $('#add-more-program').on('click',function(){
  	$('#program-show').modal();
  });
 
 
- $('.btn-save-matiere').on('click',function(){
- 	var matiere = $('#new_program').val();
+ $('.btn-save-program').on('click',function(){
+ 	var programe = $('#new_program').val();
+ 	var description = $('#new_description').val();
 
- 	$.post("{{route('postInsertProgram')}}",{matiere:matiere},function(data){
- 	$('#program_id').append($("<option/>",{
- 			value : data.program_id,
- 			text  :  data.nom
+
+ 	$.post("{{route('postInsertProgram')}}",{programe:programe},function(data){
+ 	$('#id_programm').append($("<option/>",{
+ 			value : data.id_programm,
+ 			text  :  data.programe
 
  		}));
  		$('#new_program').val("");
@@ -227,7 +252,7 @@ function MergeCommonRows(table){
   /////////////////////////////////////////////////////////////////Niveau///////////////////////////////////////////////
 $('#add-more-level').on('click',function(){
 
- 	var programs= $('#program_id option');
+ 	var programs= $('#id_programm option');
  	var program= $('#form-level-create').find('#programs_id');
  	$(program).empty();
  	$.each(programs,function(i,pro){
@@ -248,7 +273,7 @@ $('#form-level-create').on('submit',function(e){
 	var url = $(this).attr('action');
 	$.post(url,data,function(data){
 
-		$('#level_id').append($("<option/>",{
+		$('#id_niveau').append($("<option/>",{
 			value : data.id_niveau,
 			text  :  data.niveau
 
@@ -270,42 +295,11 @@ $('#form-level-create').on('submit',function(e){
 
 //////////
 
-$('.btn-save-shift').on('click',function(){
-	var periode = $('#new_shift').val();
-	$.post("{{route('postInsertshift')}}",{periode:periode},function(data){
-		$('#shift_id').append($("<option/>",{
-			value : data.id_periode,
-			text  :  data.shift
 
-		}));
-		$('#new_shift').val("");
-	});
-});
 
 
 ////////////////////////////////////////======time===/////////////////////////////////////////////////
 
-$('#form-time-create').on('submit',function(e){
-	e.preventDefault();
-	var data = $(this).serialize();
-	$.post("{{ route('postInserttime') }}",data,function(data){
-
-		$('#time_id').append($("<option/>",{
-			value : data.time_id,
-			text  :  data.time
-
-		}));
-	});
-
-	$(this).trigger('reset');
-
-});
-$('#add-more-time').on('click',function(e){
-
-	$('#time-show').modal('show');
-
-
-});
 
 
 
@@ -352,7 +346,7 @@ function showClassInfo(){
 var data = $('#form-crete-class').serialize();
 
 	//var academic_id= $('#academic_id').val();
-	$.get("{{ route('showClassInformation') }}",data,function(data){
+	$.get("{{ route('viewMatiere') }}",data,function(data){
 			$('#add-class-info').empty().append(data);
 			MergeCommonRows($('#table-class-info'))
 

@@ -6,41 +6,32 @@
 
 /////========================================//////////////
 
-$('#academic_id').on('change',function(e){
+$('#id_annee').on('change',function(e){
+	showClassInfo()
+})
+$('#id_programm').on('change',function(e){
+	showClassInfo()
+})
+$('#id_matiere').on('change',function(e){
 	showClassInfo()
 })
 
-$('#level_id').on('change',function(e){
+$('#id_niveau').on('change',function(e){
 	showClassInfo()
 })
 
-$('#group_id').on('change',function(e){
+$('#id_group').on('change',function(e){
 	showClassInfo()
 })
-
+$('#id_classe').on('change',function(e){
+	showClassInfo()
+})
 
 /////////////////////////////////////////////////////////////////slect class///////
 
 
 ////////////////////////////////////
 
-	$("#form-view-class #program_id").on('change',function(e){
-
-		var id_programm =$(this).val();
-		var level = $('#level_id');
-		$(level).empty();
-		$.get("{{route('showLevel')}}",{id_programm:id_programm},function(data){
-			$.each(data,function(i,l){
-				$(level).append($("<option/>",{
-					value : l.level_id,
-					text  :  l.niveau,
-
-				}));
-			});
-	showClassInfo()
-
-		});
-	});
 
 
 
@@ -58,8 +49,8 @@ $('#group_id').on('change',function(e){
 //////////////////////////////////////////////// addAclass in table
 function showClassInfo(){
 	var data = $('#form-view-class').serialize();
-	console.log(data);
-	$.get("{{ route('showClassInformation') }}",data,function(data){
+	//console.log(data);
+	$.get("{{ route('viewClasses') }}",data,function(data){
 			$('#add-class-info').empty().append(data);
 			$('td#hidden').addClass('hidden');
 			$('th#hidden').addClass('hidden');

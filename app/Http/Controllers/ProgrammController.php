@@ -44,6 +44,13 @@ public function postInsertYear(Request $request)
 }
 
 ////////////////////////////////////////////////////////////////////////
+public function postInsertMat(Request $request)
+{
+   if ($request->ajax()) {
+       return response(Matiere::create($request->all()));
+   }
+}
+////////////////////////////////////////////////////////////////////////
 public function postInsertProgram(Request $request)
     {
        if ($request->ajax()) {

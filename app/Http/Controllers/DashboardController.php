@@ -12,7 +12,7 @@ class DashboardController extends Controller
     }
     public function dashboard(){
 
-    	    return view('layout.master');
+    	    return view('dashboard');
 
     }
 

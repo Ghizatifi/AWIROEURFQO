@@ -1,18 +1,18 @@
    @extends('layout.master')
 
 @section('content')
-
+<!-- 
 <div id="banniere">
 
 <img src="./img/bann1.jpg" />
 
-</div>
+</div> -->
 
             <div class="row">
                 <div class="col-lg-5">
                     <h1 class="page-header"></h1>
                 </div>
-           
+
             </div>
   <div class="row">
                <div class="col-lg-3 col-md-13">
@@ -23,7 +23,7 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                  <div class="col-xs-7 text-right">
-                                    
+
                                     <div>Le nmbre totale des eleves</div>
                                     <div class="col-xs-14 huge">12</div>
                                 </div>
@@ -46,7 +46,7 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-7 text-right">
-                                    
+
                                     <div>Le nmbre totale des matieres</div>
                                     <div class="col-xs-14 huge">12</div>
                                 </div>
@@ -69,7 +69,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                  <div class="col-xs-7 text-right">
-                                    
+
                                     <div>Le nmbre totale des professeurs</div>
                                     <div class="col-xs-14 huge">12</div>
                                 </div>
@@ -93,7 +93,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                  <div class="col-xs-7 text-right">
-                                    
+
                                     <div>Le nmbre totale des examens</div>
                                     <div class="col-xs-14 huge">12</div>
                                 </div>
@@ -108,9 +108,9 @@
                         </a>
                     </div>
                 </div>
-              
+
             </div>
-   
+
 
 
 @endsection

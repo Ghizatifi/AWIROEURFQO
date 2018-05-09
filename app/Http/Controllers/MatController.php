@@ -28,43 +28,18 @@ public function getMatiere(){
 }
 
 
-public function showMatInformation(Request $request){
-
-      if ($request->id_annee!="" && $request->id_programm=="")
-      {
-             $filter = ['annees.id_annee'=>$request->id_annee];
-   }
-
-       if (
-           $request->id_annee!="" &&
-            $request->id_programm!="" &&
-        $request->id_niveau!=""
-
-          )
-        {
-          $filter = [
-          'annees.id_annee'=>$request->id_annee,
-           'programms.id_programm'=>$request->id_programm,
-            'niveaux.id_niveau'=>$request->id_niveau];
-
-               }
-
-         $classes = $this->MatInformation($filter)->get();
-         return view('classes.classeInfo',compact('classes'));
-
-     }
-
-
-     public function  MatInformation($filter)
-     {
-        return Classe::
-         join('annees','annees.id_annee','=','classes.id_annee')
-         ->join('niveaux','niveaux.id_niveau','=','classes.id_niveau')
-          ->join('programms','programms.id_programm','=','niveaux.id_programm')
-          ->where($filter)
-          ->orderBy('classes.id_classe','DESC');
-
-     }
+public  function  viewMatiere(){
+    $classes = DB::table('mat_prog')
+         ->join('annees','annees.id_annee','=','mat_prog.id_annee')
+          ->join('niveaux','niveaux.id_niveau','=','mat_prog.id_niveau')
+           ->join('matieres','matieres.id_matiere','=','mat_prog.id_matiere')
+           ->join('programms','programms.id_programm','=','mat_prog.id_programm')
+           ->orderBy('annees.id_annee','DESC')
+             ->orderBy('niveaux.id_niveau','ASC')
+               ->get();
+        $ar=Array('mat_prog'=>$classes);
+    return view('matiere.matiereInfo',$ar);
+}
 
 //////////////////////insertion///////////////////////
      public function creatematprogramme(Request $request)

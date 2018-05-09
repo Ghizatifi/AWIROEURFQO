@@ -18,7 +18,7 @@
 						<div class="col-sm-6" >
 							<label for="acdemic-year"> Annee scolaire </label>
 							<div class="input-group">
-         <select class="form-control" name="id_annee" id="academic_id">
+         <select class="form-control" name="id_annee" id="id_annee">
 							@foreach($annees as $A)
 									<option value="{{$A->id_annee}}">{{$A->annee}}</option>
 									@endforeach
@@ -32,7 +32,7 @@
 						<div class="col-sm-6" >
 							<label for="acdemic-year"> Programme </label>
 							<div class="input-group">
-                <select class="form-control" name="id_program" id="program_id">
+                <select class="form-control" name="id_programm" id="id_programm">
   								@foreach($program as $key=> $p)
   									<option value="{{$p->id_programm}}">{{$p->programe}}</option>
 
@@ -47,8 +47,11 @@
 						<div class="col-sm-6" >
 							<label for="acdemic-year"> Niveau </label>
 							<div class="input-group">
-            <select class="form-control" name="id_niveau" id="level_id">
+            <select class="form-control" name="id_niveau" id="id_niveau">
+              @foreach($niveau as $g)
+                <option value="{{$g->id_niveau}}">{{$g->niveau}}</option>
 
+                @endforeach
 								</select>
 								<div class="input-group-addon" >
 									<span class="fa fa-plus" id="add-more-level"></span>
@@ -61,7 +64,7 @@
 							<label for="acdemic-year"> Groupe </label>
 							<div class="input-group">
                 <div class="input-group " >
-                  <select class="form-control" name="id_group" id="group_id">
+                  <select class="form-control" name="id_group" id="id_group">
                   @foreach($group as $g)
                     <option value="{{$g->id_group}}">{{$g->groupe}}</option>
 
@@ -91,7 +94,7 @@
 		<div class="panel panel-heading">
 			details d'Informations
 
-			<button class="btn btn-info btn-xs pull-right" id="btn-go" style="margin-top: 5px">Go </button>
+			<button class="btn btn-info btn-xs pull-right" id="btn-go" style="margin-top: 5px">OK </button>
 		</div>
 		<div class="panel panel-body" id="add-class-info" style="overflow-y: auto; height: 250px">
 

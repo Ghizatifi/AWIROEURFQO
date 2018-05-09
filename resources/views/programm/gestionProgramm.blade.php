@@ -322,11 +322,19 @@ var data = $('#form-crete-class').serialize();
 
 	/////////////////////////////////////////////////////////////deletClass////////////////////////////////////////////////////
 $(document).on('click','.del-class',function(e){
-	id_classe = $(this).val();
-	$.post("{{ route('deletClass') }}" ,{id_classe:id_classe},function(data){
-			showClassInfo($('#id_annee').val());
 
-	})
+	id_classe = $(this).val();
+	// if ($('.id'+id_classe).find('.checkbox').is(':checked')==false) {
+	// 	alert('SVP veuillez selectioner une classe')
+	// 	return false;
+	// }
+	if (confirm('Veuilez vraiment faire la suppression'))
+	{
+		$.post("{{ route('deletClass') }}" ,{id_classe:id_classe},function(data){
+				showClassInfo($('#id_annee').val());
+
+		})}
+
 })
 ////////////////////////////////////////////////////////class-edite//////////////////////////////
 $(document).on('click','#class-edite',function(data){

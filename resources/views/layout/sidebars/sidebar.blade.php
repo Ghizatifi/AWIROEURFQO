@@ -10,7 +10,7 @@
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
+                          <i class="fa fa-align-left"></i>
                           <span> Les Classes</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
@@ -34,15 +34,15 @@
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="fa fa-graduation-cap" ></i>
-                          <span>Les Elèves</span>
+                          <span>Les etudiants</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ url('/gestion/eleve') }}">Ajouter un élève</a></li>
-              <li><a class="" href="{{ url('/gestion/eleve/info') }}">Chercher un élève</a></li>
+              <li><a class="" href="{{ url('/gestion/eleve') }}">Ajouter un etudiant</a></li>
+              <li><a class="" href="{{ url('/gestion/eleve/search') }}">Chercher un etudiant</a></li>
             </ul>
           </li>
-          <li class="sub-menu">
+          <!-- <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="fa fa-font" ></i>
                           <span>Les Matieres</span>
@@ -52,12 +52,35 @@
               <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Ajouter une matiere</a></li>
               <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Affecter les Matieres</a></li>
             </ul>
+          </li> -->
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="fa fa-columns" ></i>
+                          <span>Emploi du temps</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="{{ url('emplois/create') }}">Creer emploi du temps</a></li>
+              <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Liste des emplois du temps</a></li>
+            </ul>
+          </li>
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="fa fa-edit" ></i>
+                          <span>Examens</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="{{ url('/emplois/create') }}">Programmer un examen</a></li>
+              <li><a class="" href="{{ url('/matiere/ListMatiere') }}">Liste des examens</a></li>
+            </ul>
           </li>
            <li class="sub-menu">
             <a href="javascript:;" class="">
                  <i class="fa fa-money"></i>
 
-                          <span>Frais</span>
+                          <span>Paiement</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
@@ -81,8 +104,40 @@
             </ul>
           </li>
 
+          <li class="sub-menu">
+                  <a href="/agenda" class="">
+                       <i class="fa fa-calendar"></i>
 
+                                <span>Calendrier</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
 
+                </li>
+
+                <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                             <i class="fa fa-envelope"></i>
+
+                                      <span>Messagerie</span>
+                                      <span class="menu-arrow arrow_carrot-right"></span>
+                                  </a>
+                        <ul class="sub">
+                          <li><a class="" href="">Envoyer un email </a></li>
+                          <li><a class="" href="{{route('NewStudentRegister')}}">Liste des emails </a></li>
+                        </ul>
+                      </li>
+          <li class="sub-menu">
+                  <a href="javascript:;" class="">
+                       <i class="fa fa-cog"></i>
+
+                                <span>Parametres</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                  <ul class="sub">
+                    <li><a class="" href="">Liste des etudiants </a></li>
+                    <li><a class="" href="{{route('NewStudentRegister')}}">Student Enroll </a></li>
+                  </ul>
+                </li>
 
 
 

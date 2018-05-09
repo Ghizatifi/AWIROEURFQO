@@ -28,8 +28,8 @@
 	<a href="#" class="pull-right" id="show-class-info"><i class="fa fa-plus"></i>  </a>
 
 </div>
-<div class="panel-body" style="padding-bottom: 4px">
-	<b></b>
+<div class="panel-body" style="padding-bottom: 4px; text-align: center; ">
+	<b style="text-align: center; font-size: 20px ;font-weight: bold;"> Student Report</b>
 <div class="show-student-info">
 
 
@@ -38,23 +38,30 @@
 </div>
  </div>
 
- @include('classes.classPopup')
 
- @endsection
+@include('classes.classPopup')
 
- @section('script')
+@endsection
 
- @include('script.scriptClassPopup')
- <script type="text/javascript">
-  $(document).on('click','#class-edite',function(e){
- 	 e.preventDefault();
- 	 id_classe =($(this).data('id'));
-	 console.log(id_classe);
- 	 $.get("{{route('getEtudiantInfo')}}",{id_classe:id_classe},function (data) {
-     console.log(data);
- 		//$('.show-student-info').empty().append(data);
- 	 })
 
-  })
- </script>
- @endsection
+
+@section('script')
+
+@include('script.scriptClassPopup')
+<script type="text/javascript">
+	$(document).on('click','#btn-go',function(e){
+		e.preventDefault();
+		data =$('#form-multi-class').serialize();
+		$.get('{{ route('showEtudiantMultiClass') }}',data,function (data) {
+			console.log(data);
+			//$('.show-student-info').empty().append(data);
+		})
+
+	})
+
+	///////////////check all////////////////
+	$(document).on('click','#checkAll',function(){
+		$(':checkbox.chk').prop('checked',this.checked)
+	})
+</script>
+@endsection

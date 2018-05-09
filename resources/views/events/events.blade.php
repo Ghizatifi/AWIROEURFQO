@@ -13,7 +13,7 @@
     </head>
 
     <body>
-      
+
         <div class="container">
 
             {{ Form::open(['route' => 'events.store', 'method' => 'post', 'role' => 'form']) }}

@@ -40,7 +40,9 @@
 			<th>Adresse</th>
 			<th>Email </th>
 			<th>Classe </th>
-			<th>Action</th>
+			<th>Modifier</th>
+			<th>Supprimer</th>
+
 		</thead>
 
 <tbody>
@@ -50,14 +52,14 @@
 			<td> {{ $art->id_eleve }}</td>
 
             <td><img src="{{ asset('storage/'.$art->photo) }}" height="100" width="100"></td>
- 			<td> {{ $art->nom }} {{ $art->prenom }}</td>
-			<td> {{ $art->ville }} {{ $art->rue }} {{ $art->province }} </td>
+ 			<td> {{ $art->nom_complet }}</td>
+			<td> {{ $art->adresse }}  </td>
 			<td> {{ $art->email }} </td>
 			<td> {{ $art->programe }}  </td>
 
-			 <td><a href="{{action('EleveController@edit',$art->id_eleve)}}" class="btn btn-primary">Edit</a>
-&nbsp;&nbsp;
-				<a href="#" class="btn btn-danger">delete</a>
+			 <td><a href="{{action('EleveController@edit',$art->id_eleve)}}" class="btn btn-primary">Modifier</a>
+</td>
+			<td>	<a href="#" class="btn btn-danger">Supprimer</a>
 			</td>
 		</tr>
 			@endForeach
@@ -70,6 +72,7 @@
 	</table>
 </div>
 <div class="footer">
+	{{ $eleve->render() }}
 
 </div>
  </div>

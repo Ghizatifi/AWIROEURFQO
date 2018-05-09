@@ -73,14 +73,14 @@ public function RegisterEleve(Request $request){
         $ar->email=$request->input('email');
         $ar->id_user=Auth::user()->id;
         $ar->photo=FileUpload::photo($request,'photo');
-        $ar->id_classe=$request->input('classe_id');
+        $ar->id_classe=$request->input('id_classe');
         $ar->date_inscription=$request->input('dateregistred');
         // $ar->id_niveau=$request->input('id_niveau');
 
         $ar->save();
-        $student_id=$ar->id_eleve;
+        $id_eleve=$ar->id_eleve;
         //return redirect('/gestion/eleveList');
-        return redirect()->route('goPayment',['id_eleve'=>$student_id]);
+        return redirect()->route('goPayment',['id_eleve'=>$id_eleve]);
 
     //}
 //return view('eleves.eleveRegister');
@@ -96,9 +96,10 @@ public  function  view(){
  $eleve = DB::table('etudiants')
        //return Eleve::
             ->join('classes', 'classes.id_classe', '=', 'etudiants.id_classe')
-            ->join('programms', 'programms.id_programm', '=', 'classes.id_program')
-          //  ->where($filter)
-          ->select('etudiants.*','programms.*')
+            ->join('programms', 'programms.id_programm', '=', 'classes.id_programm')
+            ->join('niveaux', 'niveaux.id_niveau', '=', 'classes.id_niveau')
+
+            ->select('etudiants.*','programms.*','niveaux.*')
             ->orderBy('etudiants.id_eleve','DESC')
             ->get();
      $ar=Array('eleve'=>$eleve);
@@ -162,4 +163,36 @@ public function edit($id)
         return 1;
 }
 
+
+
+public function studentInfo(Request $request)
+{
+	if ($request->has('search')) {
+
+			$eleve = Eleve::where('id_eleve',$request->search)
+			->Orwhere('prenom',"LIKE","%".$request->search."%")
+			->Orwhere('nom',"LIKE","%".$request->search."%")
+			->select(DB::raw('id_eleve,email,province,rue,photo,ville,prenom,nom,CONCAT(prenom," ",nom) AS nom_complet,
+      CONCAT(rue," ",ville," ",province) AS adresse,
+  				(CASE WHEN sexe=0 THEN "M" ELSE "F" END) AS sexe ,date_naissance'))
+			->paginate(1);
+
+	}
+	else{
+		$eleve = Eleve::select(DB::raw('id_eleve,email,photo,province,rue,ville,prenom,nom,CONCAT(prenom," ",nom) AS nom_complet,
+    CONCAT(rue," ",ville," ",province) AS adresse,
+				(CASE WHEN sexe=0 THEN "M" ELSE "F" END) AS sexe ,date_naissance'))
+		->paginate(1)->appends('search',$request->search);
+
+	}
+	return view('eleves.eleveList',compact('eleve'));
+}
+
+
+      public function formImport(){
+         return view('eleves.upload');
+      }
+
+
+  
 }
