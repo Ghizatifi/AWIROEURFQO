@@ -100,11 +100,11 @@
 
 
 
-			<!-- <form  action="{{ route('createprog') }}" method="POST" class="form-horizontal" id="form-crete-class">
+		<form  action="{{ route('createprog') }}" method="POST" class="form-horizontal" id="form-crete-class">
 				{{ csrf_field() }}
 				<input type="hidden" name="active" id="active" value="1">
 				<input type="hidden" name="id_classe" id="id_classe">
-
+	<!-- 
 				<div class="panel-body" >
 					<div class="form-group">
 						<div class="col-sm-2" >
@@ -184,7 +184,7 @@
 								</div>
 							</div>
 						</div>
-				</div>
+				</div>-->
 
 				<div class="panel-footer" >
 					<button type="submit" class=" btn btn-primary btn-sm">
@@ -195,7 +195,7 @@
 			</div>
 		</div>
 
-	</form> -->
+	</form>
 </table>
 
 	<div class="panel panel-default ">
