@@ -156,6 +156,8 @@ Route::get('report/etudiant-multi-class-show',['as'=>'showEtudiantMultiClass','u
 Route::get('rapport/etudiant-Enorrl',['as'=>'NewStudentRegister','uses'=>'RapportController@NewStudentRegister']);
 		///////////////////////////////////////////////////////////////////////////
 		Route::get('emplois/create',['as'=>'createEmplois','uses'=>'EmploisController@createEmplois']);
+		Route::get('emplois/display',['as'=>'displayEmplois','uses'=>'EmploisController@displayEmplois']);
+		Route::post('/emplois/Insert-prog',['as'=>'createprog','uses'=>'EmploisController@createprog']);
 
 
 
